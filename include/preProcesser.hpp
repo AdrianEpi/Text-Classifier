@@ -21,6 +21,11 @@
 /*------------------  LIBRARIES  -----------------*/
 
 #include <cstring>
+#include <cstdio>
+#include <cstdlib>
+#include <iostream>
+#include <ostream>
+#include <vector>
 
 /*------------------------------------------------*/
 
@@ -32,7 +37,7 @@ class PreProcesser {
 
 	private:
 		std::string inputFile_;						// Input file path
-		std::string outpuFile_;						// Output file path where the preprocessed text will store the data
+		std::string outputFile_;						// Output file path where the preprocessed text will store the data
 		std::string data_;							// Stored data readed from input file
 		bool readyToProcess_;						// Dev flag to know if the data can be processed or not (must have an input and output file)
 
@@ -60,6 +65,7 @@ class PreProcesser {
 		void convertLowerCase (void);
 		void convertUpperCase (void);
 		void eraseReservedWords (std::vector<std::string> reservedWords);
+		void erasePunctuationSigns (void);
 		void eraseEmojis (void);
 		void eraseURLs (void);
 		void eraseHtml (void);

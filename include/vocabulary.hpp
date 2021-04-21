@@ -2,7 +2,7 @@
 =========================================================================================
 	=                                                                              =
 	=            Proyect:       Text Classifier                                    =
-	=            File name:     main.cpp                                           =
+	=            File name:     vocabulary.hpp                                     =
 	=            Author:        Adrián Epifanio Rodríguez Hernández                =
 	=            Date:          21/04/2021                                         =
 	=            Subject:       Advanced Artificial Inteligence                    =
@@ -13,31 +13,55 @@
 	=                                                                              =
 =========================================================================================
 =======================================================================================*/
-/*
-* @Author: Adrian Epifanio
-* @Date:   2021-04-21 12:55:55
-* @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-21 13:42:55
-*/
 /*------------------  FUNCTIONS  -----------------*/
 
-#include "../include/vocabulary.hpp"
+#pragma once
+#include "preProcesser.hpp"
 
+/*------------------------------------------------*/
+/*------------------  LIBRARIES  -----------------*/
+
+#include <cstring>
+#include <set>
+#include <cstdio>
+#include <cstdlib>
+#include <iostream>
+#include <ostream>
 
 /*------------------------------------------------*/
 
-
 /**
- * @brief      Main function of the program, receives the data file as
- *             parameter.
- *
- * @param[in]  argc  The count of arguments
- * @param      argv  The arguments array
- *
- * @return     0 If program finishes correctly
+ * @brief      This class describes a vocabulary and 
  */
-int main (int argc, char* argv[]) {
+class Vocabulary {
 
-	return 0;
-}	
+	private:
+		std::string inputFile_;		// Input file path
+		std::string outpuFile_;		// Output file where the vocabulary will be stored
+		int counter_;
+		std::set<std::string> vocabulary_;
 
+	public:
+		// Builders & Destroyer
+		Vocabulary (void);
+		Vocabulary (std::string inputFile, std::string outpuFile);
+		~Vocabulary (void);
+
+		// Getters & Setters
+		std::string get_InputFile (void) const;
+		std::string get_OutpuFile (void) const;
+		int get_Counter (void) const;
+		std::set<std::string> get_Vocabulary (void) const;
+
+		void set_InputFile (std::string newInputFile);
+		void set_OutpuFile (std::string newOutpuFile);
+		void set_Counter (int newCounter);
+		void set_Vocabulary (std::set<std::string> newVocabulary);
+
+		// Operators Overload
+		Vocabulary& operator= (const Vocabulary& newVocabulary);
+
+		// Functions
+
+		// Write
+};

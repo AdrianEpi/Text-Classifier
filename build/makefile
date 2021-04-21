@@ -1,5 +1,5 @@
 #Variable objetos
-OBJECTS = main.o 
+OBJECTS = main.o vocabulary.o preProcesser.o
 #Flags de compilacion
 CFLAGS = -c -std=c++17 -Wall
 
