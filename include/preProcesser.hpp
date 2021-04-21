@@ -26,6 +26,8 @@
 #include <iostream>
 #include <ostream>
 #include <vector>
+#include <fstream>
+#include <ctype.h>
 
 /*------------------------------------------------*/
 
@@ -71,4 +73,7 @@ class PreProcesser {
 		void eraseHtml (void);
 		void eraseHashtags (void);
 
+		// Read & Write
+		void loadData (void);
+		void printData (void);
 };

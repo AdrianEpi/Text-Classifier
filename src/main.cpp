@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 12:55:55
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-21 13:42:55
+* @Last Modified time: 2021-04-21 14:16:40
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -37,7 +37,9 @@
  * @return     0 If program finishes correctly
  */
 int main (int argc, char* argv[]) {
-
+	PreProcesser test("../inputs/ecom-train.csv", "../outputs/vocabulary.txt");
+	test.loadData();
+	//test.printData();
 	return 0;
 }	
 

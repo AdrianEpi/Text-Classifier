@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:04:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-21 13:58:34
+* @Last Modified time: 2021-04-21 14:18:25
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -178,4 +178,35 @@ void PreProcesser::eraseHtml (void) {
 
 void PreProcesser::eraseHashtags (void) {
 
+}
+
+/**
+ * @brief      Loads the data from input file into data var.
+ */
+void PreProcesser::loadData (void) {
+	if (!get_ReadyToProcess()) {
+		std::cout << std::endl << "Error while loading data, intput and output files has not been loaded to the preprocesser" << std::endl;
+		exit(1);
+	}
+
+	std::ifstream file(inputFile_, std::ios::in);
+	if (file.fail()) {
+		std::cout << std::endl << "Error 404, file not found in loadData function." << std::endl;
+		exit(1);
+	}
+
+	std::string aux = "";
+	int counter = 0;
+	while (!file.eof()) {
+		file >> aux;
+		if (isalpha(aux[0])) {
+			data_ += aux + " ";
+		}
+	}
+	std::cout << "---" << counter << "---" << std::endl;
+	file.close();
+}
+
+void PreProcesser::printData (void) {
+	std::cout << data_;
 }

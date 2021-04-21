@@ -23,5 +23,5 @@ clean:
 	rm -rf ../objects/*.o
 	rm -rf ../bin/*
 
-run1:
+run:
 	../bin/textClassifier ../inputs/ecom-train.csv
