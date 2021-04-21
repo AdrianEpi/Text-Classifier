@@ -14,6 +14,8 @@ main.o: ../src/main.cpp
 vocabulary.o: ../src/vocabulary.cpp ../include/vocabulary.hpp
 	g++ $(CFLAGS) ../src/vocabulary.cpp
 
+preProcesser.o: ../src/preProcesser.cpp ../include/preProcesser.hpp
+	g++ $(CFLAGS) ../src/preProcesser.cpp
 
 
 .PHONY: clean
