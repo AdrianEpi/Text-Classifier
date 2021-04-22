@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:04:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-22 17:34:49
+* @Last Modified time: 2021-04-22 17:47:38
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -170,7 +170,6 @@ void PreProcesser::erasePunctuationSigns (void) {
 			for (unsigned j = 0; j < punctuantionSigns.size(); j++) {
 				if (data_[i] == punctuantionSigns[j]) {
 					data_[i] = ' ';
-					counter++;
 				}
 			}
 		}
@@ -185,8 +184,22 @@ void PreProcesser::eraseEmojis (void) {
 	}
 }
 
+/**
+ * @brief      Erases all URLs into data var, an URL is defined as a '.' between
+ *             letters without spaces.
+ */
 void PreProcesser::eraseURLs (void) {
-
+	for (unsigned i = 0; i < data_.length(); i++) {
+		if (data_[i] == '.' && data_[i + 1] != ' ') {
+			unsigned k = i;
+			while (data_[k] != ' ') {
+				data_[k] = ' ';
+			}
+			while (data_[i] != ' ') {
+				data_[i] = ' ';
+			}
+		}
+	}
 }
 
 void PreProcesser::eraseHtml (void) {

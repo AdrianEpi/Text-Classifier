@@ -39,7 +39,7 @@ class PreProcesser {
 
 	private:
 		std::string inputFile_;						// Input file path
-		std::string outputFile_;						// Output file path where the preprocessed text will store the data
+		std::string outputFile_;					// Output file path where the preprocessed text will store the data
 		std::string data_;							// Stored data readed from input file
 		bool readyToProcess_;						// Dev flag to know if the data can be processed or not (must have an input and output file)
 
