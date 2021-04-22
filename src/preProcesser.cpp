@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:04:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-22 17:47:38
+* @Last Modified time: 2021-04-22 18:02:26
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -194,9 +194,11 @@ void PreProcesser::eraseURLs (void) {
 			unsigned k = i;
 			while (data_[k] != ' ') {
 				data_[k] = ' ';
+				k--;
 			}
 			while (data_[i] != ' ') {
 				data_[i] = ' ';
+				i++;
 			}
 		}
 	}
@@ -206,8 +208,19 @@ void PreProcesser::eraseHtml (void) {
 
 }
 
+/**
+ * @brief      Erases all Hashtags into data var.
+ */
 void PreProcesser::eraseHashtags (void) {
-
+	for (unsigned i = 0; i < data_.length(); i++) {
+		if (data_[i] == '#') {
+			data_[i] = ' ';
+			while (data_[i] != ' ') {
+				data_[i] = ' ';
+				i++;
+			}
+		}
+	}
 }
 
 /**
