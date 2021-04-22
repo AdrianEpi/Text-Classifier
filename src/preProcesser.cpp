@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:04:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-21 14:18:25
+* @Last Modified time: 2021-04-22 17:34:49
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -160,12 +160,29 @@ void PreProcesser::eraseReservedWords (std::vector<std::string> reservedWords) {
 
 }
 
+/**
+ * @brief      Erases all punctuation sings into readed data.
+ */
 void PreProcesser::erasePunctuationSigns (void) {
-
+	std::vector<char> punctuantionSigns = {',', '.', '-', '_', '?', '!', ';', ':'};
+	for (unsigned i = 0; i < data_.length(); i++) {
+		if (!isalpha(data_[i]) && !isdigit(data_[i])) {
+			for (unsigned j = 0; j < punctuantionSigns.size(); j++) {
+				if (data_[i] == punctuantionSigns[j]) {
+					data_[i] = ' ';
+					counter++;
+				}
+			}
+		}
+	}
 }
 
 void PreProcesser::eraseEmojis (void) {
-
+	for (unsigned i = 0; i < data_.length(); i++) {
+		if (!isalpha(data_[i]) && !isdigit(data_[i])) {
+			//while (data_[i] != ' ')
+		}
+	}
 }
 
 void PreProcesser::eraseURLs (void) {
@@ -207,6 +224,9 @@ void PreProcesser::loadData (void) {
 	file.close();
 }
 
-void PreProcesser::printData (void) {
+/**
+ * @brief      Prints data var.
+ */
+void PreProcesser::printData  (void) {
 	std::cout << data_;
 }
