@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 12:55:55
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-22 17:33:48
+* @Last Modified time: 2021-04-24 23:02:43
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -26,6 +26,7 @@
 
 /*------------------------------------------------*/
 
+std::vector<std::string> loadStopWord (void);
 
 /**
  * @brief      Main function of the program, receives the data file as
@@ -39,8 +40,31 @@
 int main (int argc, char* argv[]) {
 	PreProcesser test("../inputs/ecom-train.csv", "../outputs/vocabulary.txt");
 	test.loadData();
-	test.erasePunctuationSigns();
+	std::string aaa = test.get_Data();
+	std::vector<std::string> stopWords = loadStopWord();
+	test.convertLowerCase(aaa);
+	std::string www = "../outputs/vocabulary.txt";
+	test.storeData(www);
+	test.eraseReservedWords(stopWords, www);
+	//test.erasePunctuationSigns();
+	//test.convertUpperCase();
 	//test.printData();
 	return 0;
 }	
+
+std::vector<std::string> loadStopWord (void) {
+	std::vector<std::string> stopWords;
+	std::ifstream file("../inputs/stopWords.txt", std::ios::in);
+	if (file.fail()) {
+		std::cout << std::endl << "Error 404, stopWords file not found." << std::endl;
+		exit(1);
+	}
+	std::string aux = "";
+	while (!file.eof()) {
+		file >> aux;
+		stopWords.push_back(aux);
+	}
+	file.close();
+	return stopWords;
+}
 

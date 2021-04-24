@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:04:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-22 18:02:26
+* @Last Modified time: 2021-04-24 23:10:54
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -148,38 +148,69 @@ PreProcesser& PreProcesser::operator= (const PreProcesser& newPreProcesser) {
 	return *this;
 }
 
-void PreProcesser::convertLowerCase (void) {
-
+/**
+ * @brief      Converts all the data into Lower Case
+ *
+ * @param      str   The string
+ */
+void PreProcesser::convertLowerCase (std::string& str) {
+	std::transform(data_.begin(), data_.end(),data_.begin(), ::tolower);
 }
 
-void PreProcesser::convertUpperCase (void) {
-
+/**
+ * @brief      Converts all the data into Upper Case
+ *
+ * @param      str   The string
+ */
+void PreProcesser::convertUpperCase (std::string& str) {
+	std::transform(data_.begin(), data_.end(),data_.begin(), ::toupper);
 }
 
-void PreProcesser::eraseReservedWords (std::vector<std::string> reservedWords) {
-
+/**
+ * @brief      Deletes all the words from the vector in the given file and stores them into the same file.
+ *
+ * @param[in]  reservedWords  The reserved words vector
+ * @param[in]  fileName       The file name
+ */
+void PreProcesser::eraseReservedWords (std::vector<std::string>& reservedWords, std::string& fileName) {
+	std::ifstream file(fileName, std::ios::in);
+	data_ = "";
+	if (file.fail()) {
+		std::cout << std::endl << "Error 404, file not found in eraseReservedWords function." << std::endl;
+		exit(1);
+	}
+	std::string aux = "";
+	while (!file.eof()) {
+		file >> aux;
+		bool push = true;
+		for (unsigned i = 0; i < reservedWords.size(); i++) {
+			if (aux == reservedWords[i]) {
+				push = false;
+				break;
+			}
+		}
+		if (push) {
+			data_ += '\n' + aux;
+		}
+	}
+	file.close();
+	storeData(fileName);
 }
 
 /**
  * @brief      Erases all punctuation sings into readed data.
+ *
+ * @param      str   The string
  */
-void PreProcesser::erasePunctuationSigns (void) {
-	std::vector<char> punctuantionSigns = {',', '.', '-', '_', '?', '!', ';', ':'};
-	for (unsigned i = 0; i < data_.length(); i++) {
-		if (!isalpha(data_[i]) && !isdigit(data_[i])) {
+void PreProcesser::erasePunctuationSigns (std::string& str) {
+	std::vector<char> punctuantionSigns = {',', '.', '-', '_', '?', '!', ';', ':', '\'', '\"'};
+	for (unsigned i = 0; i < str.length(); i++) {
+		if (!isalpha(str[i]) && !isdigit(str[i])) {
 			for (unsigned j = 0; j < punctuantionSigns.size(); j++) {
-				if (data_[i] == punctuantionSigns[j]) {
-					data_[i] = ' ';
+				if (str[i] == punctuantionSigns[j]) {
+					str[i] = ' ';
 				}
 			}
-		}
-	}
-}
-
-void PreProcesser::eraseEmojis (void) {
-	for (unsigned i = 0; i < data_.length(); i++) {
-		if (!isalpha(data_[i]) && !isdigit(data_[i])) {
-			//while (data_[i] != ' ')
 		}
 	}
 }
@@ -187,36 +218,36 @@ void PreProcesser::eraseEmojis (void) {
 /**
  * @brief      Erases all URLs into data var, an URL is defined as a '.' between
  *             letters without spaces.
+ *
+ * @param      str   The string
  */
-void PreProcesser::eraseURLs (void) {
-	for (unsigned i = 0; i < data_.length(); i++) {
-		if (data_[i] == '.' && data_[i + 1] != ' ') {
+void PreProcesser::eraseURLs (std::string& str) {
+	for (unsigned i = 0; i < str.length(); i++) {
+		if (str[i] == '.' && str[i + 1] != ' ') {
 			unsigned k = i;
-			while (data_[k] != ' ') {
-				data_[k] = ' ';
+			while (str[k] != ' ') {
+				str[k] = ' ';
 				k--;
 			}
-			while (data_[i] != ' ') {
-				data_[i] = ' ';
+			while (str[i] != ' ') {
+				str[i] = ' ';
 				i++;
 			}
 		}
 	}
 }
 
-void PreProcesser::eraseHtml (void) {
-
-}
-
 /**
  * @brief      Erases all Hashtags into data var.
+ *
+ * @param      str   The string
  */
-void PreProcesser::eraseHashtags (void) {
-	for (unsigned i = 0; i < data_.length(); i++) {
-		if (data_[i] == '#') {
-			data_[i] = ' ';
-			while (data_[i] != ' ') {
-				data_[i] = ' ';
+void PreProcesser::eraseHashtags (std::string& str) {
+	for (unsigned i = 0; i < str.length(); i++) {
+		if (str[i] == '#') {
+			str[i] = ' ';
+			while (str[i] != ' ') {
+				str[i] = ' ';
 				i++;
 			}
 		}
@@ -231,22 +262,18 @@ void PreProcesser::loadData (void) {
 		std::cout << std::endl << "Error while loading data, intput and output files has not been loaded to the preprocesser" << std::endl;
 		exit(1);
 	}
-
 	std::ifstream file(inputFile_, std::ios::in);
 	if (file.fail()) {
 		std::cout << std::endl << "Error 404, file not found in loadData function." << std::endl;
 		exit(1);
 	}
-
 	std::string aux = "";
-	int counter = 0;
 	while (!file.eof()) {
 		file >> aux;
 		if (isalpha(aux[0])) {
 			data_ += aux + " ";
 		}
 	}
-	std::cout << "---" << counter << "---" << std::endl;
 	file.close();
 }
 
@@ -255,4 +282,21 @@ void PreProcesser::loadData (void) {
  */
 void PreProcesser::printData  (void) {
 	std::cout << data_;
+}
+
+/**
+ * @brief      Stores the data into the given file
+ *
+ * @param      outputFile  The output file
+ */
+void PreProcesser::storeData(std::string& outputFile) {
+	std::ofstream file(outputFile, std::ios::in);
+	if (file.fail()) {
+		std::cout << "Error while storing data, not valid document" << std::endl;
+		exit(1);
+	} 
+	else { 
+		file << data_;
+	}
+	file.close();
 }

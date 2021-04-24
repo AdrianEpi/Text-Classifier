@@ -28,6 +28,7 @@
 #include <vector>
 #include <fstream>
 #include <ctype.h>
+#include <algorithm>
 
 /*------------------------------------------------*/
 
@@ -64,16 +65,16 @@ class PreProcesser {
 		PreProcesser& operator= (const PreProcesser& newPreProcesser);
 
 		// Functions
-		void convertLowerCase (void);
-		void convertUpperCase (void);
-		void eraseReservedWords (std::vector<std::string> reservedWords);
-		void erasePunctuationSigns (void);
-		void eraseEmojis (void);
-		void eraseURLs (void);
-		void eraseHtml (void);
-		void eraseHashtags (void);
+		void convertLowerCase (std::string& str);
+		void convertUpperCase (std::string& str);
+		void eraseReservedWords (std::vector<std::string>& reservedWords, std::string& fileName);
+		void erasePunctuationSigns (std::string& str);
+		void eraseURLs (std::string& str);
+		void eraseHashtags (std::string& str);
 
 		// Read & Write
 		void loadData (void);
 		void printData (void);
+		void storeData(std::string& outputFile);
+
 };
