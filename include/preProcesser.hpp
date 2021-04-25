@@ -42,7 +42,6 @@ class PreProcesser {
 		std::string inputFile_;						// Input file path
 		std::string outputFile_;					// Output file path where the preprocessed text will store the data
 		std::string data_;							// Stored data readed from input file
-		bool readyToProcess_;						// Dev flag to know if the data can be processed or not (must have an input and output file)
 
 	public:
 		// Builders & Destroyer
@@ -54,26 +53,29 @@ class PreProcesser {
 		std::string get_InputFile (void) const;
 		std::string get_OutputFile (void) const;
 		std::string get_Data (void) const;
-		bool get_ReadyToProcess (void) const;
 
 		void set_InputFile (std::string newInputFile);
 		void set_OutputFile (std::string newOutputFile);
 		void set_Data (std::string newData);
-		void set_ReadyToProcess (bool newReadyToProcess);
 
 		// Operators Overload
 		PreProcesser& operator= (const PreProcesser& newPreProcesser);
 
 		// Functions
 		void convertLowerCase (std::string& str);
+		void convertLowerCase (void);
 		void convertUpperCase (std::string& str);
+		void convertUpperCase (void);
 		void eraseReservedWords (std::vector<std::string>& reservedWords, std::string& fileName);
 		void erasePunctuationSigns (std::string& str);
+		void erasePunctuationSigns (void);
 		void eraseURLs (std::string& str);
+		void eraseURLs (void);
 		void eraseHashtags (std::string& str);
+		void eraseHashtags (void);
 
 		// Read & Write
-		void loadData (void);
+		void loadData (std::string& inputFile);
 		void printData (void);
 		void storeData(std::string& outputFile);
 

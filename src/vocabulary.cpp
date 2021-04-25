@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:37:30
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-21 13:59:40
+* @Last Modified time: 2021-04-25 17:38:52
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -31,7 +31,7 @@
 Vocabulary::Vocabulary (void) {
 	set_InputFile("");
 	set_OutpuFile("");
-	set_Counter(0);	
+	set_VocabularyCounter(0);	
 }
 
 /**
@@ -43,7 +43,7 @@ Vocabulary::Vocabulary (void) {
 Vocabulary::Vocabulary (std::string inputFile, std::string outpuFile) {
 	set_InputFile(inputFile);
 	set_OutpuFile(outpuFile);
-	set_Counter(0);
+	set_VocabularyCounter(0);
 }
 
 /**
@@ -71,12 +71,21 @@ std::string Vocabulary::get_OutpuFile (void) const {
 }
 
 /**
- * @brief      Gets the counter.
+ * @brief      Gets the VocabularyCounter.
  *
- * @return     The counter.
+ * @return     The VocabularyCounter.
  */
-int Vocabulary::get_Counter (void) const {
-	return counter_;
+int Vocabulary::get_VocabularyCounter (void) const {
+	return vocabularyCounter_;
+}
+
+/**
+ * @brief      Gets the tokens.
+ *
+ * @return     The tokens.
+ */
+int Vocabulary::get_Tokens (void) const {
+	return tokens_;
 }
 
 /**
@@ -109,10 +118,19 @@ void Vocabulary::set_OutpuFile (std::string newOutpuFile) {
 /**
  * @brief      Sets the counter.
  *
- * @param[in]  newCounter  The new counter
+ * @param[in]  newVocabularyCounter  The new counter
  */
-void Vocabulary::set_Counter (int newCounter) {
-	counter_ = newCounter;
+void Vocabulary::set_VocabularyCounter (int newVocabularyCounter) {
+	vocabularyCounter_ = newVocabularyCounter;
+}
+
+/**
+ * @brief      Sets the tokens.
+ *
+ * @param[in]  newTokens  The new tokens
+ */
+void Vocabulary::set_Tokens (int newTokens) {
+	tokens_ = newTokens;
 }
 
 /**
@@ -133,8 +151,53 @@ void Vocabulary::set_Vocabulary (std::set<std::string> newVocabulary) {
  */
 Vocabulary& Vocabulary::operator= (const Vocabulary& newVocabulary) {
 	this -> set_Vocabulary(newVocabulary.get_Vocabulary());
-	this -> set_Counter(newVocabulary.get_Counter());
+	this -> set_VocabularyCounter(newVocabulary.get_VocabularyCounter());
 	this -> set_OutpuFile(newVocabulary.get_OutpuFile());
 	this -> set_InputFile(newVocabulary.get_InputFile());
+	this -> set_Tokens(newVocabulary.get_Tokens());
 	return *this;
+}
+
+/**
+ * @brief      Preprocess the data for the program, erases punctuation signs,
+ *             converts all to lowercase and erases reserved words.
+ *
+ * @param      preProcesser  The pre processer
+ * @param[in]  stopWordFile  The stop word file
+ */
+void Vocabulary::preProcessData (PreProcesser& preProcesser, std::string stopWordFile) {
+	std::string outputFile = "../outputs/preProcesserHelper.txt";
+	std::vector<std::string> stopWords = loadStopWord(stopWordFile);
+	Chrono preProcessChrono;
+	preProcessChrono.startChrono();
+	preProcesser.loadData(inputFile_);
+	preProcesser.convertLowerCase();
+	preProcesser.erasePunctuationSigns();
+	preProcesser.storeData(outputFile);
+	preProcesser.eraseReservedWords(stopWords, outputFile);
+	preProcessChrono.stopChrono();
+	std::cout << std::endl << "Elapsed pre-processing time: " << preProcessChrono.get_Seconds(5) << " seconds." << std::endl;
+}
+
+/**
+ * @brief      Loads the stop words (reserved words).
+ *
+ * @param[in]  inputFile  The input file
+ *
+ * @return     stop words vector
+ */
+std::vector<std::string> Vocabulary::loadStopWord (std::string inputFile) {
+	std::vector<std::string> stopWords;
+	std::ifstream file(inputFile, std::ios::in);
+	if (file.fail()) {
+		std::cout << std::endl << "Error 404, stopWords file not found." << std::endl;
+		exit(1);
+	}
+	std::string word = "";
+	while (!file.eof()) {
+		file >> word;
+		stopWords.push_back(word);
+	}
+	file.close();
+	return stopWords;
 }

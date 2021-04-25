@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:04:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-24 23:10:54
+* @Last Modified time: 2021-04-25 10:45:19
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -32,7 +32,6 @@ PreProcesser::PreProcesser (void) {
 	set_InputFile("");
 	set_OutputFile("");
 	set_Data("");
-	set_ReadyToProcess(true);
 }
 
 /**
@@ -45,7 +44,6 @@ PreProcesser::PreProcesser (std::string inputFile, std::string outpuFile) {
 	set_InputFile(inputFile);
 	set_OutputFile(outpuFile);
 	set_Data("");
-	set_ReadyToProcess(true);
 }
 
 /**
@@ -83,24 +81,12 @@ std::string PreProcesser::get_Data (void) const {
 }
 
 /**
- * @brief      Gets the ready to process.
- *
- * @return     The ready to process.
- */
-bool PreProcesser::get_ReadyToProcess (void) const {
-	return readyToProcess_;
-}
-
-/**
  * @brief      Sets the input file.
  *
  * @param[in]  newInputFile  The new input file
  */
 void PreProcesser::set_InputFile (std::string newInputFile) {
 	inputFile_ = newInputFile;
-	if (get_OutputFile() != "") {
-		set_ReadyToProcess(true);
-	}
 }
 
 /**
@@ -110,9 +96,6 @@ void PreProcesser::set_InputFile (std::string newInputFile) {
  */
 void PreProcesser::set_OutputFile (std::string newOutputFile) {
 	outputFile_ = newOutputFile;
-	if (get_InputFile() != "") {
-		set_ReadyToProcess(true);
-	}
 }
 
 /**
@@ -122,15 +105,6 @@ void PreProcesser::set_OutputFile (std::string newOutputFile) {
  */
 void PreProcesser::set_Data (std::string newData) {
 	data_ = newData;
-}
-
-/**
- * @brief      Sets the ready to process.
- *
- * @param[in]  newReadyToProcess  The new ready to process
- */
-void PreProcesser::set_ReadyToProcess (bool newReadyToProcess) {
-	readyToProcess_ = newReadyToProcess;
 }
 
 /**
@@ -144,25 +118,42 @@ PreProcesser& PreProcesser::operator= (const PreProcesser& newPreProcesser) {
 	this -> set_Data(newPreProcesser.get_Data());
 	this -> set_OutputFile(newPreProcesser.get_OutputFile());
 	this -> set_InputFile(newPreProcesser.get_InputFile());
-	this -> set_ReadyToProcess(newPreProcesser.get_ReadyToProcess());
 	return *this;
 }
 
 /**
- * @brief      Converts all the data into Lower Case
+ * @brief      Converts all the str into Lower Case
  *
  * @param      str   The string
  */
 void PreProcesser::convertLowerCase (std::string& str) {
+	set_Data(str);
+	convertLowerCase();
+	str = get_Data();
+}
+
+/**
+ * @brief      Converts all the data into Lower Case
+ */
+void PreProcesser::convertLowerCase (void) {
 	std::transform(data_.begin(), data_.end(),data_.begin(), ::tolower);
 }
 
 /**
- * @brief      Converts all the data into Upper Case
+ * @brief      Converts all the str into Upper Case
  *
  * @param      str   The string
  */
 void PreProcesser::convertUpperCase (std::string& str) {
+	set_Data(str);
+	convertUpperCase();
+	str = get_Data();
+}
+
+/**
+ * @brief      Converts all the data into Upper Case
+ */
+void PreProcesser::convertUpperCase (void) {
 	std::transform(data_.begin(), data_.end(),data_.begin(), ::toupper);
 }
 
@@ -203,12 +194,22 @@ void PreProcesser::eraseReservedWords (std::vector<std::string>& reservedWords, 
  * @param      str   The string
  */
 void PreProcesser::erasePunctuationSigns (std::string& str) {
-	std::vector<char> punctuantionSigns = {',', '.', '-', '_', '?', '!', ';', ':', '\'', '\"'};
-	for (unsigned i = 0; i < str.length(); i++) {
-		if (!isalpha(str[i]) && !isdigit(str[i])) {
+	set_Data(str);
+	erasePunctuationSigns();
+	str = get_Data();
+}
+
+/**
+ * @brief      Erases all punctuation sings into readed data.
+ */
+void PreProcesser::erasePunctuationSigns (void) {
+	std::vector<char> punctuantionSigns = {',', '.', '-', '_', '?', '!', ';', ':', '\'', '\"', '(', ')', '{', '}', '[', ']'};
+	for (unsigned i = 0; i < data_.length(); i++) {
+		if (!isalpha(data_[i]) && !isdigit(data_[i])) {
 			for (unsigned j = 0; j < punctuantionSigns.size(); j++) {
-				if (str[i] == punctuantionSigns[j]) {
-					str[i] = ' ';
+				if (data_[i] == punctuantionSigns[j]) {
+					data_[i] = ' ';
+					break;
 				}
 			}
 		}
@@ -222,15 +223,25 @@ void PreProcesser::erasePunctuationSigns (std::string& str) {
  * @param      str   The string
  */
 void PreProcesser::eraseURLs (std::string& str) {
-	for (unsigned i = 0; i < str.length(); i++) {
-		if (str[i] == '.' && str[i + 1] != ' ') {
+	set_Data(str);
+	eraseURLs();
+	str = get_Data();
+}
+
+/**
+ * @brief      Erases all URLs into data var, an URL is defined as a '.' between
+ *             letters without spaces.
+ */
+void PreProcesser::eraseURLs (void) {
+	for (unsigned i = 0; i < data_.length(); i++) {
+		if (data_[i] == '.' && data_[i + 1] != ' ') {
 			unsigned k = i;
-			while (str[k] != ' ') {
-				str[k] = ' ';
+			while (data_[k] != ' ') {
+				data_[k] = ' ';
 				k--;
 			}
-			while (str[i] != ' ') {
-				str[i] = ' ';
+			while (data_[i] != ' ') {
+				data_[i] = ' ';
 				i++;
 			}
 		}
@@ -243,26 +254,35 @@ void PreProcesser::eraseURLs (std::string& str) {
  * @param      str   The string
  */
 void PreProcesser::eraseHashtags (std::string& str) {
-	for (unsigned i = 0; i < str.length(); i++) {
-		if (str[i] == '#') {
-			str[i] = ' ';
-			while (str[i] != ' ') {
-				str[i] = ' ';
+	set_Data(str);
+	eraseHashtags();
+	str = get_Data();
+}
+
+/**
+ * @brief      Erases all Hashtags into data var.
+ *
+ */
+void PreProcesser::eraseHashtags (void) {
+	for (unsigned i = 0; i < data_.length(); i++) {
+		if (data_[i] == '#') {
+			data_[i] = ' ';
+			while (data_[i] != ' ') {
+				data_[i] = ' ';
 				i++;
 			}
 		}
 	}
 }
 
+
 /**
  * @brief      Loads the data from input file into data var.
+ *
+ * @param      inputFile  The input file
  */
-void PreProcesser::loadData (void) {
-	if (!get_ReadyToProcess()) {
-		std::cout << std::endl << "Error while loading data, intput and output files has not been loaded to the preprocesser" << std::endl;
-		exit(1);
-	}
-	std::ifstream file(inputFile_, std::ios::in);
+void PreProcesser::loadData (std::string& inputFile) {
+	std::ifstream file(inputFile, std::ios::in);
 	if (file.fail()) {
 		std::cout << std::endl << "Error 404, file not found in loadData function." << std::endl;
 		exit(1);
@@ -292,7 +312,7 @@ void PreProcesser::printData  (void) {
 void PreProcesser::storeData(std::string& outputFile) {
 	std::ofstream file(outputFile, std::ios::in);
 	if (file.fail()) {
-		std::cout << "Error while storing data, not valid document" << std::endl;
+		std::cout << "Error while storing data \"" << outputFile << "\" is not valid document" << std::endl;
 		exit(1);
 	} 
 	else { 

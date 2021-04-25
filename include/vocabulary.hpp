@@ -17,6 +17,7 @@
 
 #pragma once
 #include "preProcesser.hpp"
+#include "Chrono.hpp"
 
 /*------------------------------------------------*/
 /*------------------  LIBRARIES  -----------------*/
@@ -36,10 +37,11 @@
 class Vocabulary {
 
 	private:
-		std::string inputFile_;		// Input file path
-		std::string outpuFile_;		// Output file where the vocabulary will be stored
-		int counter_;
-		std::set<std::string> vocabulary_;
+		std::string inputFile_;				// Input file path
+		std::string outpuFile_;				// Output file where the vocabulary will be stored
+		int vocabularyCounter_;				// Number of different words in the vocabulary
+		int tokens_;						// Number of words in the text
+		std::set<std::string> vocabulary_;	// Set with all the vocabulary
 
 	public:
 		// Builders & Destroyer
@@ -50,18 +52,22 @@ class Vocabulary {
 		// Getters & Setters
 		std::string get_InputFile (void) const;
 		std::string get_OutpuFile (void) const;
-		int get_Counter (void) const;
+		int get_VocabularyCounter (void) const;
+		int get_Tokens (void) const;
 		std::set<std::string> get_Vocabulary (void) const;
 
 		void set_InputFile (std::string newInputFile);
 		void set_OutpuFile (std::string newOutpuFile);
-		void set_Counter (int newCounter);
+		void set_VocabularyCounter (int newVocabularyCounter);
+		void set_Tokens (int newTokens);
 		void set_Vocabulary (std::set<std::string> newVocabulary);
 
 		// Operators Overload
 		Vocabulary& operator= (const Vocabulary& newVocabulary);
 
 		// Functions
+		void preProcessData (PreProcesser& preProcesser, std::string stopWordFile);
+		std::vector<std::string> loadStopWord (std::string inputFile);
 
 		// Write
 };

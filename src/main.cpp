@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 12:55:55
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-24 23:02:43
+* @Last Modified time: 2021-04-25 10:41:37
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -38,17 +38,21 @@ std::vector<std::string> loadStopWord (void);
  * @return     0 If program finishes correctly
  */
 int main (int argc, char* argv[]) {
-	PreProcesser test("../inputs/ecom-train.csv", "../outputs/vocabulary.txt");
-	test.loadData();
+	Vocabulary test("../inputs/ecom-train.csv", "../outputs/vocabulary.txt");
+	PreProcesser aaa;
+	test.preProcessData(aaa, "../inputs/stopWords.txt");
+	/*test.loadData();
 	std::string aaa = test.get_Data();
 	std::vector<std::string> stopWords = loadStopWord();
 	test.convertLowerCase(aaa);
+	test.erasePunctuationSigns(aaa);
+	test.set_Data(aaa);
 	std::string www = "../outputs/vocabulary.txt";
 	test.storeData(www);
 	test.eraseReservedWords(stopWords, www);
 	//test.erasePunctuationSigns();
-	//test.convertUpperCase();
-	//test.printData();
+	//test.convertUpperCase();	
+	//test.printData();*/
 	return 0;
 }	
 
