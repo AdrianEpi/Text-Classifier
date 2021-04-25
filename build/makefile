@@ -1,5 +1,5 @@
 #Variable objetos
-OBJECTS = main.o vocabulary.o preProcesser.o
+OBJECTS = main.o vocabulary.o preProcesser.o Chrono.o
 #Flags de compilacion
 CFLAGS = -c -std=c++17 -Wall
 
@@ -16,6 +16,9 @@ vocabulary.o: ../src/vocabulary.cpp ../include/vocabulary.hpp
 
 preProcesser.o: ../src/preProcesser.cpp ../include/preProcesser.hpp
 	g++ $(CFLAGS) ../src/preProcesser.cpp
+
+Chrono.o: ../src/Chrono.cpp ../include/Chrono.hpp
+	g++ $(CFLAGS) ../src/Chrono.cpp
 
 
 .PHONY: clean
