@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 12:55:55
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-25 10:41:37
+* @Last Modified time: 2021-04-25 23:18:27
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -25,8 +25,6 @@
 
 
 /*------------------------------------------------*/
-
-std::vector<std::string> loadStopWord (void);
 
 /**
  * @brief      Main function of the program, receives the data file as
@@ -38,37 +36,36 @@ std::vector<std::string> loadStopWord (void);
  * @return     0 If program finishes correctly
  */
 int main (int argc, char* argv[]) {
-	Vocabulary test("../inputs/ecom-train.csv", "../outputs/vocabulary.txt");
-	PreProcesser aaa;
-	test.preProcessData(aaa, "../inputs/stopWords.txt");
-	/*test.loadData();
-	std::string aaa = test.get_Data();
-	std::vector<std::string> stopWords = loadStopWord();
-	test.convertLowerCase(aaa);
-	test.erasePunctuationSigns(aaa);
-	test.set_Data(aaa);
-	std::string www = "../outputs/vocabulary.txt";
-	test.storeData(www);
-	test.eraseReservedWords(stopWords, www);
-	//test.erasePunctuationSigns();
-	//test.convertUpperCase();	
-	//test.printData();*/
-	return 0;
-}	
-
-std::vector<std::string> loadStopWord (void) {
-	std::vector<std::string> stopWords;
-	std::ifstream file("../inputs/stopWords.txt", std::ios::in);
-	if (file.fail()) {
-		std::cout << std::endl << "Error 404, stopWords file not found." << std::endl;
+	if (argc != 4) {
+		std::cout << std::endl << "Error, the program needs 3 arguments to proceed:" << std::endl << "\t make vocabulary originFile outputFile reservedWordsFile" << std::endl;
 		exit(1);
 	}
-	std::string aux = "";
-	while (!file.eof()) {
-		file >> aux;
-		stopWords.push_back(aux);
+	std::string originFile = argv[1];
+	std::string outputFile = argv[2];
+	std::string reservedWords = argv[3];
+	std::string fileHelper = "../outputs/preProcesserHelper.txt";
+	Vocabulary vocabulary(originFile, outputFile);
+	{
+		Chrono chrono;
+		chrono.startChrono();
+		vocabulary.preProcessData(reservedWords);
+		chrono.stopChrono();
+		std::cout << std::endl << "Elapsed pre-processing time: " << chrono.get_Seconds(5) << " seconds." << std::endl;
 	}
-	file.close();
-	return stopWords;
-}
-
+	{
+		Chrono chrono;
+		chrono.startChrono();
+		vocabulary.generateVocabulary(fileHelper);
+		chrono.stopChrono();
+		std::cout << std::endl << "Elapsed generating vocabulary time: " << chrono.get_Seconds(5) << " seconds." << std::endl;
+	}
+	{
+		Chrono chrono;
+		chrono.startChrono();
+		vocabulary.storeVocabulary(outputFile);
+		chrono.stopChrono();
+		std::cout << std::endl << "Elapsed storing vocabulary time: " << chrono.get_Seconds(5) << " seconds." << std::endl;
+	}
+	std::cout << std::endl << "Program finished correclty." << std::endl;
+	return 0;
+}	

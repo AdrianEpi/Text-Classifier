@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:37:30
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-25 17:38:52
+* @Last Modified time: 2021-04-25 23:07:38
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -80,12 +80,12 @@ int Vocabulary::get_VocabularyCounter (void) const {
 }
 
 /**
- * @brief      Gets the tokens.
+ * @brief      Gets the tokens number.
  *
- * @return     The tokens.
+ * @return     The tokens number.
  */
-int Vocabulary::get_Tokens (void) const {
-	return tokens_;
+int Vocabulary::get_NTokens (void) const {
+	return nTokens_;
 }
 
 /**
@@ -93,7 +93,7 @@ int Vocabulary::get_Tokens (void) const {
  *
  * @return     The vocabulary.
  */
-std::set<std::string> Vocabulary::get_Vocabulary (void) const {
+std::set<Token> Vocabulary::get_Vocabulary (void) const {
 	return vocabulary_;
 }
 
@@ -125,12 +125,12 @@ void Vocabulary::set_VocabularyCounter (int newVocabularyCounter) {
 }
 
 /**
- * @brief      Sets the tokens.
+ * @brief      Sets the tokens number.
  *
- * @param[in]  newTokens  The new tokens
+ * @param[in]  newTokens  The new tokens number
  */
-void Vocabulary::set_Tokens (int newTokens) {
-	tokens_ = newTokens;
+void Vocabulary::set_NTokens (int newTokens) {
+	nTokens_ = newTokens;
 }
 
 /**
@@ -138,7 +138,7 @@ void Vocabulary::set_Tokens (int newTokens) {
  *
  * @param[in]  newVocabulary  The new vocabulary
  */
-void Vocabulary::set_Vocabulary (std::set<std::string> newVocabulary) {
+void Vocabulary::set_Vocabulary (std::set<Token> newVocabulary) {
 	vocabulary_ = newVocabulary;
 }
 
@@ -154,7 +154,7 @@ Vocabulary& Vocabulary::operator= (const Vocabulary& newVocabulary) {
 	this -> set_VocabularyCounter(newVocabulary.get_VocabularyCounter());
 	this -> set_OutpuFile(newVocabulary.get_OutpuFile());
 	this -> set_InputFile(newVocabulary.get_InputFile());
-	this -> set_Tokens(newVocabulary.get_Tokens());
+	this -> set_NTokens(newVocabulary.get_NTokens());
 	return *this;
 }
 
@@ -162,21 +162,19 @@ Vocabulary& Vocabulary::operator= (const Vocabulary& newVocabulary) {
  * @brief      Preprocess the data for the program, erases punctuation signs,
  *             converts all to lowercase and erases reserved words.
  *
- * @param      preProcesser  The pre processer
  * @param[in]  stopWordFile  The stop word file
  */
-void Vocabulary::preProcessData (PreProcesser& preProcesser, std::string stopWordFile) {
+void Vocabulary::preProcessData (std::string& stopWordFile) {
+	PreProcesser preProcesser;
 	std::string outputFile = "../outputs/preProcesserHelper.txt";
 	std::vector<std::string> stopWords = loadStopWord(stopWordFile);
-	Chrono preProcessChrono;
-	preProcessChrono.startChrono();
 	preProcesser.loadData(inputFile_);
 	preProcesser.convertLowerCase();
 	preProcesser.erasePunctuationSigns();
+	preProcesser.eraseAllNumbers();
 	preProcesser.storeData(outputFile);
 	preProcesser.eraseReservedWords(stopWords, outputFile);
-	preProcessChrono.stopChrono();
-	std::cout << std::endl << "Elapsed pre-processing time: " << preProcessChrono.get_Seconds(5) << " seconds." << std::endl;
+	return;
 }
 
 /**
@@ -186,7 +184,7 @@ void Vocabulary::preProcessData (PreProcesser& preProcesser, std::string stopWor
  *
  * @return     stop words vector
  */
-std::vector<std::string> Vocabulary::loadStopWord (std::string inputFile) {
+std::vector<std::string> Vocabulary::loadStopWord (std::string& inputFile) {
 	std::vector<std::string> stopWords;
 	std::ifstream file(inputFile, std::ios::in);
 	if (file.fail()) {
@@ -200,4 +198,61 @@ std::vector<std::string> Vocabulary::loadStopWord (std::string inputFile) {
 	}
 	file.close();
 	return stopWords;
+}
+
+/**
+ * @brief      Generates vocabulary file
+ *
+ * @param      inputFile  The input file
+ */
+void Vocabulary::generateVocabulary (std::string& inputFile) {
+	std::ifstream file(inputFile, std::ios::in);
+	if (file.fail()) {
+		std::cout << std::endl << "Error 404, generateVocabulary file not found." << std::endl;
+		exit(1);
+	}
+	set_NTokens(0);
+	set_VocabularyCounter(0);
+	std::set<Token> v_;
+	Token token;
+	token.set_Ammount(1);
+	std::string word;
+	std::set<Token>::iterator it;
+	while (!file.eof()) {
+		file >> word;
+		if (!vocabulary_.count(word)) {
+			Token newToken(word);
+			vocabulary_.insert(newToken);
+		}
+		else {
+			it = vocabulary_.find(word);
+			Token newToken = *it;
+			newToken.incrementate();
+			vocabulary_.erase(word);
+			vocabulary_.insert(newToken);
+		}
+		nTokens_++;
+	}
+	file.close();
+	set_VocabularyCounter(vocabulary_.size());
+}
+
+/**
+ * @brief      Stores the vocabulary into the given file.
+ *
+ * @param      outputFile  The output file
+ */
+void Vocabulary::storeVocabulary (std::string& outputFile) {
+	std::ofstream file(outputFile, std::ios::in);
+	if (file.fail()) {
+		std::cout << "Error while storing data \"" << outputFile << "\" is not valid document" << std::endl;
+		exit(1);
+	} 
+	else { 
+		file << "Numero de palabras: " << get_VocabularyCounter();
+		for (auto i : vocabulary_) {
+			file << std::endl << i.get_Name();
+		}
+	}
+	file.close();
 }

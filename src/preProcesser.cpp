@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:04:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-25 10:45:19
+* @Last Modified time: 2021-04-25 20:13:44
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -181,7 +181,7 @@ void PreProcesser::eraseReservedWords (std::vector<std::string>& reservedWords, 
 			}
 		}
 		if (push) {
-			data_ += '\n' + aux;
+			data_ += ' ' + aux;
 		}
 	}
 	file.close();
@@ -206,12 +206,7 @@ void PreProcesser::erasePunctuationSigns (void) {
 	std::vector<char> punctuantionSigns = {',', '.', '-', '_', '?', '!', ';', ':', '\'', '\"', '(', ')', '{', '}', '[', ']'};
 	for (unsigned i = 0; i < data_.length(); i++) {
 		if (!isalpha(data_[i]) && !isdigit(data_[i])) {
-			for (unsigned j = 0; j < punctuantionSigns.size(); j++) {
-				if (data_[i] == punctuantionSigns[j]) {
-					data_[i] = ' ';
-					break;
-				}
-			}
+			data_[i] = ' ';
 		}
 	}
 }
@@ -268,6 +263,66 @@ void PreProcesser::eraseHashtags (void) {
 		if (data_[i] == '#') {
 			data_[i] = ' ';
 			while (data_[i] != ' ') {
+				data_[i] = ' ';
+				i++;
+			}
+		}
+	}
+}
+
+/**
+ * @brief      Erases all strings started by number
+ *
+ * @param      str   The string
+ */
+void PreProcesser::eraseNumbers (std::string& str) {
+	set_Data(str);
+	eraseNumbers();
+	str = get_Data();
+}
+
+/**
+ * @brief      Erases all strings with by numbers
+ */
+void PreProcesser::eraseNumbers (void) {
+	if (isdigit(data_[0])) {
+		unsigned i = 0;
+		while (data_[i] != ' ') {
+			data_[i] = ' ';
+			i++;
+		}
+	}
+	for (unsigned i = 1; i < data_.length(); i++) {
+		if (isdigit(data_[i]) && data_[i - 1] == ' ') {
+			while (data_[i] != ' ') {
+				data_[i] = ' ';
+				i++;
+			}
+		}
+	}
+}
+
+/**
+ * @brief      Erases all numbers
+ */
+void PreProcesser::eraseAllNumbers (void) {
+	if (isdigit(data_[0])) {
+		unsigned i = 0;
+		while (data_[i] != ' ') {
+			data_[i] = ' ';
+			i++;
+		}
+	}
+	for (unsigned i = 1; i < data_.length(); i++) {
+		if (isdigit(data_[i])) {
+			if (data_[i - 1] != ' ') {
+				unsigned k = i - 1;
+				while (data_[k] != ' ' && k > 0) {
+					data_[k] = ' ';
+					k--;
+				}
+			}
+			while (data_[i] != ' ' && i < data_.size()) {
 				data_[i] = ' ';
 				i++;
 			}

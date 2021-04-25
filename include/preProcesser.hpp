@@ -39,6 +39,7 @@
 class PreProcesser {
 
 	private:
+		// Attributes
 		std::string inputFile_;						// Input file path
 		std::string outputFile_;					// Output file path where the preprocessed text will store the data
 		std::string data_;							// Stored data readed from input file
@@ -73,6 +74,9 @@ class PreProcesser {
 		void eraseURLs (void);
 		void eraseHashtags (std::string& str);
 		void eraseHashtags (void);
+		void eraseNumbers (std::string& str);
+		void eraseNumbers (void);
+		void eraseAllNumbers (void);
 
 		// Read & Write
 		void loadData (std::string& inputFile);

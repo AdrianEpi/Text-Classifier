@@ -14,8 +14,7 @@ any
 are
 as
 at
-b
-e
+be
 because
 been
 but
@@ -63,8 +62,7 @@ might
 most
 must
 my
-ne
-ither
+neither
 no
 nor
 not
@@ -80,8 +78,7 @@ own
 rather
 said
 say
-sa
-ys
+says
 she
 should
 since
@@ -95,8 +92,7 @@ them
 then
 there
 these
-the
-y
+they
 this
 tis
 to
@@ -112,8 +108,7 @@ when
 where
 which
 while
-w
-ho
+who
 whom
 why
 will

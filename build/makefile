@@ -1,11 +1,12 @@
-#Variable objetos
-OBJECTS = main.o vocabulary.o preProcesser.o Chrono.o
-#Flags de compilacion
+# Variables
+TIME =$(LOGPATH)$(shell date)
+# Object Vars
+OBJECTS = main.o vocabulary.o preProcesser.o Chrono.o token.o
+# Compilation flags
 CFLAGS = -c -std=c++17 -Wall
 
 textClassifier: $(OBJECTS)
-	g++  $(OBJECTS) -o textClassifier
-	mv *.o ../objects
+	g++ $(OBJECTS) -o textClassifier
 	mv textClassifier ../bin
 
 main.o: ../src/main.cpp
@@ -20,11 +21,16 @@ preProcesser.o: ../src/preProcesser.cpp ../include/preProcesser.hpp
 Chrono.o: ../src/Chrono.cpp ../include/Chrono.hpp
 	g++ $(CFLAGS) ../src/Chrono.cpp
 
+token.o: ../src/token.cpp ../include/token.hpp
+	g++ $(CFLAGS) ../src/token.cpp
+
 
 .PHONY: clean
 clean:
-	rm -rf ../objects/*.o
+	rm -rf ../build/*.o
 	rm -rf ../bin/*
 
 run:
-	../bin/textClassifier ../inputs/ecom-train.csv
+	echo "\n\n\nExecuted ${TIME}" >> ../outputs/runDetails.txt
+	../bin/textClassifier ../inputs/ecom-train.csv ../outputs/vocabulary.txt ../inputs/stopWords.txt >> ../outputs/runDetails.txt
+	echo "You can find full output at outputs/runDetails.txt"

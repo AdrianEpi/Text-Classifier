@@ -1,0 +1,12 @@
+
+
+Executed Sun Apr 25 23:25:10 WEST 2021
+
+
+Elapsed pre-processing time: 4.84083 seconds.
+
+Elapsed generating vocabulary time: 22.0416 seconds.
+
+Elapsed storing vocabulary time: 0.29913 seconds.
+
+Program finished correclty.
