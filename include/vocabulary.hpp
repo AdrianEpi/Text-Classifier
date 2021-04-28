@@ -70,7 +70,7 @@ class Vocabulary {
 		// Functions
 		void preProcessData (std::string& stopWordFile);
 		std::vector<std::string> loadStopWord (std::string& inputFile);
-		void generateVocabulary (std::string& inputFile);
+		void generateVocabulary (std::string& inputFile, bool tokenized);
 
 		// Write
 		void storeVocabulary (std::string& outputFile);

@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-28 12:35:30
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-28 13:38:28
+* @Last Modified time: 2021-04-28 15:19:04
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -80,15 +80,6 @@ std::string Corpus::get_InputFile (void) const {
 }
 
 /**
- * @brief      Gets the pre processer.
- *
- * @return     The pre processer.
- */
-PreProcesser Corpus::get_PreProcesser (void) const {
-	return preProcesser_;
-}
-
-/**
  * @brief      Sets the name.
  *
  * @param[in]  newName  The new name
@@ -116,27 +107,24 @@ void Corpus::set_InputFile (std::string newInputFile) {
 }
 
 /**
- * @brief      Sets the pre processer.
- *
- * @param[in]  newPreProcesser  The new pre processer
- */
-void Corpus::set_PreProcesser (PreProcesser newPreProcesser) {
-	preProcesser_ = newPreProcesser;
-}
-
-/**
  * @brief      Generates and stores the corpus data.
+ *
+ * @param      stopWords     The stop words
+ * @param[in]  preProcesser  The pre processer
  */
-void Corpus::generateCorpus (void) {
-/*	std::string outputFile = "../outputs/preProcesserHelper.txt";
-	std::vector<std::string> stopWords = loadStopWord(stopWordFile);
+void Corpus::generateCorpus (std::vector<std::string>& stopWords, PreProcesser& preProcesser) {
+	Chrono myChrono;
+	myChrono.startChrono();
+	std::string outputFile = "../outputs/preProcesserHelper.txt";
 	std::string dataType = get_Name() + ",";
 	preProcesser.loadData(inputFile_, dataType);
 	preProcesser.convertLowerCase();
 	preProcesser.erasePunctuationSigns();
 	preProcesser.eraseAllNumbers();
 	preProcesser.storeData(outputFile);
-	preProcesser.eraseReservedWords(stopWords, outputFile);*/
+	preProcesser.eraseReservedWords(stopWords, outputFile);
+	myChrono.stopChrono();
+	std::cout << std::endl << "Elapsed time for corpus " << name_ << ": " << myChrono.get_Seconds(5) << " seconds." << std::endl;
 }
 
 

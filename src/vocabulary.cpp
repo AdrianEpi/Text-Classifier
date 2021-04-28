@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:37:30
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-28 14:08:48
+* @Last Modified time: 2021-04-28 14:58:34
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -205,8 +205,9 @@ std::vector<std::string> Vocabulary::loadStopWord (std::string& inputFile) {
  * @brief      Generates vocabulary file
  *
  * @param      inputFile  The input file
+ * @param[in]  tokenize   If want to words to be tokenized or not
  */
-void Vocabulary::generateVocabulary (std::string& inputFile) {
+void Vocabulary::generateVocabulary (std::string& inputFile, bool tokenize) {
 	std::ifstream file(inputFile, std::ios::in);
 	if (file.fail()) {
 		std::cout << std::endl << "Error 404, generateVocabulary file not found." << std::endl;
@@ -225,13 +226,13 @@ void Vocabulary::generateVocabulary (std::string& inputFile) {
 			Token newToken(word);
 			vocabulary_.insert(newToken);
 		}
-		/*else {
+		else if (tokenize){
 			it = vocabulary_.find(word);
 			Token newToken = *it;
 			newToken.incrementate();
 			vocabulary_.erase(word);
 			vocabulary_.insert(newToken);
-		}*/
+		}
 		nTokens_++;
 	}
 	file.close();

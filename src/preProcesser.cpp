@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:04:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-28 14:08:19
+* @Last Modified time: 2021-04-28 15:14:28
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -330,7 +330,6 @@ void PreProcesser::eraseAllNumbers (void) {
 	}
 }
 
-
 /**
  * @brief      Loads the data that starts with the dataTpe from input file into
  *             data var.
@@ -340,6 +339,7 @@ void PreProcesser::eraseAllNumbers (void) {
  *                        first word per line)
  */
 void PreProcesser::loadData (std::string& inputFile, std::string dataType) {
+	data_ = "";
 	std::ifstream file(inputFile, std::ios::in);
 	if (file.fail()) {
 		std::cout << std::endl << "Error 404, file not found in loadData function." << std::endl;
@@ -374,7 +374,7 @@ void PreProcesser::printData  (void) {
  * @param      outputFile  The output file
  */
 void PreProcesser::storeData(std::string& outputFile) {
-	std::ofstream file(outputFile, std::ios::in);
+	std::ofstream file(outputFile, std::ios::in | std::ios::trunc);
 	if (file.fail()) {
 		std::cout << "Error while storing data \"" << outputFile << "\" is not valid document" << std::endl;
 		exit(1);

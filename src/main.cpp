@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 12:55:55
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-28 13:52:53
+* @Last Modified time: 2021-04-28 14:57:50
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -55,7 +55,7 @@ int main (int argc, char* argv[]) {
 	{
 		Chrono chrono;
 		chrono.startChrono();
-		vocabulary.generateVocabulary(fileHelper);
+		vocabulary.generateVocabulary(fileHelper, false);
 		chrono.stopChrono();
 		std::cout << std::endl << "Elapsed generating vocabulary time: " << chrono.get_Seconds(5) << " seconds." << std::endl;
 	}
