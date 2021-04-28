@@ -10,3 +10,51 @@ Elapsed generating vocabulary time: 22.0416 seconds.
 Elapsed storing vocabulary time: 0.29913 seconds.
 
 Program finished correclty.
+
+
+
+Executed Sun Apr 25 23:29:57 WEST 2021
+
+Elapsed pre-processing time: 5.04259 seconds.
+
+Elapsed generating vocabulary time: 20.7881 seconds.
+
+Elapsed storing vocabulary time: 0.33864 seconds.
+
+Program finished correclty.
+
+
+
+Executed Wed Apr 28 09:48:21 WEST 2021
+
+Elapsed pre-processing time: 12.4953 seconds.
+
+Elapsed generating vocabulary time: 48.2465 seconds.
+
+Elapsed storing vocabulary time: 0.53148 seconds.
+
+Program finished correclty.
+
+
+
+Executed Wed Apr 28 09:49:48 WEST 2021
+
+Elapsed pre-processing time: 8.69497 seconds.
+
+Elapsed generating vocabulary time: 37.9865 seconds.
+
+Elapsed storing vocabulary time: 0.62934 seconds.
+
+Program finished correclty.
+
+
+
+Executed Wed Apr 28 09:50:43 WEST 2021
+
+Elapsed pre-processing time: 7.43764 seconds.
+
+Elapsed generating vocabulary time: 35.7473 seconds.
+
+Elapsed storing vocabulary time: 0.67275 seconds.
+
+Program finished correclty.

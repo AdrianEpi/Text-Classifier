@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:04:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-25 20:13:44
+* @Last Modified time: 2021-04-28 09:45:09
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -345,9 +345,10 @@ void PreProcesser::loadData (std::string& inputFile) {
 	std::string aux = "";
 	while (!file.eof()) {
 		file >> aux;
-		if (isalpha(aux[0])) {
+		std::getline(file, data_);
+		/*if (isalpha(aux[0])) {
 			data_ += aux + " ";
-		}
+		}*/
 	}
 	file.close();
 }
