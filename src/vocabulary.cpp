@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:37:30
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-25 23:07:38
+* @Last Modified time: 2021-04-28 14:08:48
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -168,7 +168,8 @@ void Vocabulary::preProcessData (std::string& stopWordFile) {
 	PreProcesser preProcesser;
 	std::string outputFile = "../outputs/preProcesserHelper.txt";
 	std::vector<std::string> stopWords = loadStopWord(stopWordFile);
-	preProcesser.loadData(inputFile_);
+	std::string empty = "";
+	preProcesser.loadData(inputFile_, empty);
 	preProcesser.convertLowerCase();
 	preProcesser.erasePunctuationSigns();
 	preProcesser.eraseAllNumbers();
@@ -224,13 +225,13 @@ void Vocabulary::generateVocabulary (std::string& inputFile) {
 			Token newToken(word);
 			vocabulary_.insert(newToken);
 		}
-		else {
+		/*else {
 			it = vocabulary_.find(word);
 			Token newToken = *it;
 			newToken.incrementate();
 			vocabulary_.erase(word);
 			vocabulary_.insert(newToken);
-		}
+		}*/
 		nTokens_++;
 	}
 	file.close();

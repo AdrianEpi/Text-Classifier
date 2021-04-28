@@ -58,3 +58,15 @@ Elapsed generating vocabulary time: 35.7473 seconds.
 Elapsed storing vocabulary time: 0.67275 seconds.
 
 Program finished correclty.
+
+
+
+Executed Wed Apr 28 11:51:04 WEST 2021
+
+Elapsed pre-processing time: 3.76852 seconds.
+
+Elapsed generating vocabulary time: 4.43991 seconds.
+
+Elapsed storing vocabulary time: 0.29553 seconds.
+
+Program finished correclty.

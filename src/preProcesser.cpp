@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:04:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-28 09:45:09
+* @Last Modified time: 2021-04-28 14:08:19
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -332,11 +332,14 @@ void PreProcesser::eraseAllNumbers (void) {
 
 
 /**
- * @brief      Loads the data from input file into data var.
+ * @brief      Loads the data that starts with the dataTpe from input file into
+ *             data var.
  *
  * @param      inputFile  The input file
+ * @param[in]  dataType   The data type that wants to be loaded (must be the
+ *                        first word per line)
  */
-void PreProcesser::loadData (std::string& inputFile) {
+void PreProcesser::loadData (std::string& inputFile, std::string dataType) {
 	std::ifstream file(inputFile, std::ios::in);
 	if (file.fail()) {
 		std::cout << std::endl << "Error 404, file not found in loadData function." << std::endl;
@@ -345,10 +348,15 @@ void PreProcesser::loadData (std::string& inputFile) {
 	std::string aux = "";
 	while (!file.eof()) {
 		file >> aux;
-		std::getline(file, data_);
-		/*if (isalpha(aux[0])) {
+		if (aux == dataType) {
+			std::getline(file, aux);
+			data_ += aux;
+		}
+		else if (dataType == "" ) {
 			data_ += aux + " ";
-		}*/
+			std::getline(file, aux);
+			data_ += aux;
+		}
 	}
 	file.close();
 }

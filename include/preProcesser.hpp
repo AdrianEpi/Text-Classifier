@@ -42,7 +42,7 @@ class PreProcesser {
 		// Attributes
 		std::string inputFile_;						// Input file path
 		std::string outputFile_;					// Output file path where the preprocessed text will store the data
-		std::string data_;							// Stored data readed from input file
+		std::string data_;							// Full stored data readed from input file
 
 	public:
 		// Builders & Destroyer
@@ -79,7 +79,7 @@ class PreProcesser {
 		void eraseAllNumbers (void);
 
 		// Read & Write
-		void loadData (std::string& inputFile);
+		void loadData (std::string& inputFile, std::string dataType);
 		void printData (void);
 		void storeData(std::string& outputFile);
 
