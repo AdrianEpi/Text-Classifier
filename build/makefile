@@ -1,7 +1,7 @@
 # Variables
 TIME =$(LOGPATH)$(shell date)
 # Object Vars
-OBJECTS = main.o vocabulary.o preProcesser.o Chrono.o token.o
+OBJECTS = main.o vocabulary.o preProcesser.o Chrono.o token.o corpus.o
 # Compilation flags
 CFLAGS = -c -std=c++17 -Wall
 
@@ -24,6 +24,10 @@ Chrono.o: ../src/Chrono.cpp ../include/Chrono.hpp
 token.o: ../src/token.cpp ../include/token.hpp
 	g++ $(CFLAGS) ../src/token.cpp
 
+corpus.o: ../src/corpus.cpp ../include/corpus.hpp
+	g++ $(CFLAGS) ../src/corpus.cpp
+
+
 
 .PHONY: clean
 clean:
@@ -31,6 +35,9 @@ clean:
 	rm -rf ../bin/*
 
 run:
+	../bin/textClassifier ../inputs/ecom-train.csv ../outputs/vocabulary.txt ../inputs/stopWords.txt
+
+runlog:
 	echo "\n\n\nExecuted ${TIME}" >> ../outputs/runDetails.txt
 	../bin/textClassifier ../inputs/ecom-train.csv ../outputs/vocabulary.txt ../inputs/stopWords.txt >> ../outputs/runDetails.txt
 	echo "You can find full output at outputs/runDetails.txt"
