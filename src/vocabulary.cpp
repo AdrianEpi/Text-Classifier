@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:37:30
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-30 12:40:20
+* @Last Modified time: 2021-04-30 15:55:25
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -173,7 +173,7 @@ void Vocabulary::preProcessData (std::string& stopWordFile) {
 	preProcesser.convertLowerCase();
 	preProcesser.erasePunctuationSigns();
 	preProcesser.eraseAllNumbers();
-	preProcesser.storeData(outputFile);
+	preProcesser.storeData(outputFile, 0);
 	preProcesser.eraseReservedWords(stopWords, outputFile);
 	return;
 }
@@ -210,14 +210,11 @@ std::vector<std::string> Vocabulary::loadStopWord (std::string& inputFile) {
 void Vocabulary::generateVocabulary (std::string& inputFile, bool tokenize) {
 	std::ifstream file(inputFile, std::ios::in);
 	if (file.fail()) {
-		std::cout << std::endl << "Error 404, generateVocabulary file not found." << std::endl;
+		std::cout << std::endl << "Error 404, generateVocabulary file not found. (" << inputFile << ")" << std::endl;
 		exit(1);
 	}
 	set_NTokens(0);
 	set_VocabularyCounter(0);
-	std::set<Token> v_;
-	Token token;
-	token.set_Ammount(1);
 	std::string word;
 	std::set<Token>::iterator it;
 	while (!file.eof()) {
@@ -233,6 +230,32 @@ void Vocabulary::generateVocabulary (std::string& inputFile, bool tokenize) {
 			vocabulary_.erase(word);
 			vocabulary_.insert(newToken);
 		}
+		nTokens_++;
+	}
+	file.close();
+	set_VocabularyCounter(vocabulary_.size());
+}
+
+/**
+ * @brief      Reads a created vocabulary from file.
+ *
+ * @param      inputFile  The input file
+ */
+void Vocabulary::readVocabulary (std::string& inputFile) {
+	std::ifstream file(inputFile, std::ios::in);
+	if (file.fail()) {
+		std::cout << std::endl << "Error 404, readVocabulary file not found. (" << inputFile << ")" << std::endl;
+		exit(1);
+	}
+	set_NTokens(0);
+	set_VocabularyCounter(0);
+	std::string word;
+	std::set<Token>::iterator it;
+	while (!file.eof()) {
+		file >> word;
+		Token newToken(word);
+		newToken.set_Ammount(0);
+		vocabulary_.insert(newToken);
 		nTokens_++;
 	}
 	file.close();

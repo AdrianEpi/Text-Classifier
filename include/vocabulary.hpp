@@ -73,5 +73,6 @@ class Vocabulary {
 		void generateVocabulary (std::string& inputFile, bool tokenized);
 
 		// Write
+		void readVocabulary (std::string& inputFile);
 		void storeVocabulary (std::string& outputFile);
 };

@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-28 12:35:30
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-30 12:56:35
+* @Last Modified time: 2021-04-30 15:51:35
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -114,16 +114,17 @@ void Corpus::set_InputFile (std::string newInputFile) {
  */
 void Corpus::generateCorpus (std::vector<std::string>& stopWords, PreProcesser& preProcesser) {
 	Chrono myChrono;
+	int dataLines;
 	myChrono.startChrono();
 	std::string outputFile = "../outputs/preProcesserHelper.txt";
 	std::string dataType = get_Name() + ",";
-	preProcesser.loadData(inputFile_, dataType);
+	dataLines = preProcesser.loadData(inputFile_, dataType);
 	preProcesser.convertLowerCase();
 	preProcesser.erasePunctuationSigns();
 	preProcesser.eraseAllNumbers();
-	preProcesser.storeData(outputFile);
+	preProcesser.storeData(outputFile, 0);
 	preProcesser.eraseReservedWords(stopWords, outputFile);
-	preProcesser.storeData(outputFileName_);
+	preProcesser.storeData(outputFileName_, dataLines);
 	myChrono.stopChrono();
 	std::cout << std::endl << "Elapsed time for corpus " << name_ << ": " << myChrono.get_Seconds(5) << " seconds." << std::endl;
 }

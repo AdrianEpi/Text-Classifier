@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:04:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-30 13:26:15
+* @Last Modified time: 2021-04-30 15:52:44
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -185,7 +185,7 @@ void PreProcesser::eraseReservedWords (std::vector<std::string>& reservedWords, 
 		}
 	}
 	file.close();
-	storeData(fileName);
+	storeData(fileName, 0);
 }
 
 /**
@@ -337,9 +337,12 @@ void PreProcesser::eraseAllNumbers (void) {
  * @param      inputFile  The input file
  * @param[in]  dataType   The data type that wants to be loaded (must be the
  *                        first word per line)
+ *
+ * @return     Data lines included.
  */
-void PreProcesser::loadData (std::string& inputFile, std::string dataType) {
+int PreProcesser::loadData (std::string& inputFile, std::string dataType) {
 	data_ = "";
+	int dataLines = 0;
 	std::ifstream file(inputFile, std::ios::in);
 	if (file.fail()) {
 		std::cout << std::endl << "Error 404, file not found in loadData function." << std::endl;
@@ -352,6 +355,7 @@ void PreProcesser::loadData (std::string& inputFile, std::string dataType) {
 			data_ += aux + " ";
 			std::getline(file, aux);
 			data_ += aux;
+			dataLines++;
 		}
 		else {
 			if (aux.length() < dataType.length()) {
@@ -366,30 +370,13 @@ void PreProcesser::loadData (std::string& inputFile, std::string dataType) {
 			std::getline(file, aux);
 			if (readedType == dataType) {				
 				data_ += aux;
+				dataLines++;
 			}
 		}
-
-/*
-		if (aux.length() >= dataType.length()) {
-			std::string readedType = aux.substr(0, dataType.length());
-			aux = aux.substr(dataType.length(), aux.length());
-			if (readedType == dataType) {
-				//std::cout << "entra if";
-				std::getline(file, aux);
-				data_ += aux;
-			}
-			
-			else {
-				std::getline(file, aux);
-			}
-		}
-		else 
-		else {
-
-			std::getline(file, aux);
-		}*/
+		
 	}
 	file.close();
+	return dataLines;
 }
 
 /**
@@ -403,14 +390,18 @@ void PreProcesser::printData  (void) {
  * @brief      Stores the data into the given file
  *
  * @param      outputFile  The output file
+ * @param[in]  dataLines   The data lines
  */
-void PreProcesser::storeData(std::string& outputFile) {
+void PreProcesser::storeData(std::string& outputFile, int dataLines) {
 	std::fstream file(outputFile, std::ios::out | std::ios::trunc);
 	if (file.fail()) {
 		std::cout << "Error while storing data \"" << outputFile << "\" is not valid document" << std::endl;
 		exit(1);
 	} 
 	else { 
+		if (dataLines != 0) {
+			file << dataLines << std::endl;
+		}
 		file << data_;
 	}
 	file.close();

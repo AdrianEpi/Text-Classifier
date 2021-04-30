@@ -79,8 +79,8 @@ class PreProcesser {
 		void eraseAllNumbers (void);
 
 		// Read & Write
-		void loadData (std::string& inputFile, std::string dataType);
+		int loadData (std::string& inputFile, std::string dataType);
 		void printData (void);
-		void storeData(std::string& outputFile);
+		void storeData(std::string& outputFile, int dataLines);
 
 };

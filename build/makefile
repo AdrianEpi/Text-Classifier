@@ -34,6 +34,9 @@ clean:
 	rm -rf ../build/*.o
 	rm -rf ../bin/*
 
+help:
+	../bin/textClassifier --help
+	
 runCorpus:
 	../bin/textClassifier --corpus ../inputs/ecom-train.csv ../inputs/stopWords.txt Electronics Household "Clothing & Accessories" Books
 
