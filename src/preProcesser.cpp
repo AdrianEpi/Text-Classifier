@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:04:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-28 15:14:28
+* @Last Modified time: 2021-04-30 13:26:15
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -348,15 +348,46 @@ void PreProcesser::loadData (std::string& inputFile, std::string dataType) {
 	std::string aux = "";
 	while (!file.eof()) {
 		file >> aux;
-		if (aux == dataType) {
-			std::getline(file, aux);
-			data_ += aux;
-		}
-		else if (dataType == "" ) {
+		if (dataType == "" ) {
 			data_ += aux + " ";
 			std::getline(file, aux);
 			data_ += aux;
 		}
+		else {
+			if (aux.length() < dataType.length()) {
+				std::string spacedName = "";
+				while (aux.length() < dataType.length()) {
+					file >> spacedName;
+					aux += " " + spacedName;
+				}
+			}
+			std::string readedType = aux.substr(0, dataType.length());
+			aux = aux.substr(dataType.length(), aux.length());
+			std::getline(file, aux);
+			if (readedType == dataType) {				
+				data_ += aux;
+			}
+		}
+
+/*
+		if (aux.length() >= dataType.length()) {
+			std::string readedType = aux.substr(0, dataType.length());
+			aux = aux.substr(dataType.length(), aux.length());
+			if (readedType == dataType) {
+				//std::cout << "entra if";
+				std::getline(file, aux);
+				data_ += aux;
+			}
+			
+			else {
+				std::getline(file, aux);
+			}
+		}
+		else 
+		else {
+
+			std::getline(file, aux);
+		}*/
 	}
 	file.close();
 }
@@ -374,7 +405,7 @@ void PreProcesser::printData  (void) {
  * @param      outputFile  The output file
  */
 void PreProcesser::storeData(std::string& outputFile) {
-	std::ofstream file(outputFile, std::ios::in | std::ios::trunc);
+	std::fstream file(outputFile, std::ios::out | std::ios::trunc);
 	if (file.fail()) {
 		std::cout << "Error while storing data \"" << outputFile << "\" is not valid document" << std::endl;
 		exit(1);

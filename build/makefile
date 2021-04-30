@@ -34,10 +34,13 @@ clean:
 	rm -rf ../build/*.o
 	rm -rf ../bin/*
 
-run:
-	../bin/textClassifier ../inputs/ecom-train.csv ../outputs/vocabulary.txt ../inputs/stopWords.txt
+runCorpus:
+	../bin/textClassifier --corpus ../inputs/ecom-train.csv ../inputs/stopWords.txt Electronics Household "Clothing & Accessories" Books
 
-runlog:
+runVocabulary:
+	../bin/textClassifier --vocabulary ../inputs/ecom-train.csv ../outputs/vocabulary2.txt ../inputs/stopWords.txt
+
+runVocLog:
 	echo "\n\n\nExecuted ${TIME}" >> ../outputs/runDetails.txt
 	../bin/textClassifier ../inputs/ecom-train.csv ../outputs/vocabulary.txt ../inputs/stopWords.txt >> ../outputs/runDetails.txt
 	echo "You can find full output at outputs/runDetails.txt"

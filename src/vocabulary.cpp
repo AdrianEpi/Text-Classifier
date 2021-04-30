@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:37:30
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-28 14:58:34
+* @Last Modified time: 2021-04-30 12:40:20
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -245,7 +245,7 @@ void Vocabulary::generateVocabulary (std::string& inputFile, bool tokenize) {
  * @param      outputFile  The output file
  */
 void Vocabulary::storeVocabulary (std::string& outputFile) {
-	std::ofstream file(outputFile, std::ios::in);
+	std::fstream file(outputFile, std::ios::out | std::ios::trunc);
 	if (file.fail()) {
 		std::cout << "Error while storing data \"" << outputFile << "\" is not valid document" << std::endl;
 		exit(1);

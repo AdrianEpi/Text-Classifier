@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-28 12:35:30
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-28 15:19:04
+* @Last Modified time: 2021-04-30 12:56:35
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -42,7 +42,7 @@ Corpus::Corpus (void) {
  */
 Corpus::Corpus (std::string name, std::string inputFile) {
 	set_Name(name);
-	set_OutputFileName("../outputs/" + name + ".txt");
+	set_OutputFileName("../outputs/corpus_" + name + ".txt");
 	set_InputFile(inputFile);
 }
 
@@ -123,6 +123,7 @@ void Corpus::generateCorpus (std::vector<std::string>& stopWords, PreProcesser& 
 	preProcesser.eraseAllNumbers();
 	preProcesser.storeData(outputFile);
 	preProcesser.eraseReservedWords(stopWords, outputFile);
+	preProcesser.storeData(outputFileName_);
 	myChrono.stopChrono();
 	std::cout << std::endl << "Elapsed time for corpus " << name_ << ": " << myChrono.get_Seconds(5) << " seconds." << std::endl;
 }
