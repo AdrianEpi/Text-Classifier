@@ -8,7 +8,7 @@
 
     SYNOPSIS  
 
-        ./textClassifier [-v | -co | -h] [arg ...]  
+        ./textClassifier [-v || -co || -h || -l] [arg ...]  
 
 
 
@@ -16,9 +16,9 @@
 
         Generates vocabulary, corpus and classifies a text into different types of data.  
 
-        Runs the program with the needed flag for generating vocabulary 
-        (-v | --vocabulary), generating  corpus (-co | --corpus), printing user
-        manual (-h | --help).  
+        Runs the program with the needed flag for generating vocabulary (-v || --vocabulary),
+        generating  corpus (-co || --corpus), learning probabilities (-l || --learner) 
+        printing user manual (-h || --help).  
 
         Options:  
 
@@ -31,7 +31,7 @@
                     Definition:
                         inputFile   File path with the full data that wants to be processed.
                         outputFile  File path were the program will store the solution.
-                        rwFile      File path were the reserved words are stored.
+                        rwFile      File path were the reserved words are stored.     
 
 
             -co     (--corpus) generates one different corpus per each data type 
@@ -50,11 +50,25 @@
                                     at the first column of a csv.
 
 
+            -l      (--learner) calculates the proabilities for each token for each corpus and
+                    stores it into files named as aprendizaje_CORPUS.txt on the output folder.
+
+                    Example: 
+                        $ textClassifier -l vocFile Corpus1 Corpus2 ... CorpusX
+
+                    Definition:
+                        vocFile     Vocabulary file generated with --vocabulary option
+                        CorpusX     Name of the data type that wants to be searched and generated
+                                    corpus at. The input file must have them on the first column
+                                    and separating the rest of the line with a ",", as if it were
+                                    at the first column of a csv.
+
+
             -h      (--help) prints the user manual for the program.
 
                     Example:
                         $ testClassifier -h
-
+                               
 
         Exit Status:  
 

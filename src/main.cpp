@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 12:55:55
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-05-01 13:02:07
+* @Last Modified time: 2021-05-01 15:37:52
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -49,6 +49,7 @@ int main (int argc, char* argv[]) {
 		std::string flag = argv[1];
 		if (flag == "-h" || flag == "--help") {
 			printHelp();
+			return(0);
 		}
 		else if (flag == "-v" || flag == "--vocabulary") {
 			generateVocabulary(argc, argv);
@@ -152,6 +153,14 @@ void generateCorpus (int& argc, char* argv[]) {
 	}
 }
 
+/**
+ * @brief      Calculates the probability of each token in the given corpus as
+ *             an argument at the command line and stores it into different
+ *             files.
+ *
+ * @param      argc  The count of arguments
+ * @param      argv  The arguments array
+ */
 void generateLearner (int& argc, char* argv[]) {
 	if (argc < 3) {
 		std::cout << std::endl << "Error, the program needs at least 2 arguments to learn data from corpus." << std::endl << "\t bin/textClassifier -l vocabularyFile Data1 Data2 ... DataX" << std::endl;

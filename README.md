@@ -56,6 +56,19 @@ Runs the program with the needed flag for generating vocabulary (-v | --vocabula
                     $ testClassifier -h
 
 
+        -l      (--learner) calculates the proabilities for each token for each corpus and
+                    stores it into files named as aprendizaje_CORPUS.txt on the output folder.
+
+                Example: 
+                    $ textClassifier -l vocFile Corpus1 Corpus2 ... CorpusX
+
+                Definition:
+                    vocFile     Vocabulary file generated with --vocabulary option
+                    CorpusX     Name of the data type that wants to be searched and generated
+                                corpus at. The input file must have them on the first column
+                                and separating the rest of the line with a ",", as if it were
+                                at the first column of a csv.
+
 #### Exit Status:  
         Returns success unless an error occurs  
 
