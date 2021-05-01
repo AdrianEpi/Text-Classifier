@@ -36,12 +36,12 @@ clean:
 
 help:
 	../bin/textClassifier --help
-	
+
 runCorpus:
 	../bin/textClassifier --corpus ../inputs/ecom-train.csv ../inputs/stopWords.txt Electronics Household "Clothing & Accessories" Books
 
 runVocabulary:
-	../bin/textClassifier --vocabulary ../inputs/ecom-train.csv ../outputs/vocabulary2.txt ../inputs/stopWords.txt
+	../bin/textClassifier --vocabulary ../inputs/ecom-train.csv ../outputs/vocabulary.txt ../inputs/stopWords.txt
 
 runVocLog:
 	echo "\n\n\nExecuted ${TIME}" >> ../outputs/runDetails.txt
