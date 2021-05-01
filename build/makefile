@@ -40,6 +40,11 @@ clean:
 help:
 	../bin/textClassifier --help
 
+fullRun:
+	make runVocabulary
+	make runCorpus
+	make runLearner
+
 runLearner:
 	../bin/textClassifier --learner ../outputs/vocabulary.txt Electronics Household "Clothing & Accessories" Books
 
@@ -50,6 +55,9 @@ runVocabulary:
 	../bin/textClassifier --vocabulary ../inputs/ecom-train.csv ../outputs/vocabulary.txt ../inputs/stopWords.txt
 
 runVocLog:
+	make clean
+	make
 	echo "\n\n\nExecuted ${TIME}" >> ../outputs/runDetails.txt
-	../bin/textClassifier ../inputs/ecom-train.csv ../outputs/vocabulary.txt ../inputs/stopWords.txt >> ../outputs/runDetails.txt
+	#../bin/textClassifier ../inputs/ecom-train.csv ../outputs/vocabulary.txt ../inputs/stopWords.txt >> ../outputs/runDetails.txt
+	make fullRun >> ../outputs/runDetails.txt
 	echo "You can find full output at outputs/runDetails.txt"
