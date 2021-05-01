@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-05-01 12:27:32
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-05-01 15:25:04
+* @Last Modified time: 2021-05-01 15:43:58
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -42,6 +42,8 @@ Learner::Learner (char* argv[], int& argc) {
 	// Vocabulary file must be in 3rd place as shown in manual
 	set_VocabularyFile(argv[2]);
 	for (int i = 3; i < argc; i++) {
+		Chrono chrono;
+		chrono.startChrono();
 		std::string tmp = "../outputs/corpus_";
 		tmp += argv[i];
 		tmp += ".txt";
@@ -50,6 +52,8 @@ Learner::Learner (char* argv[], int& argc) {
 		newVoc.generateVocabulary(tmp, true);
 		learners_.push_back(newVoc);
 		inputCorpusFiles_.push_back(argv[i]);
+		chrono.stopChrono();
+		std::cout << std::endl << "Elapsed generating tokens and vocabulary time: " << chrono.get_Seconds(5) << " seconds for " << argv[i] << " data type." << std::endl;
 	}
 	learnAndStoreData();
 }
@@ -126,6 +130,8 @@ void Learner::set_VocabularyFile (std::string newVocabularyFile) {
  */
 void Learner::learnAndStoreData (void) {
 	for (unsigned i = 0; i < learners_.size(); i++) {
+		Chrono chrono;
+		chrono.startChrono();
 		std::string fileName = "../outputs/aprendizaje_" + inputCorpusFiles_[i] + ".txt";
 		std::fstream file(fileName, std::ios::out);
 		if (file.fail()) {
@@ -147,5 +153,7 @@ void Learner::learnAndStoreData (void) {
 			file << data;
 			file.close();
 		}
+		chrono.stopChrono();
+		std::cout << std::endl << "Elapsed time for calculating probabilities: " << chrono.get_Seconds(5) << " seconds for " << inputCorpusFiles_[i] << " data type." << std::endl;
 	}
 }
