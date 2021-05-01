@@ -17,7 +17,7 @@
         Generates vocabulary, corpus and classifies a text into different types of data.  
 
         Runs the program with the needed flag for generating vocabulary (-v || --vocabulary),
-        generating  corpus (-co || --corpus), learning probabilities (-l || --learner) 
+        generating  corpus (-co || --corpus), learning probabilities (-l || --learner), 
         printing user manual (-h || --help).  
 
         Options:  

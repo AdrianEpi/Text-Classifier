@@ -10,7 +10,7 @@ textClassifier  Generates vocabulary, corpus and classifies a text into differen
 ### SYNOPSIS  
 
 ```shell
-./textClassifier [-v | -co | -h] [arg ...]  
+./textClassifier [-v || -co || -h || -l] [arg ...]  
 ```
 
 ---
@@ -18,7 +18,7 @@ textClassifier  Generates vocabulary, corpus and classifies a text into differen
 
 Generates vocabulary, corpus and classifies a text into different types of data.  
 
-Runs the program with the needed flag for generating vocabulary (-v | --vocabulary), generating  corpus (-co | --corpus), printing usermanual (-h | --help).  
+Runs the program with the needed flag for generating vocabulary (-v || --vocabulary), generating  corpus (-co || --corpus), printing usermanual (-h || --help), learning probabilities (-l || --learner) .  
 
 ####	Options:  
 
