@@ -1,7 +1,7 @@
 # Variables
 TIME =$(LOGPATH)$(shell date)
 # Object Vars
-OBJECTS = main.o vocabulary.o preProcesser.o Chrono.o token.o corpus.o
+OBJECTS = main.o vocabulary.o preProcesser.o Chrono.o token.o corpus.o learner.o
 # Compilation flags
 CFLAGS = -c -std=c++17 -Wall
 
@@ -27,6 +27,9 @@ token.o: ../src/token.cpp ../include/token.hpp
 corpus.o: ../src/corpus.cpp ../include/corpus.hpp
 	g++ $(CFLAGS) ../src/corpus.cpp
 
+learner.o: ../src/learner.cpp ../include/learner.hpp
+	g++ $(CFLAGS) ../src/learner.cpp
+
 
 
 .PHONY: clean
@@ -36,6 +39,9 @@ clean:
 
 help:
 	../bin/textClassifier --help
+
+runLearner:
+	../bin/textClassifier --learner ../outputs/vocabulary.txt Electronics Household "Clothing & Accessories" Books
 
 runCorpus:
 	../bin/textClassifier --corpus ../inputs/ecom-train.csv ../inputs/stopWords.txt Electronics Household "Clothing & Accessories" Books

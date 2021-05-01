@@ -43,6 +43,7 @@ class Vocabulary {
 		std::string outpuFile_;			// Output file where the vocabulary will be stored
 		int vocabularyCounter_;			// Number of different words in the vocabulary
 		int nTokens_;					// Number of words in the text
+		int nLines_;					// Number of lines readed from file;
 		std::set<Token> vocabulary_;	// Set with all the vocabulary
 
 	public:
@@ -56,12 +57,14 @@ class Vocabulary {
 		std::string get_OutpuFile (void) const;
 		int get_VocabularyCounter (void) const;
 		int get_NTokens (void) const;
+		int get_NLines (void) const;
 		std::set<Token> get_Vocabulary (void) const;
 
 		void set_InputFile (std::string newInputFile);
 		void set_OutpuFile (std::string newOutpuFile);
 		void set_VocabularyCounter (int newVocabularyCounter);
 		void set_NTokens (int newNTokens);
+		void set_NLines (int newNLines);
 		void set_Vocabulary (std::set<Token> newVocabulary);
 
 		// Operators Overload
@@ -71,6 +74,7 @@ class Vocabulary {
 		void preProcessData (std::string& stopWordFile);
 		std::vector<std::string> loadStopWord (std::string& inputFile);
 		void generateVocabulary (std::string& inputFile, bool tokenized);
+		void calculateProbabilities (void);
 
 		// Write
 		void readVocabulary (std::string& inputFile);

@@ -17,18 +17,20 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 12:55:55
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-05-01 11:16:13
+* @Last Modified time: 2021-05-01 13:02:07
 */
 /*------------------  FUNCTIONS  -----------------*/
 
 #include "../include/vocabulary.hpp"
 #include "../include/corpus.hpp"
+#include "../include/learner.hpp"
 
 /*------------------------------------------------*/
 
 void printHelp (void);
 void generateVocabulary (int& argc, char* argv[]);
 void generateCorpus (int& argc, char* argv[]);
+void generateLearner (int& argc, char* argv[]);
 
 /**
  * @brief      Main function of the program, receives the data file as
@@ -54,6 +56,10 @@ int main (int argc, char* argv[]) {
 		else if (flag == "-co" || flag == "--corpus") {
 			generateCorpus(argc, argv);
 		}
+		else if (flag == "-l" || flag == "--learner") {
+			generateLearner(argc, argv);
+		}
+
 	}
 	
 	std::cout << std::endl << "Program finished correclty." << std::endl;
@@ -144,4 +150,13 @@ void generateCorpus (int& argc, char* argv[]) {
 		Corpus newCorpus(tmp, originFile);
 		newCorpus.generateCorpus(stopWords, preProcesser);
 	}
+}
+
+void generateLearner (int& argc, char* argv[]) {
+	if (argc < 3) {
+		std::cout << std::endl << "Error, the program needs at least 2 arguments to learn data from corpus." << std::endl << "\t bin/textClassifier -l vocabularyFile Data1 Data2 ... DataX" << std::endl;
+		std::cout << std::endl << "Each \"Data\" represents one data learning type that wants generated." << std::endl;
+		exit(1);
+	}
+	Learner learner(argv, argc);
 }

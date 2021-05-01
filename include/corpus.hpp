@@ -41,9 +41,9 @@ class Corpus {
 
 	private:
 		// Attributes
-		std::string name_;
-		std::string outputFileName_;
-		std::string inputFile_;
+		std::string name_;				// The corpus name or data type
+		std::string outputFileName_;	// The output file name
+		std::string inputFile_;			// The input file name
 
 	public:
 		// Builders & Destroyer

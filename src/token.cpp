@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-25 21:00:43
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-25 22:35:21
+* @Last Modified time: 2021-05-01 14:49:52
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -31,6 +31,7 @@
 Token::Token (void) {
 	set_Name("");
 	set_Ammount(0);
+	set_Probability(0);
 }
 
 /**
@@ -41,6 +42,7 @@ Token::Token (void) {
 Token::Token (std::string name) {
 	set_Name(name);
 	set_Ammount(1);
+	set_Probability(0);
 }
 
 /**
@@ -68,6 +70,15 @@ unsigned Token::get_Ammount (void) const {
 }
 
 /**
+ * @brief      Gets the probability.
+ *
+ * @return     The probability.
+ */
+float Token::get_Probability (void) const {
+	return probability_;
+}
+
+/**
  * @brief      Sets the name.
  *
  * @param[in]  name  The name
@@ -83,6 +94,15 @@ void Token::set_Name (std::string name) {
  */
 void Token::set_Ammount (unsigned ammount) {
 	ammount_ = ammount;
+}
+
+/**
+ * @brief      Sets the probability.
+ *
+ * @param[in]  newProbability  The new probability
+ */
+void Token::set_Probability (float newProbability) {
+	probability_ = newProbability;
 }
 
 /**
@@ -215,6 +235,7 @@ Token& Token::operator++ (void) {
 Token& Token::operator= (const Token& otherToken) {
 	this -> set_Name(otherToken.get_Name());
 	this -> set_Ammount(otherToken.get_Ammount());
+	this -> set_Probability(otherToken.get_Probability());
 	return *this;
 }
 
@@ -223,6 +244,21 @@ Token& Token::operator= (const Token& otherToken) {
  */
 void Token::incrementate (void) {
 	ammount_++;
+}
+
+/**
+ * @brief      Generates the ln probability of the token.
+ *
+ * @param[in]  vocSize       The voc size
+ * @param[in]  tokenAmmount  The token ammount
+ *
+ * @return     The ln probability
+ */
+float Token::generateLogProb (const unsigned& vocSize, const unsigned& tokenAmmount) {
+	probability_ = (ammount_ + 1);
+	int divider = (vocSize + tokenAmmount);
+	probability_ /= divider;
+	return std::log(probability_);
 }
 
 /**

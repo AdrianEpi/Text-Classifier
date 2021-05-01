@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:37:30
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-30 15:55:25
+* @Last Modified time: 2021-05-01 13:40:28
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -89,6 +89,15 @@ int Vocabulary::get_NTokens (void) const {
 }
 
 /**
+ * @brief      Gets the number of lines.
+ *
+ * @return     The number of lines.
+ */
+int Vocabulary::get_NLines (void) const {
+	return nLines_;
+}
+
+/**
  * @brief      Gets the vocabulary.
  *
  * @return     The vocabulary.
@@ -134,6 +143,15 @@ void Vocabulary::set_NTokens (int newTokens) {
 }
 
 /**
+ * @brief      Sets the number of lines.
+ *
+ * @param[in]  newLines  The new lines number
+ */
+void Vocabulary::set_NLines (int newLines) {
+	nLines_ = newLines;
+}
+
+/**
  * @brief      Sets the vocabulary.
  *
  * @param[in]  newVocabulary  The new vocabulary
@@ -155,6 +173,7 @@ Vocabulary& Vocabulary::operator= (const Vocabulary& newVocabulary) {
 	this -> set_OutpuFile(newVocabulary.get_OutpuFile());
 	this -> set_InputFile(newVocabulary.get_InputFile());
 	this -> set_NTokens(newVocabulary.get_NTokens());
+	this -> set_NLines(newVocabulary.get_NLines());
 	return *this;
 }
 
@@ -219,6 +238,9 @@ void Vocabulary::generateVocabulary (std::string& inputFile, bool tokenize) {
 	std::set<Token>::iterator it;
 	while (!file.eof()) {
 		file >> word;
+		if (isdigit(word[0])) {
+			nLines_ = stoi(word);
+		}
 		if (!vocabulary_.count(word)) {
 			Token newToken(word);
 			vocabulary_.insert(newToken);
@@ -251,6 +273,7 @@ void Vocabulary::readVocabulary (std::string& inputFile) {
 	set_VocabularyCounter(0);
 	std::string word;
 	std::set<Token>::iterator it;
+	std::getline(file, word);
 	while (!file.eof()) {
 		file >> word;
 		Token newToken(word);
