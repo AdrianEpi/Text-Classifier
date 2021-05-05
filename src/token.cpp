@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-25 21:00:43
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-05-01 14:49:52
+* @Last Modified time: 2021-05-05 14:13:19
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -265,5 +265,5 @@ float Token::generateLogProb (const unsigned& vocSize, const unsigned& tokenAmmo
  * @brief      Prints a token.
  */
 void Token::printToken (void) const {
-	std::cout << std::endl << "Token Info:" << std::endl << "\t - Name: " << get_Name() << std::endl << "\t - Ammount: " << get_Ammount();
+	std::cout << std::endl << "Token Info:" << std::endl << "\t - Name: " << get_Name() << std::endl << "\t - Ammount: " << get_Ammount() << std::endl << "\t - Prob: " << get_Probability();
 }

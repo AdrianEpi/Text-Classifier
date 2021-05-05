@@ -45,6 +45,9 @@ fullRun:
 	make runCorpus
 	make runLearner
 
+runClassifier:
+	../bin/textClassifier --classify ../outputs/vocabulary.txt Electronics Household "Clothing & Accessories" Books
+
 runLearner:
 	../bin/textClassifier --learner ../outputs/vocabulary.txt Electronics Household "Clothing & Accessories" Books
 

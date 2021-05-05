@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 12:55:55
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-05-01 15:37:52
+* @Last Modified time: 2021-05-05 14:12:12
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -31,6 +31,7 @@ void printHelp (void);
 void generateVocabulary (int& argc, char* argv[]);
 void generateCorpus (int& argc, char* argv[]);
 void generateLearner (int& argc, char* argv[]);
+void generateClassifier (int& argc, char* argv[]);
 
 /**
  * @brief      Main function of the program, receives the data file as
@@ -59,6 +60,9 @@ int main (int argc, char* argv[]) {
 		}
 		else if (flag == "-l" || flag == "--learner") {
 			generateLearner(argc, argv);
+		}
+		else if (flag == "-cl" || flag == "--classify") {
+			generateClassifier(argc, argv);
 		}
 
 	}
@@ -168,4 +172,10 @@ void generateLearner (int& argc, char* argv[]) {
 		exit(1);
 	}
 	Learner learner(argv, argc);
+}
+
+void generateClassifier (int& argc, char* argv[]) {
+	Vocabulary test;
+	std::string aa = "../outputs/aprendizajeH.txt";
+	test.readLearnedData(aa);
 }

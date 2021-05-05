@@ -79,4 +79,5 @@ class Vocabulary {
 		// Write
 		void readVocabulary (std::string& inputFile);
 		void storeVocabulary (std::string& outputFile);
+		void readLearnedData (std::string& inputFile);
 };

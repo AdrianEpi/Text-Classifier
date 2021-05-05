@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:37:30
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-05-01 13:40:28
+* @Last Modified time: 2021-05-05 14:14:48
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -241,18 +241,20 @@ void Vocabulary::generateVocabulary (std::string& inputFile, bool tokenize) {
 		if (isdigit(word[0])) {
 			nLines_ = stoi(word);
 		}
-		if (!vocabulary_.count(word)) {
-			Token newToken(word);
-			vocabulary_.insert(newToken);
+		else {
+			if (!vocabulary_.count(word)) {
+				Token newToken(word);
+				vocabulary_.insert(newToken);
+			}
+			else if (tokenize){
+				it = vocabulary_.find(word);
+				Token newToken = *it;
+				newToken.incrementate();
+				vocabulary_.erase(word);
+				vocabulary_.insert(newToken);
+			}
+			nTokens_++;
 		}
-		else if (tokenize){
-			it = vocabulary_.find(word);
-			Token newToken = *it;
-			newToken.incrementate();
-			vocabulary_.erase(word);
-			vocabulary_.insert(newToken);
-		}
-		nTokens_++;
 	}
 	file.close();
 	set_VocabularyCounter(vocabulary_.size());
@@ -272,7 +274,6 @@ void Vocabulary::readVocabulary (std::string& inputFile) {
 	set_NTokens(0);
 	set_VocabularyCounter(0);
 	std::string word;
-	std::set<Token>::iterator it;
 	std::getline(file, word);
 	while (!file.eof()) {
 		file >> word;
@@ -301,6 +302,42 @@ void Vocabulary::storeVocabulary (std::string& outputFile) {
 		for (auto i : vocabulary_) {
 			file << std::endl << i.get_Name();
 		}
+		// This represents unkown words
+		file << std::endl << "<UNK>";
 	}
 	file.close();
+}
+
+/**
+ * @brief      Reads a learned data from a file and store the tokens with their
+ *             respective probabilities and frecuence in the tokens set.
+ *
+ * @param      inputFile  The input file
+ */
+void Vocabulary::readLearnedData (std::string& inputFile) {
+	std::ifstream file(inputFile, std::ios::in);
+	if (file.fail()) {
+		std::cout << std::endl << "Error 404, readVocabulary file not found. (" << inputFile << ")" << std::endl;
+		exit(1);
+	}
+	set_NTokens(0);
+	set_VocabularyCounter(0);
+	std::string word;
+	std::getline(file, word);
+	std::getline(file, word);
+	while (!file.eof()) {
+		file >> word;
+		file >> word;
+		Token newToken(word);
+		file >> word;
+		file >> word;
+		newToken.set_Ammount(std::stoi(word));
+		file >> word;
+		file >> word;
+		newToken.set_Probability(std::stof(word));
+		vocabulary_.insert(newToken);
+		nTokens_++;
+	}
+	file.close();
+	set_VocabularyCounter(vocabulary_.size());
 }
