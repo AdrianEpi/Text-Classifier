@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-05-01 12:27:32
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-05-01 15:43:58
+* @Last Modified time: 2021-05-05 13:21:31
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -132,7 +132,10 @@ void Learner::learnAndStoreData (void) {
 	for (unsigned i = 0; i < learners_.size(); i++) {
 		Chrono chrono;
 		chrono.startChrono();
-		std::string fileName = "../outputs/aprendizaje_" + inputCorpusFiles_[i] + ".txt";
+		std::string fileName = "../outputs/aprendizaje";
+		fileName += inputCorpusFiles_[i][0];
+		fileName += ".txt";
+		//std::string fileName = "../outputs/aprendizaje_" + inputCorpusFiles_[i] + ".txt";
 		std::fstream file(fileName, std::ios::out);
 		if (file.fail()) {
 			std::cout << "Error while storing learned data \"" << fileName << "\" is not valid document" << std::endl;
@@ -145,10 +148,15 @@ void Learner::learnAndStoreData (void) {
 			data += "\nNumero de palabras del corpus: " + std::to_string(tokenAmmount);
 			for (auto tmp : learners_[i].get_Vocabulary()) {
 				std::string line =  "\nPalabra: " + tmp.get_Name();
+				// Tabs for columns
+				/*
 				while (line.length() < 50) {
 					line += " ";
 				}
 				data += line + "\t\tFrec: " + std::to_string(tmp.get_Ammount()) + "  \t\tLogProb: " + std::to_string(tmp.generateLogProb(vocSize, tokenAmmount));
+				*/
+				// Without tabs
+				data += line + " Frec: " + std::to_string(tmp.get_Ammount()) + " LogProb: " + std::to_string(tmp.generateLogProb(vocSize, tokenAmmount));
 			}
 			file << data;
 			file.close();
