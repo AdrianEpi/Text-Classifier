@@ -1,7 +1,7 @@
 # Variables
 TIME =$(LOGPATH)$(shell date)
 # Object Vars
-OBJECTS = main.o vocabulary.o preProcesser.o Chrono.o token.o corpus.o learner.o
+OBJECTS = main.o vocabulary.o preProcesser.o Chrono.o token.o corpus.o learner.o classifier.o
 # Compilation flags
 CFLAGS = -c -std=c++17 -Wall
 
@@ -30,6 +30,9 @@ corpus.o: ../src/corpus.cpp ../include/corpus.hpp
 learner.o: ../src/learner.cpp ../include/learner.hpp
 	g++ $(CFLAGS) ../src/learner.cpp
 
+classifier.o: ../src/classifier.cpp ../include/classifier.hpp
+	g++ $(CFLAGS) ../src/classifier.cpp
+
 
 
 .PHONY: clean
@@ -46,7 +49,7 @@ fullRun:
 	make runLearner
 
 runClassifier:
-	../bin/textClassifier --classify ../outputs/vocabulary.txt Electronics Household "Clothing & Accessories" Books
+	../bin/textClassifier --classify ../outputs/vocabulary.txt ../outputs/aprendizajeE.txt ../outputs/aprendizajeH.txt ../outputs/aprendizajeC.txt ../outputs/aprendizajeB.txt
 
 runLearner:
 	../bin/textClassifier --learner ../outputs/vocabulary.txt Electronics Household "Clothing & Accessories" Books
@@ -61,6 +64,5 @@ runVocLog:
 	make clean
 	make
 	echo "\n\n\nExecuted ${TIME}" >> ../outputs/runDetails.txt
-	#../bin/textClassifier ../inputs/ecom-train.csv ../outputs/vocabulary.txt ../inputs/stopWords.txt >> ../outputs/runDetails.txt
 	make fullRun >> ../outputs/runDetails.txt
 	echo "You can find full output at outputs/runDetails.txt"
