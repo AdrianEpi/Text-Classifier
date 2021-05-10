@@ -36,6 +36,7 @@ class Token {
 		std::string name_;	// The token name
 		unsigned ammount_;	// The ammount of times that the token apears in corpus
 		float probability_;	// The probability of the token in corpus
+		std::string type_; 	// The type of the token into specified classes
 
 	public:
 		// Builders & Destroyer
@@ -47,10 +48,12 @@ class Token {
 		std::string get_Name(void) const;
 		unsigned get_Ammount (void) const;
 		float get_Probability (void) const;
+		std::string get_Type (void) const;
 
 		void set_Name (std::string name);
 		void set_Ammount (unsigned ammount);
 		void set_Probability (float newProbability);
+		void set_Type (std::string newType);
 
 		// Operators overload
 		bool operator< (const Token& otherToken) const;

@@ -17,13 +17,14 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 12:55:55
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-05-05 14:12:12
+* @Last Modified time: 2021-05-06 08:47:38
 */
 /*------------------  FUNCTIONS  -----------------*/
 
 #include "../include/vocabulary.hpp"
 #include "../include/corpus.hpp"
 #include "../include/learner.hpp"
+#include "../include/classifier.hpp"
 
 /*------------------------------------------------*/
 
@@ -175,7 +176,8 @@ void generateLearner (int& argc, char* argv[]) {
 }
 
 void generateClassifier (int& argc, char* argv[]) {
-	Vocabulary test;
+	/*Vocabulary test;
 	std::string aa = "../outputs/aprendizajeH.txt";
-	test.readLearnedData(aa);
+	test.readLearnedData(aa);*/
+	Classifier newClassifier(argv, argc);
 }

@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-25 21:00:43
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-05-05 14:13:19
+* @Last Modified time: 2021-05-06 09:03:59
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -32,6 +32,7 @@ Token::Token (void) {
 	set_Name("");
 	set_Ammount(0);
 	set_Probability(0);
+	set_Type("");
 }
 
 /**
@@ -43,6 +44,7 @@ Token::Token (std::string name) {
 	set_Name(name);
 	set_Ammount(1);
 	set_Probability(0);
+	set_Type("");
 }
 
 /**
@@ -79,6 +81,15 @@ float Token::get_Probability (void) const {
 }
 
 /**
+ * @brief      Gets the type.
+ *
+ * @return     The type.
+ */
+std::string Token::get_Type (void) const {
+	return type_;
+}
+
+/**
  * @brief      Sets the name.
  *
  * @param[in]  name  The name
@@ -103,6 +114,15 @@ void Token::set_Ammount (unsigned ammount) {
  */
 void Token::set_Probability (float newProbability) {
 	probability_ = newProbability;
+}
+
+/**
+ * @brief      Sets the type.
+ *
+ * @param[in]  newType  The new type
+ */
+void Token::set_Type (std::string newType) {
+	type_ = newType;
 }
 
 /**
@@ -236,6 +256,7 @@ Token& Token::operator= (const Token& otherToken) {
 	this -> set_Name(otherToken.get_Name());
 	this -> set_Ammount(otherToken.get_Ammount());
 	this -> set_Probability(otherToken.get_Probability());
+	this -> set_Type(otherToken.get_Type());
 	return *this;
 }
 
@@ -265,5 +286,5 @@ float Token::generateLogProb (const unsigned& vocSize, const unsigned& tokenAmmo
  * @brief      Prints a token.
  */
 void Token::printToken (void) const {
-	std::cout << std::endl << "Token Info:" << std::endl << "\t - Name: " << get_Name() << std::endl << "\t - Ammount: " << get_Ammount() << std::endl << "\t - Prob: " << get_Probability();
+	std::cout << std::endl << "Token Info:" << std::endl << "\t - Name: " << get_Name() << std::endl << "\t - Ammount: " << get_Ammount() << std::endl << "\t - Type: " << get_Type() << std::endl << "\t - Prob: " << get_Probability();
 }

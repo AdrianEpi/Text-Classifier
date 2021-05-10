@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:37:30
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-05-05 14:14:48
+* @Last Modified time: 2021-05-09 17:34:28
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -31,7 +31,11 @@
 Vocabulary::Vocabulary (void) {
 	set_InputFile("");
 	set_OutpuFile("");
-	set_VocabularyCounter(0);	
+	set_VocabularyCounter(0);
+	set_Type("");	
+	set_NTokens(0);
+	set_NLines(0);
+	set_ClassProbability(0.0);
 }
 
 /**
@@ -44,6 +48,10 @@ Vocabulary::Vocabulary (std::string inputFile, std::string outpuFile) {
 	set_InputFile(inputFile);
 	set_OutpuFile(outpuFile);
 	set_VocabularyCounter(0);
+	set_Type("");
+	set_NTokens(0);
+	set_NLines(0);
+	set_ClassProbability(0.0);
 }
 
 /**
@@ -98,12 +106,30 @@ int Vocabulary::get_NLines (void) const {
 }
 
 /**
+ * @brief      Gets the class probability.
+ *
+ * @return     The class probability.
+ */
+float Vocabulary::get_ClassProbability (void) const {
+	return classProbability_;
+}
+
+/**
  * @brief      Gets the vocabulary.
  *
  * @return     The vocabulary.
  */
 std::set<Token> Vocabulary::get_Vocabulary (void) const {
 	return vocabulary_;
+}
+
+/**
+ * @brief      Gets the type.
+ *
+ * @return     The type.
+ */
+std::string Vocabulary::get_Type (void) const {
+	return type_;
 }
 
 /**
@@ -161,6 +187,24 @@ void Vocabulary::set_Vocabulary (std::set<Token> newVocabulary) {
 }
 
 /**
+ * @brief      Sets the type.
+ *
+ * @param[in]  newType  The new type
+ */
+void Vocabulary::set_Type (std::string newType) {
+	type_ = newType;
+}
+
+/**
+ * @brief      Sets the class probability.
+ *
+ * @param[in]  newClassProbability  The new class probability
+ */
+void Vocabulary::set_ClassProbability (float newClassProbability) {
+	classProbability_ = newClassProbability;
+}
+
+/**
  * @brief      Assignment operator.
  *
  * @param[in]  newVocabulary  The new vocabulary
@@ -174,6 +218,8 @@ Vocabulary& Vocabulary::operator= (const Vocabulary& newVocabulary) {
 	this -> set_InputFile(newVocabulary.get_InputFile());
 	this -> set_NTokens(newVocabulary.get_NTokens());
 	this -> set_NLines(newVocabulary.get_NLines());
+	this -> set_Type(newVocabulary.get_Type());
+	this -> set_ClassProbability(newVocabulary.get_ClassProbability());
 	return *this;
 }
 
@@ -261,6 +307,19 @@ void Vocabulary::generateVocabulary (std::string& inputFile, bool tokenize) {
 }
 
 /**
+ * @brief      Calculates and adds the class probability.
+ *
+ * @param[in]  size  The size
+ */
+void Vocabulary::addClassProbability (int size) {
+
+	float prob = nLines_;
+	prob /= size;
+	prob = std::log(prob);
+	set_ClassProbability(prob);
+}
+
+/**
  * @brief      Reads a created vocabulary from file.
  *
  * @param      inputFile  The input file
@@ -316,6 +375,9 @@ void Vocabulary::storeVocabulary (std::string& outputFile) {
  */
 void Vocabulary::readLearnedData (std::string& inputFile) {
 	std::ifstream file(inputFile, std::ios::in);
+	std::string type = "";
+	type += inputFile[inputFile.length() - 5];
+	set_Type(type);
 	if (file.fail()) {
 		std::cout << std::endl << "Error 404, readVocabulary file not found. (" << inputFile << ")" << std::endl;
 		exit(1);
@@ -324,11 +386,19 @@ void Vocabulary::readLearnedData (std::string& inputFile) {
 	set_VocabularyCounter(0);
 	std::string word;
 	std::getline(file, word);
+	std::string tmp = "";
+	for (unsigned i = 0; i < word.length(); i++) {
+		if (isdigit(word[i])) {
+			tmp += word[i];
+		}
+	}
+	set_NLines(std::stoi(tmp));
 	std::getline(file, word);
 	while (!file.eof()) {
 		file >> word;
 		file >> word;
 		Token newToken(word);
+		newToken.set_Type(type);
 		file >> word;
 		file >> word;
 		newToken.set_Ammount(std::stoi(word));

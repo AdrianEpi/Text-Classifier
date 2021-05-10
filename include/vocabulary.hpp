@@ -45,6 +45,8 @@ class Vocabulary {
 		int nTokens_;					// Number of words in the text
 		int nLines_;					// Number of lines readed from file;
 		std::set<Token> vocabulary_;	// Set with all the vocabulary
+		std::string type_;				// The vocabulary type (if aplicable)
+		float classProbability_;		// The class probability (if aplicable)
 
 	public:
 		// Builders & Destroyer
@@ -59,6 +61,8 @@ class Vocabulary {
 		int get_NTokens (void) const;
 		int get_NLines (void) const;
 		std::set<Token> get_Vocabulary (void) const;
+		std::string get_Type (void) const;
+		float get_ClassProbability (void) const;
 
 		void set_InputFile (std::string newInputFile);
 		void set_OutpuFile (std::string newOutpuFile);
@@ -66,6 +70,8 @@ class Vocabulary {
 		void set_NTokens (int newNTokens);
 		void set_NLines (int newNLines);
 		void set_Vocabulary (std::set<Token> newVocabulary);
+		void set_Type (std::string newType);
+		void set_ClassProbability (float newClassProbability);
 
 		// Operators Overload
 		Vocabulary& operator= (const Vocabulary& newVocabulary);
@@ -75,6 +81,7 @@ class Vocabulary {
 		std::vector<std::string> loadStopWord (std::string& inputFile);
 		void generateVocabulary (std::string& inputFile, bool tokenized);
 		void calculateProbabilities (void);
+		void addClassProbability (int size);
 
 		// Write
 		void readVocabulary (std::string& inputFile);
