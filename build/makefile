@@ -49,7 +49,7 @@ fullRun:
 	make runLearner
 
 runClassifier:
-	../bin/textClassifier --classify ../outputs/vocabulary.txt ../outputs/aprendizajeE.txt ../outputs/aprendizajeH.txt ../outputs/aprendizajeC.txt ../outputs/aprendizajeB.txt
+	../bin/textClassifier --classify ../inputs/corpus_test2.csv ../inputs/stopWords.txt ../outputs/aprendizajeE.txt ../outputs/aprendizajeH.txt ../outputs/aprendizajeC.txt ../outputs/aprendizajeB.txt
 
 runLearner:
 	../bin/textClassifier --learner ../outputs/vocabulary.txt Electronics Household "Clothing & Accessories" Books

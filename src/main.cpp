@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 12:55:55
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-05-06 08:47:38
+* @Last Modified time: 2021-05-10 11:35:21
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -179,5 +179,15 @@ void generateClassifier (int& argc, char* argv[]) {
 	/*Vocabulary test;
 	std::string aa = "../outputs/aprendizajeH.txt";
 	test.readLearnedData(aa);*/
+	
 	Classifier newClassifier(argv, argc);
+	/*PreProcesser aa;
+	std::string bb = argv[2];
+	std::string cc = "../inputs/aaa.txt";
+	aa.loadTestData(bb);
+	aa.convertLowerCase();
+	aa.erasePunctuationSigns();
+	aa.eraseAllNumbers();
+	//std::cout << aa.get_Data();7
+	aa.storeData(cc, 0);*/
 }

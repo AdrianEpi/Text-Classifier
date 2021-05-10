@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-05-06 08:37:08
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-05-10 09:41:15
+* @Last Modified time: 2021-05-10 11:52:47
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -42,6 +42,10 @@ Classifier::Classifier (char* argv[], int& argc) {
 	set_Data("");
 	readInputFiles(argv, argc);
 	generateClassProbability();
+	std::string input = argv[2];
+	std::string stopWords = argv[3];
+	classifyFile(input, stopWords);
+	//std::cout << std::endl << data_ << std::endl;
 }
 
 /**
@@ -104,8 +108,44 @@ void Classifier::set_Data (std::string newData) {
 	data_ = newData;
 }
 
-void Classifier::classifyFile (std::string& inputFile, std::string& outputFile) {
-
+void Classifier::classifyFile (std::string& inputFile, std::string& stopWordsFile) {
+	Vocabulary voc;
+	std::vector<std::string> stopWord;
+	stopWord = voc.loadStopWord(stopWordsFile);
+	std::string tmp;
+	preProcess(stopWord, tmp);
+	std::string helper = "../outputs/preProcesserHelper.txt";
+	std::ifstream file(helper, std::ios::in);
+	if (file.fail()) {
+		std::cout << std::endl << "Error 404, corpus_test file not found." << std::endl;
+		exit(1);
+	}
+	
+	//preProcess(stopWord, tmp);
+/*
+	while (!file.eof()) {
+		tmp = "";
+		std::getline(file, tmp);
+		std::cout << tmp;
+		std::vector<std::string> sentence; 
+		std::string word = "";
+		bool isWord = false;
+		for (unsigned i = 0; i < tmp.length(); i++) {
+			if (tmp[i] != ' ') {
+				isWord = true;
+				word += tmp[i];
+			}
+			else if (isWord) {
+				isWord = false;
+				sentence.push_back(word);
+				word = "";
+			}
+		}
+		break;
+		std::cout << sentence.size() << std::endl;
+		//classify(sentence);
+	}*/
+	file.close();
 }
 
 /**
@@ -116,27 +156,31 @@ void Classifier::classifyFile (std::string& inputFile, std::string& outputFile) 
 void Classifier::classify (std::vector<std::string> sentence) {
 	std::vector<float> prob;
 	prob.resize(learnedData_.size());
+	//data += ""
 	for (unsigned i = 0; i < prob.size(); i++) {
 		prob[i] = 0.0;
 	}
+	std::set<Token>::iterator it;
 	for (unsigned i = 0; i < sentence.size(); i++) {
-		std::set<Token>::iterator it;
+		data_ += sentence[i] + " ";
 		for (unsigned j = 0; j < learnedData_.size(); j++) {
 			it = learnedData_[j].get_Vocabulary().find(sentence[i]);
 			prob[j] += it -> get_Probability();
 		}
 	}
+	data_ += ", ";
 	unsigned selection = 0;
 	for (unsigned i = 0; i < prob.size(); i++) {
 		prob[i] += learnedData_[i].get_ClassProbability();
 		if (prob[selection] < prob[i]) {
 			selection = i;
 		}
-		data_ += prob[i];
+		data_ += std::to_string(prob[i]);
 		data_ += ", ";
 	}
 	data_ += learnedData_[selection].get_Type();
-	data_ += ".";
+	data_ += ".\n";
+	std::cout << data_;
 }
 
 /**
@@ -154,13 +198,54 @@ void Classifier::generateClassProbability (void) {
 }
 
 /**
+ * @brief      Preprocess the given sentence using the same pre-processing
+ *             method as the vocabulary
+ *
+ * @param      preprocesser  The preprocesser
+ * @param      stopWords     The stop words
+ * @param      sentence      The sentence
+ *
+ * @return     A vector with each word of the sentence per vector's place
+ */
+std::vector<std::string> Classifier::preProcess (std::vector<std::string>& stopWords, std::string& sentence) {
+	/*preprocesser.convertLowerCase(sentence);
+	preprocesser.erasePunctuationSigns(sentence);
+	preprocesser.eraseAllNumbers(sentence);
+	sentence = preprocesser.eraseReservedWords(sentence, stopWords);
+	std::vector<std::string> preProcessedSentence;
+	std::string tmp = "";
+	bool isWord = false;
+	for (unsigned i = 0; i < sentence.length(); i++) {
+		if (sentence[i] != ' ') {
+			isWord = true;
+			tmp += sentence[i];
+		}
+		else if (isWord) {
+			isWord = false;
+			preProcessedSentence.push_back(tmp);
+			tmp = "";
+		}
+	}
+	return preProcessedSentence;*/
+	std::string bb = "../inputs/corpus_test2.csv";
+	PreProcesser preprocesser;
+	std::string cc = "../inputs/aaa.txt";
+	preprocesser.loadTestData(bb);
+	preprocesser.convertLowerCase();
+	preprocesser.erasePunctuationSigns();
+	preprocesser.eraseAllNumbers();
+	preprocesser.storeData(cc, 0);
+	//sentence = preprocesser.eraseReservedWords(cc, stopWords);
+}
+
+/**
  * @brief      Reads input learned files and store the tokens into the learnedData vector.
  *
  * @param      argv  The arguments array
  * @param      argc  The count of arguments
  */
 void Classifier::readInputFiles (char* argv[], int& argc) {
-	for (int i = 3; i < argc; i++) {
+	for (int i = 4; i < argc; i++) {
 		std::string tmp = argv[i];
 		Vocabulary newVocabulary;
 		newVocabulary.readLearnedData(tmp);

@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:04:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-04-30 15:52:44
+* @Last Modified time: 2021-05-10 11:41:41
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -189,6 +189,39 @@ void PreProcesser::eraseReservedWords (std::vector<std::string>& reservedWords, 
 }
 
 /**
+ * @brief      Deletes all the words from the vector in the given string and
+ *             returns it
+ *
+ * @param[in]  reservedWords  The reserved words vector
+ * @param[in]  sentence       The sentence
+ *
+ * @return     The string without the reserved words.
+ */
+std::string PreProcesser::eraseReservedWords (std::string& sentence, std::vector<std::string>& reservedWords) {
+	std::string result = "";
+	std::string tmp = "";
+	for (unsigned j = 0; j < sentence.length(); j++) {
+		if (sentence[j] != ' ') {
+			tmp += sentence[j];
+		}
+		else {
+			bool push = true;
+			for (unsigned i = 0; i < reservedWords.size(); i++) {
+				if (tmp == reservedWords[i]) {
+					push = false;
+					break;
+				}
+			}
+			if (push) {
+				result += tmp + " ";
+			}
+			tmp = "";
+		}
+	}
+	return result;
+}
+
+/**
  * @brief      Erases all punctuation sings into readed data.
  *
  * @param      str   The string
@@ -203,9 +236,9 @@ void PreProcesser::erasePunctuationSigns (std::string& str) {
  * @brief      Erases all punctuation sings into readed data.
  */
 void PreProcesser::erasePunctuationSigns (void) {
-	std::vector<char> punctuantionSigns = {',', '.', '-', '_', '?', '!', ';', ':', '\'', '\"', '(', ')', '{', '}', '[', ']'};
+	//std::vector<char> punctuantionSigns = {',', '.', '-', '_', '?', '!', ';', ':', '\'', '\"', '(', ')', '{', '}', '[', ']'};
 	for (unsigned i = 0; i < data_.length(); i++) {
-		if (!isalpha(data_[i]) && !isdigit(data_[i])) {
+		if (!isalpha(data_[i]) && !isdigit(data_[i]) && data_[i] != '\n' && data_[i] != '\r') {
 			data_[i] = ' ';
 		}
 	}
@@ -331,6 +364,17 @@ void PreProcesser::eraseAllNumbers (void) {
 }
 
 /**
+ * @brief      Erases all the numbers
+ *
+ * @param      str   The string
+ */
+void PreProcesser::eraseAllNumbers (std::string& str) {
+	set_Data(str);
+	eraseAllNumbers();
+	str = get_Data();
+}
+
+/**
  * @brief      Loads the data that starts with the dataTpe from input file into
  *             data var.
  *
@@ -379,6 +423,21 @@ int PreProcesser::loadData (std::string& inputFile, std::string dataType) {
 	return dataLines;
 }
 
+void PreProcesser::loadTestData (std::string& inputFile) {
+	data_ = "";
+	std::ifstream file(inputFile, std::ios::in);
+	if (file.fail()) {
+		std::cout << std::endl << "Error 404, file not found in loadTestData function." << std::endl;
+		exit(1);
+	}
+	std::string aux = "";
+	while (!file.eof()) {
+		std::getline(file, aux);
+		data_ += aux;	
+	}
+	file.close();
+}
+
 /**
  * @brief      Prints data var.
  */
@@ -394,6 +453,7 @@ void PreProcesser::printData  (void) {
  */
 void PreProcesser::storeData(std::string& outputFile, int dataLines) {
 	std::fstream file(outputFile, std::ios::out | std::ios::trunc);
+	
 	if (file.fail()) {
 		std::cout << "Error while storing data \"" << outputFile << "\" is not valid document" << std::endl;
 		exit(1);

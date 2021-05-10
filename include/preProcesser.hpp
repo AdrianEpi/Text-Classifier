@@ -68,6 +68,7 @@ class PreProcesser {
 		void convertUpperCase (std::string& str);
 		void convertUpperCase (void);
 		void eraseReservedWords (std::vector<std::string>& reservedWords, std::string& fileName);
+		std::string eraseReservedWords (std::string& sentence, std::vector<std::string>& reservedWords);
 		void erasePunctuationSigns (std::string& str);
 		void erasePunctuationSigns (void);
 		void eraseURLs (std::string& str);
@@ -77,9 +78,11 @@ class PreProcesser {
 		void eraseNumbers (std::string& str);
 		void eraseNumbers (void);
 		void eraseAllNumbers (void);
+		void eraseAllNumbers (std::string& str);
 
 		// Read & Write
 		int loadData (std::string& inputFile, std::string dataType);
+		void loadTestData (std::string& inputFile);
 		void printData (void);
 		void storeData(std::string& outputFile, int dataLines);
 

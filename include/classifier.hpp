@@ -58,9 +58,10 @@ class Classifier {
 		void set_Data (std::string newData);
 
 		// Functions
-		void classifyFile (std::string& inputFile, std::string& outputFile);
+		void classifyFile (std::string& inputFile, std::string& stopWords);
 		void classify (std::vector<std::string> sentence);
 		void generateClassProbability (void);
+		std::vector<std::string> preProcess (std::vector<std::string>& stopWords, std::string& sentence);
 
 		// Read & Write
 		void readInputFiles (char* argv[], int& argc);
