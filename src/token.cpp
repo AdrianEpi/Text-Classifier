@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-25 21:00:43
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-05-06 09:03:59
+* @Last Modified time: 2021-05-11 23:39:28
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -43,7 +43,7 @@ Token::Token (void) {
 Token::Token (std::string name) {
 	set_Name(name);
 	set_Ammount(1);
-	set_Probability(0);
+	set_Probability(-9999999999999.99);
 	set_Type("");
 }
 
@@ -81,6 +81,31 @@ float Token::get_Probability (void) const {
 }
 
 /**
+ * @brief      Gets the multi class.
+ *
+ * @param[in]  pos   The position
+ *
+ * @return     The multi class.
+ */
+float Token::get_MultiClass (unsigned pos) const {
+	if (pos < multiClass_.size()) 
+		return multiClass_[pos];
+	else {
+		std::cout << std::endl << "Error, pos must be lower than multiClass_ size." << std::endl;
+		exit(1);
+	}
+}
+
+/**
+ * @brief      Gets the multi class.
+ *
+ * @return     The multi class.
+ */
+std::vector<float> Token::get_MultiClass (void) const {
+	return multiClass_;
+}
+
+/**
  * @brief      Gets the type.
  *
  * @return     The type.
@@ -114,6 +139,15 @@ void Token::set_Ammount (unsigned ammount) {
  */
 void Token::set_Probability (float newProbability) {
 	probability_ = newProbability;
+}
+
+/**
+ * @brief      Sets the multi class.
+ *
+ * @param[in]  newMultiClass  The new multi class
+ */
+void Token::set_MultiClass (std::vector<float> newMultiClass) {
+	multiClass_ = newMultiClass;
 }
 
 /**
@@ -257,6 +291,7 @@ Token& Token::operator= (const Token& otherToken) {
 	this -> set_Ammount(otherToken.get_Ammount());
 	this -> set_Probability(otherToken.get_Probability());
 	this -> set_Type(otherToken.get_Type());
+	this -> set_MultiClass(otherToken.get_MultiClass());
 	return *this;
 }
 
@@ -265,6 +300,20 @@ Token& Token::operator= (const Token& otherToken) {
  */
 void Token::incrementate (void) {
 	ammount_++;
+}
+
+/**
+ * @brief      Adds the class probability and newClass type if aplicable.
+ *
+ * @param[in]  prob      The prob
+ * @param[in]  newClass  The new class
+ */
+void Token::addClassProb (float prob, std::string newClass) {
+	multiClass_.push_back(prob);
+	if (prob > probability_) {
+		probability_ = prob;
+		type_ = newClass;
+	}
 }
 
 /**

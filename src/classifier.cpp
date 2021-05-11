@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-05-06 08:37:08
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-05-10 11:52:47
+* @Last Modified time: 2021-05-11 23:43:24
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -45,7 +45,7 @@ Classifier::Classifier (char* argv[], int& argc) {
 	std::string input = argv[2];
 	std::string stopWords = argv[3];
 	classifyFile(input, stopWords);
-	//std::cout << std::endl << data_ << std::endl;
+	std::cout << std::endl << data_ << std::endl;
 }
 
 /**
@@ -68,8 +68,8 @@ std::vector<std::string> Classifier::get_InputFiles (void) const {
  *
  * @return     The learned data.
  */
-std::vector<Vocabulary> Classifier::get_LearnedData (void) const {
-	return learnedData_;
+std::vector<Vocabulary> Classifier::get_Class (void) const {
+	return class_;
 }
 
 /**
@@ -93,10 +93,10 @@ void Classifier::set_InputFiles (std::vector<std::string> newInputFiles) {
 /**
  * @brief      Sets the learned data.
  *
- * @param[in]  newLearnedData  The new learned data
+ * @param[in]  newClass  The new learned data
  */
-void Classifier::set_LearnedData (std::vector<Vocabulary> newLearnedData) {
-	learnedData_ = newLearnedData;
+void Classifier::set_Class (std::vector<Vocabulary> newClass) {
+	class_ = newClass;
 }
 
 /**
@@ -109,43 +109,35 @@ void Classifier::set_Data (std::string newData) {
 }
 
 void Classifier::classifyFile (std::string& inputFile, std::string& stopWordsFile) {
+
 	Vocabulary voc;
 	std::vector<std::string> stopWord;
 	stopWord = voc.loadStopWord(stopWordsFile);
 	std::string tmp;
-	preProcess(stopWord, tmp);
+	std::vector<std::vector<std::string>> data = preProcess(stopWord, inputFile);
+
 	std::string helper = "../outputs/preProcesserHelper.txt";
 	std::ifstream file(helper, std::ios::in);
 	if (file.fail()) {
-		std::cout << std::endl << "Error 404, corpus_test file not found." << std::endl;
+		std::cout << std::endl << "Error 404, preProcesserHelper.txt file not found in /outputs." << std::endl;
 		exit(1);
 	}
-	
-	//preProcess(stopWord, tmp);
-/*
 	while (!file.eof()) {
-		tmp = "";
-		std::getline(file, tmp);
-		std::cout << tmp;
 		std::vector<std::string> sentence; 
-		std::string word = "";
-		bool isWord = false;
-		for (unsigned i = 0; i < tmp.length(); i++) {
-			if (tmp[i] != ' ') {
-				isWord = true;
-				word += tmp[i];
+		std::string tmp = "";
+		while (!file.eof()) {
+			file >> tmp;
+			if (tmp == "preprocesserendl") {
+				break;
 			}
-			else if (isWord) {
-				isWord = false;
-				sentence.push_back(word);
-				word = "";
-			}
+			sentence.push_back(tmp);
 		}
-		break;
-		std::cout << sentence.size() << std::endl;
-		//classify(sentence);
-	}*/
+		classify(sentence);
+	}
 	file.close();
+
+
+	
 }
 
 /**
@@ -155,32 +147,30 @@ void Classifier::classifyFile (std::string& inputFile, std::string& stopWordsFil
  */
 void Classifier::classify (std::vector<std::string> sentence) {
 	std::vector<float> prob;
-	prob.resize(learnedData_.size());
-	//data += ""
+	prob.resize(inputFiles_.size());
 	for (unsigned i = 0; i < prob.size(); i++) {
 		prob[i] = 0.0;
 	}
 	std::set<Token>::iterator it;
 	for (unsigned i = 0; i < sentence.size(); i++) {
-		data_ += sentence[i] + " ";
-		for (unsigned j = 0; j < learnedData_.size(); j++) {
-			it = learnedData_[j].get_Vocabulary().find(sentence[i]);
-			prob[j] += it -> get_Probability();
+		it = learnedData_.find(sentence[i]);
+		for (unsigned j = 0; j < prob.size(); j++) {
+			prob[j] += it -> get_MultiClass(j);
 		}
 	}
+
 	data_ += ", ";
 	unsigned selection = 0;
 	for (unsigned i = 0; i < prob.size(); i++) {
-		prob[i] += learnedData_[i].get_ClassProbability();
+		prob[i] += class_[i].get_ClassProbability();
 		if (prob[selection] < prob[i]) {
 			selection = i;
 		}
 		data_ += std::to_string(prob[i]);
 		data_ += ", ";
 	}
-	data_ += learnedData_[selection].get_Type();
+	data_ += class_[selection].get_Type();
 	data_ += ".\n";
-	std::cout << data_;
 }
 
 /**
@@ -189,11 +179,11 @@ void Classifier::classify (std::vector<std::string> sentence) {
  */
 void Classifier::generateClassProbability (void) {
 	int totalLines = 0;
-	for (unsigned i = 0; i < learnedData_.size(); i++) {
-		totalLines += learnedData_[i].get_NLines();
+	for (unsigned i = 0; i < class_.size(); i++) {
+		totalLines += class_[i].get_NLines();
 	}
-	for (unsigned i = 0; i < learnedData_.size(); i++) {
-		learnedData_[i].addClassProbability(totalLines);
+	for (unsigned i = 0; i < class_.size(); i++) {
+		class_[i].addClassProbability(totalLines);
 	}
 }
 
@@ -207,49 +197,89 @@ void Classifier::generateClassProbability (void) {
  *
  * @return     A vector with each word of the sentence per vector's place
  */
-std::vector<std::string> Classifier::preProcess (std::vector<std::string>& stopWords, std::string& sentence) {
-	/*preprocesser.convertLowerCase(sentence);
-	preprocesser.erasePunctuationSigns(sentence);
-	preprocesser.eraseAllNumbers(sentence);
-	sentence = preprocesser.eraseReservedWords(sentence, stopWords);
-	std::vector<std::string> preProcessedSentence;
-	std::string tmp = "";
-	bool isWord = false;
-	for (unsigned i = 0; i < sentence.length(); i++) {
-		if (sentence[i] != ' ') {
-			isWord = true;
-			tmp += sentence[i];
-		}
-		else if (isWord) {
-			isWord = false;
-			preProcessedSentence.push_back(tmp);
-			tmp = "";
-		}
-	}
-	return preProcessedSentence;*/
-	std::string bb = "../inputs/corpus_test2.csv";
+std::vector<std::vector<std::string>> Classifier::preProcess (std::vector<std::string>& stopWords, std::string& fileName) {
 	PreProcesser preprocesser;
-	std::string cc = "../inputs/aaa.txt";
-	preprocesser.loadTestData(bb);
+	std::string helper = "../outputs/preProcesserHelper.txt";
+	preprocesser.loadTestData(fileName);
 	preprocesser.convertLowerCase();
 	preprocesser.erasePunctuationSigns();
 	preprocesser.eraseAllNumbers();
-	preprocesser.storeData(cc, 0);
-	//sentence = preprocesser.eraseReservedWords(cc, stopWords);
+	preprocesser.storeData(helper, 0);
+	preprocesser.eraseReservedWords(stopWords, helper);
+	std::vector<std::vector<std::string>> preProcessedSentence;
+	/*std::ifstream file(helper, std::ios::in);
+	if (file.fail()) {
+		std::cout << std::endl << "Error 404, preProcesserHelper.txt file not found in /outputs." << std::endl;
+		exit(1);
+	}
+	while (!file.eof()) {
+		std::vector<std::string> sentence; 
+		std::string tmp = "";
+
+		while (!file.eof() && tmp != "preprocesserendl") {
+			file >> tmp;
+			sentence.push_back(tmp);
+		}
+		preProcessedSentence.push_back(sentence);
+	}
+	file.close();*/
+	return preProcessedSentence;
 }
 
 /**
- * @brief      Reads input learned files and store the tokens into the learnedData vector.
+ * @brief      Reads input learned files and store the tokens into the Class vector.
  *
  * @param      argv  The arguments array
  * @param      argc  The count of arguments
  */
 void Classifier::readInputFiles (char* argv[], int& argc) {
-	for (int i = 4; i < argc; i++) {
-		std::string tmp = argv[i];
-		Vocabulary newVocabulary;
-		newVocabulary.readLearnedData(tmp);
-		learnedData_.push_back(newVocabulary);
+	std::vector<Token> v_;
+	for (int k = 4; k < argc; k++) {
+		std::string fileName = argv[k];
+		inputFiles_.push_back(fileName);
+		std::string type = "";
+		type += fileName[fileName.length() - 5];
+		std::ifstream file(fileName, std::ios::in);
+		if (file.fail()) {
+			std::cout << std::endl << "Error 404," << fileName << " file not found." << std::endl;
+			exit(1);
+		}
+		else if (k == 4) {
+			std::string reader = "";
+			file >> reader >> reader >> reader >> reader >> reader >> reader;
+			Vocabulary newVoc;
+			newVoc.set_NLines(std::stoi(reader));
+			newVoc.set_Type(type);
+			class_.push_back(newVoc);
+			std::getline(file, reader);
+			while (!file.eof()) {
+				file >> reader >> reader;
+				Token newToken(reader);
+				file >> reader >> reader >> reader >> reader;
+				newToken.addClassProb(std::stof(reader), type);
+				newToken.set_Type(type);
+				v_.push_back(newToken);
+			}
+		}
+		else {
+			int i = 0;
+			std::string reader = "";
+			file >> reader >> reader >> reader >> reader >> reader >> reader;
+			Vocabulary newVoc;
+			newVoc.set_NLines(std::stoi(reader));
+			newVoc.set_Type(type);
+			class_.push_back(newVoc);
+			std::getline(file, reader);
+			while (!file.eof()) {
+				file >> reader >> reader >> reader >> reader >> reader >> reader;
+				v_[i].addClassProb(std::stof(reader), type);
+				i++;
+			}
+		}
+		file.close();
+	}
+	for (unsigned i = 0; i < v_.size(); i++) {
+		learnedData_.insert(v_[i]);
 	}
 }
 

@@ -39,8 +39,9 @@ class Classifier {
 	private:
 		// Attributes
 		std::vector<std::string> inputFiles_;
-		std::vector<Vocabulary> learnedData_;
+		std::vector<Vocabulary> class_;
 		std::string data_;
+		std::set<Token> learnedData_;
 
 	public:
 		// Builders & Destroyer
@@ -50,18 +51,18 @@ class Classifier {
 
 		// Getters & Setters
 		std::vector<std::string> get_InputFiles (void) const;
-		std::vector<Vocabulary> get_LearnedData (void) const;
+		std::vector<Vocabulary> get_Class (void) const;
 		std::string get_Data (void) const;
 
 		void set_InputFiles (std::vector<std::string> newInputFiles);
-		void set_LearnedData (std::vector<Vocabulary> newLearnedData);
+		void set_Class (std::vector<Vocabulary> newClass);
 		void set_Data (std::string newData);
 
 		// Functions
 		void classifyFile (std::string& inputFile, std::string& stopWords);
 		void classify (std::vector<std::string> sentence);
 		void generateClassProbability (void);
-		std::vector<std::string> preProcess (std::vector<std::string>& stopWords, std::string& sentence);
+		std::vector<std::vector<std::string>> preProcess (std::vector<std::string>& stopWords, std::string& sentence);
 
 		// Read & Write
 		void readInputFiles (char* argv[], int& argc);

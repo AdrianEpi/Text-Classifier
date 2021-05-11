@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:37:30
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-05-09 17:34:28
+* @Last Modified time: 2021-05-11 23:02:37
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -395,15 +395,12 @@ void Vocabulary::readLearnedData (std::string& inputFile) {
 	set_NLines(std::stoi(tmp));
 	std::getline(file, word);
 	while (!file.eof()) {
-		file >> word;
-		file >> word;
+		file >> word >> word;
 		Token newToken(word);
 		newToken.set_Type(type);
-		file >> word;
-		file >> word;
+		file >> word >> word;
 		newToken.set_Ammount(std::stoi(word));
-		file >> word;
-		file >> word;
+		file >> word >> word;
 		newToken.set_Probability(std::stof(word));
 		vocabulary_.insert(newToken);
 		nTokens_++;

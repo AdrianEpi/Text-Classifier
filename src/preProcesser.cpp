@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:04:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-05-10 11:41:41
+* @Last Modified time: 2021-05-11 20:47:18
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -201,7 +201,7 @@ std::string PreProcesser::eraseReservedWords (std::string& sentence, std::vector
 	std::string result = "";
 	std::string tmp = "";
 	for (unsigned j = 0; j < sentence.length(); j++) {
-		if (sentence[j] != ' ') {
+		if (sentence[j] != ' ' && sentence[j] != '\t') {
 			tmp += sentence[j];
 		}
 		else {
@@ -385,6 +385,7 @@ void PreProcesser::eraseAllNumbers (std::string& str) {
  * @return     Data lines included.
  */
 int PreProcesser::loadData (std::string& inputFile, std::string dataType) {
+	
 	data_ = "";
 	int dataLines = 0;
 	std::ifstream file(inputFile, std::ios::in);
@@ -425,6 +426,7 @@ int PreProcesser::loadData (std::string& inputFile, std::string dataType) {
 
 void PreProcesser::loadTestData (std::string& inputFile) {
 	data_ = "";
+	const std::string ENDL = " PREPROCESSERENDL ";
 	std::ifstream file(inputFile, std::ios::in);
 	if (file.fail()) {
 		std::cout << std::endl << "Error 404, file not found in loadTestData function." << std::endl;
@@ -433,7 +435,7 @@ void PreProcesser::loadTestData (std::string& inputFile) {
 	std::string aux = "";
 	while (!file.eof()) {
 		std::getline(file, aux);
-		data_ += aux;	
+		data_ += aux + ENDL;	
 	}
 	file.close();
 }

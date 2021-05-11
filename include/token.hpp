@@ -23,6 +23,7 @@
 #include <cstring>
 #include <iostream>
 #include <cmath>
+#include <vector>
 
 /*------------------------------------------------*/
 
@@ -33,10 +34,11 @@ class Token {
 
 	private:
 		// Attributes
-		std::string name_;	// The token name
-		unsigned ammount_;	// The ammount of times that the token apears in corpus
-		float probability_;	// The probability of the token in corpus
-		std::string type_; 	// The type of the token into specified classes
+		std::string name_;				// The token name
+		unsigned ammount_;				// The ammount of times that the token apears in corpus
+		float probability_;				// The probability of the token in corpus
+		std::vector<float> multiClass_;	// The probability vector for classifier use
+		std::string type_; 				// The type of the token into specified classes
 
 	public:
 		// Builders & Destroyer
@@ -48,11 +50,14 @@ class Token {
 		std::string get_Name(void) const;
 		unsigned get_Ammount (void) const;
 		float get_Probability (void) const;
+		float get_MultiClass (unsigned pos) const;
+		std::vector<float> get_MultiClass (void) const;
 		std::string get_Type (void) const;
 
 		void set_Name (std::string name);
 		void set_Ammount (unsigned ammount);
 		void set_Probability (float newProbability);
+		void set_MultiClass (std::vector<float> newMultiClass);
 		void set_Type (std::string newType);
 
 		// Operators overload
@@ -71,6 +76,7 @@ class Token {
 
 		// Function
 		void incrementate (void);
+		void addClassProb (float prob, std::string newClass);
 		float generateLogProb (const unsigned& vocSize, const unsigned& tokenAmmount);
 
 		// Write
