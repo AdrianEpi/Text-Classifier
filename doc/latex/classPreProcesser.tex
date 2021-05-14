@@ -1,0 +1,795 @@
+\hypertarget{classPreProcesser}{}\doxysection{Pre\+Processer Class Reference}
+\label{classPreProcesser}\index{PreProcesser@{PreProcesser}}
+
+
+This class describes a pre processer, it makes possible to preprocess data files before using them.  
+
+
+
+
+{\ttfamily \#include $<$pre\+Processer.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPreProcesser_affd235221f4c938579a7d1c44a65ea3c}\label{classPreProcesser_affd235221f4c938579a7d1c44a65ea3c}} 
+\mbox{\hyperlink{classPreProcesser_affd235221f4c938579a7d1c44a65ea3c}{Pre\+Processer}} (void)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPreProcesser_af0c0a4017d3452b73eb54054f8345385}{Pre\+Processer}} (std\+::string input\+File, std\+::string outpu\+File)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPreProcesser_afb1c66b580fc1c12bb3f1e9ee19c3cbb}\label{classPreProcesser_afb1c66b580fc1c12bb3f1e9ee19c3cbb}} 
+\mbox{\hyperlink{classPreProcesser_afb1c66b580fc1c12bb3f1e9ee19c3cbb}{$\sim$\+Pre\+Processer}} (void)
+\begin{DoxyCompactList}\small\item\em Destroys the object. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classPreProcesser_a152200a85c58a7f4665025bb74037094}{get\+\_\+\+Input\+File}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the input file. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classPreProcesser_ab4cfcbb76cf4dcdc869a5890090fcd28}{get\+\_\+\+Output\+File}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the output file. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classPreProcesser_a0000acc751ba0cf8c18b0601cfe90a2a}{get\+\_\+\+Data}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPreProcesser_a8fa9d7e83f78062a996986fbf627d73c}{set\+\_\+\+Input\+File}} (std\+::string new\+Input\+File)
+\begin{DoxyCompactList}\small\item\em Sets the input file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPreProcesser_adfa0e800eaa681cf7b0a54cefaf09b7d}{set\+\_\+\+Output\+File}} (std\+::string new\+Output\+File)
+\begin{DoxyCompactList}\small\item\em Sets the output file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPreProcesser_aab4ed2269e8db2a127283af2c3e399d8}{set\+\_\+\+Data}} (std\+::string new\+Data)
+\begin{DoxyCompactList}\small\item\em Sets the data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPreProcesser}{Pre\+Processer}} \& \mbox{\hyperlink{classPreProcesser_a43c799c675f48111740fcf137e5482c8}{operator=}} (const \mbox{\hyperlink{classPreProcesser}{Pre\+Processer}} \&new\+Pre\+Processer)
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPreProcesser_a5193f128cbc7974958297cf1d82140c2}{convert\+Lower\+Case}} (std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Converts all the str into Lower Case. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPreProcesser_ad3bcdfd621c5cbb875a7575f024a35b1}\label{classPreProcesser_ad3bcdfd621c5cbb875a7575f024a35b1}} 
+void \mbox{\hyperlink{classPreProcesser_ad3bcdfd621c5cbb875a7575f024a35b1}{convert\+Lower\+Case}} (void)
+\begin{DoxyCompactList}\small\item\em Converts all the data into Lower Case. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPreProcesser_a570848c519a556d830892459ebc27c7b}{convert\+Upper\+Case}} (std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Converts all the str into Upper Case. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPreProcesser_a8b496ea5b0bf7f5433bc856cbfa2901c}\label{classPreProcesser_a8b496ea5b0bf7f5433bc856cbfa2901c}} 
+void \mbox{\hyperlink{classPreProcesser_a8b496ea5b0bf7f5433bc856cbfa2901c}{convert\+Upper\+Case}} (void)
+\begin{DoxyCompactList}\small\item\em Converts all the data into Upper Case. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPreProcesser_ab6716be9784a6ce18a1991fc81451f25}{erase\+Reserved\+Words}} (std\+::vector$<$ std\+::string $>$ \&reserved\+Words, std\+::string \&file\+Name)
+\begin{DoxyCompactList}\small\item\em Deletes all the words from the vector in the given file and stores them into the same file. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classPreProcesser_a13e6908a4ddd54d628d206e5be5fa677}{erase\+Reserved\+Words}} (std\+::string \&sentence, std\+::vector$<$ std\+::string $>$ \&reserved\+Words)
+\begin{DoxyCompactList}\small\item\em Deletes all the words from the vector in the given string and returns it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPreProcesser_a200795e9f431f3d1114dbb717581b261}{erase\+Punctuation\+Signs}} (std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Erases all punctuation sings into readed data. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPreProcesser_a0d5cff63b2b0c93c5f25dd8073384e75}\label{classPreProcesser_a0d5cff63b2b0c93c5f25dd8073384e75}} 
+void \mbox{\hyperlink{classPreProcesser_a0d5cff63b2b0c93c5f25dd8073384e75}{erase\+Punctuation\+Signs}} (void)
+\begin{DoxyCompactList}\small\item\em Erases all punctuation sings into readed data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPreProcesser_af75cde233a31ed63c6da621f8d28b43d}{erase\+U\+R\+Ls}} (std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Erases all U\+R\+Ls into data var, an U\+RL is defined as a \textquotesingle{}.\textquotesingle{} between letters without spaces. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPreProcesser_a443666991adf690a6d010cd39aa8f296}\label{classPreProcesser_a443666991adf690a6d010cd39aa8f296}} 
+void \mbox{\hyperlink{classPreProcesser_a443666991adf690a6d010cd39aa8f296}{erase\+U\+R\+Ls}} (void)
+\begin{DoxyCompactList}\small\item\em Erases all U\+R\+Ls into data var, an U\+RL is defined as a \textquotesingle{}.\textquotesingle{} between letters without spaces. (Careful with float numbers) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPreProcesser_a1b81da234825120af9ec3b2b10f88f52}{erase\+Hashtags}} (std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Erases all Hashtags into data var. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPreProcesser_ac9eace0095b7b16dea4c398ccad52a2d}{erase\+Hashtags}} (void)
+\begin{DoxyCompactList}\small\item\em Erases all Hashtags into data var. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPreProcesser_a9c98e2694564730e740d5f32ec36649b}{erase\+Numbers}} (std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Erases all numbers and characters form a readen number till next space. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPreProcesser_a91c23f6470f381887c4496f274662e54}\label{classPreProcesser_a91c23f6470f381887c4496f274662e54}} 
+void \mbox{\hyperlink{classPreProcesser_a91c23f6470f381887c4496f274662e54}{erase\+Numbers}} (void)
+\begin{DoxyCompactList}\small\item\em Erases all numbers and characters form a readen number till next space. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPreProcesser_af4137215119c956ce31772a7421383b8}\label{classPreProcesser_af4137215119c956ce31772a7421383b8}} 
+void \mbox{\hyperlink{classPreProcesser_af4137215119c956ce31772a7421383b8}{erase\+All\+Numbers}} (void)
+\begin{DoxyCompactList}\small\item\em Erases all words that contains numbers and all numbers in data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPreProcesser_a84c15cd5254bd2cfaba16ab464417efe}{erase\+All\+Numbers}} (std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Erases all words that contains numbers and all numbers in given string. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classPreProcesser_a1da0d9c75fbc8d5fb78e22fbba828812}{load\+Data}} (std\+::string \&input\+File, std\+::string data\+Type)
+\begin{DoxyCompactList}\small\item\em Loads the data that starts with the data\+Tpe from input file into data var. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPreProcesser_a57ded9409c77757f223dced5f9b54af1}{load\+Test\+Data}} (std\+::string \&input\+File)
+\begin{DoxyCompactList}\small\item\em Loads the test data. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPreProcesser_a5b5ae655eb14b5b5e4bc8a3220e3b133}\label{classPreProcesser_a5b5ae655eb14b5b5e4bc8a3220e3b133}} 
+void \mbox{\hyperlink{classPreProcesser_a5b5ae655eb14b5b5e4bc8a3220e3b133}{print\+Data}} (void)
+\begin{DoxyCompactList}\small\item\em Prints data var. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPreProcesser_a8c02216b43b1e324166ae149a54d94ff}{store\+Data}} (std\+::string \&output\+File, int data\+Lines)
+\begin{DoxyCompactList}\small\item\em Stores the data into the given file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPreProcesser_a7b931a2c3fe1e2b654f4242bbb76386d}\label{classPreProcesser_a7b931a2c3fe1e2b654f4242bbb76386d}} 
+std\+::string {\bfseries input\+File\+\_\+}
+\item 
+\mbox{\Hypertarget{classPreProcesser_a39cc29f90ae636ce9812980ceedfd4c7}\label{classPreProcesser_a39cc29f90ae636ce9812980ceedfd4c7}} 
+std\+::string {\bfseries output\+File\+\_\+}
+\item 
+\mbox{\Hypertarget{classPreProcesser_ac7c5a3c6d345a45012f3b304ad5c273f}\label{classPreProcesser_ac7c5a3c6d345a45012f3b304ad5c273f}} 
+std\+::string {\bfseries data\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class describes a pre processer, it makes possible to preprocess data files before using them. 
+
+Definition at line 39 of file pre\+Processer.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPreProcesser_af0c0a4017d3452b73eb54054f8345385}\label{classPreProcesser_af0c0a4017d3452b73eb54054f8345385}} 
+\index{PreProcesser@{PreProcesser}!PreProcesser@{PreProcesser}}
+\index{PreProcesser@{PreProcesser}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{PreProcesser()}{PreProcesser()}}
+{\footnotesize\ttfamily Pre\+Processer\+::\+Pre\+Processer (\begin{DoxyParamCaption}\item[{std\+::string}]{input\+File,  }\item[{std\+::string}]{outpu\+File }\end{DoxyParamCaption})}
+
+
+
+Constructs a new instance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em input\+File} & The input file \\
+\hline
+\mbox{\texttt{ in}}  & {\em outpu\+File} & The outpu file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 43 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{43                                                                     \{}
+\DoxyCodeLine{44     \mbox{\hyperlink{classPreProcesser_a8fa9d7e83f78062a996986fbf627d73c}{set\_InputFile}}(inputFile);}
+\DoxyCodeLine{45     \mbox{\hyperlink{classPreProcesser_adfa0e800eaa681cf7b0a54cefaf09b7d}{set\_OutputFile}}(outpuFile);}
+\DoxyCodeLine{46     \mbox{\hyperlink{classPreProcesser_aab4ed2269e8db2a127283af2c3e399d8}{set\_Data}}(\textcolor{stringliteral}{""});}
+\DoxyCodeLine{47 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPreProcesser_a5193f128cbc7974958297cf1d82140c2}\label{classPreProcesser_a5193f128cbc7974958297cf1d82140c2}} 
+\index{PreProcesser@{PreProcesser}!convertLowerCase@{convertLowerCase}}
+\index{convertLowerCase@{convertLowerCase}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{convertLowerCase()}{convertLowerCase()}}
+{\footnotesize\ttfamily void Pre\+Processer\+::convert\+Lower\+Case (\begin{DoxyParamCaption}\item[{std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Converts all the str into Lower Case. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 128 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{128                                                    \{}
+\DoxyCodeLine{129     \mbox{\hyperlink{classPreProcesser_aab4ed2269e8db2a127283af2c3e399d8}{set\_Data}}(str);}
+\DoxyCodeLine{130     \mbox{\hyperlink{classPreProcesser_ad3bcdfd621c5cbb875a7575f024a35b1}{convertLowerCase}}();}
+\DoxyCodeLine{131     str = \mbox{\hyperlink{classPreProcesser_a0000acc751ba0cf8c18b0601cfe90a2a}{get\_Data}}();}
+\DoxyCodeLine{132 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPreProcesser_a570848c519a556d830892459ebc27c7b}\label{classPreProcesser_a570848c519a556d830892459ebc27c7b}} 
+\index{PreProcesser@{PreProcesser}!convertUpperCase@{convertUpperCase}}
+\index{convertUpperCase@{convertUpperCase}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{convertUpperCase()}{convertUpperCase()}}
+{\footnotesize\ttfamily void Pre\+Processer\+::convert\+Upper\+Case (\begin{DoxyParamCaption}\item[{std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Converts all the str into Upper Case. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 146 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{146                                                    \{}
+\DoxyCodeLine{147     \mbox{\hyperlink{classPreProcesser_aab4ed2269e8db2a127283af2c3e399d8}{set\_Data}}(str);}
+\DoxyCodeLine{148     \mbox{\hyperlink{classPreProcesser_a8b496ea5b0bf7f5433bc856cbfa2901c}{convertUpperCase}}();}
+\DoxyCodeLine{149     str = \mbox{\hyperlink{classPreProcesser_a0000acc751ba0cf8c18b0601cfe90a2a}{get\_Data}}();}
+\DoxyCodeLine{150 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPreProcesser_a84c15cd5254bd2cfaba16ab464417efe}\label{classPreProcesser_a84c15cd5254bd2cfaba16ab464417efe}} 
+\index{PreProcesser@{PreProcesser}!eraseAllNumbers@{eraseAllNumbers}}
+\index{eraseAllNumbers@{eraseAllNumbers}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{eraseAllNumbers()}{eraseAllNumbers()}}
+{\footnotesize\ttfamily void Pre\+Processer\+::erase\+All\+Numbers (\begin{DoxyParamCaption}\item[{std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Erases all words that contains numbers and all numbers in given string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 373 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{373                                                   \{}
+\DoxyCodeLine{374     \mbox{\hyperlink{classPreProcesser_aab4ed2269e8db2a127283af2c3e399d8}{set\_Data}}(str);}
+\DoxyCodeLine{375     \mbox{\hyperlink{classPreProcesser_af4137215119c956ce31772a7421383b8}{eraseAllNumbers}}();}
+\DoxyCodeLine{376     str = \mbox{\hyperlink{classPreProcesser_a0000acc751ba0cf8c18b0601cfe90a2a}{get\_Data}}();}
+\DoxyCodeLine{377 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPreProcesser_a1b81da234825120af9ec3b2b10f88f52}\label{classPreProcesser_a1b81da234825120af9ec3b2b10f88f52}} 
+\index{PreProcesser@{PreProcesser}!eraseHashtags@{eraseHashtags}}
+\index{eraseHashtags@{eraseHashtags}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{eraseHashtags()}{eraseHashtags()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Pre\+Processer\+::erase\+Hashtags (\begin{DoxyParamCaption}\item[{std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Erases all Hashtags into data var. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 283 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{283                                                 \{}
+\DoxyCodeLine{284     \mbox{\hyperlink{classPreProcesser_aab4ed2269e8db2a127283af2c3e399d8}{set\_Data}}(str);}
+\DoxyCodeLine{285     \mbox{\hyperlink{classPreProcesser_ac9eace0095b7b16dea4c398ccad52a2d}{eraseHashtags}}();}
+\DoxyCodeLine{286     str = \mbox{\hyperlink{classPreProcesser_a0000acc751ba0cf8c18b0601cfe90a2a}{get\_Data}}();}
+\DoxyCodeLine{287 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPreProcesser_ac9eace0095b7b16dea4c398ccad52a2d}\label{classPreProcesser_ac9eace0095b7b16dea4c398ccad52a2d}} 
+\index{PreProcesser@{PreProcesser}!eraseHashtags@{eraseHashtags}}
+\index{eraseHashtags@{eraseHashtags}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{eraseHashtags()}{eraseHashtags()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Pre\+Processer\+::erase\+Hashtags (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Erases all Hashtags into data var. 
+
+
+
+Definition at line 293 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{293                                       \{}
+\DoxyCodeLine{294     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i = 0; i < data\_.length(); i++) \{}
+\DoxyCodeLine{295         \textcolor{keywordflow}{if} (data\_[i] == \textcolor{charliteral}{'\#'}) \{}
+\DoxyCodeLine{296             data\_[i] = \textcolor{charliteral}{' '};}
+\DoxyCodeLine{297             \textcolor{keywordflow}{while} (data\_[i] != \textcolor{charliteral}{' '}) \{}
+\DoxyCodeLine{298                 data\_[i] = \textcolor{charliteral}{' '};}
+\DoxyCodeLine{299                 i++;}
+\DoxyCodeLine{300             \}}
+\DoxyCodeLine{301         \}}
+\DoxyCodeLine{302     \}}
+\DoxyCodeLine{303 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPreProcesser_a9c98e2694564730e740d5f32ec36649b}\label{classPreProcesser_a9c98e2694564730e740d5f32ec36649b}} 
+\index{PreProcesser@{PreProcesser}!eraseNumbers@{eraseNumbers}}
+\index{eraseNumbers@{eraseNumbers}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{eraseNumbers()}{eraseNumbers()}}
+{\footnotesize\ttfamily void Pre\+Processer\+::erase\+Numbers (\begin{DoxyParamCaption}\item[{std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Erases all numbers and characters form a readen number till next space. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 311 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{311                                                \{}
+\DoxyCodeLine{312     \mbox{\hyperlink{classPreProcesser_aab4ed2269e8db2a127283af2c3e399d8}{set\_Data}}(str);}
+\DoxyCodeLine{313     \mbox{\hyperlink{classPreProcesser_a91c23f6470f381887c4496f274662e54}{eraseNumbers}}();}
+\DoxyCodeLine{314     str = \mbox{\hyperlink{classPreProcesser_a0000acc751ba0cf8c18b0601cfe90a2a}{get\_Data}}();}
+\DoxyCodeLine{315 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPreProcesser_a200795e9f431f3d1114dbb717581b261}\label{classPreProcesser_a200795e9f431f3d1114dbb717581b261}} 
+\index{PreProcesser@{PreProcesser}!erasePunctuationSigns@{erasePunctuationSigns}}
+\index{erasePunctuationSigns@{erasePunctuationSigns}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{erasePunctuationSigns()}{erasePunctuationSigns()}}
+{\footnotesize\ttfamily void Pre\+Processer\+::erase\+Punctuation\+Signs (\begin{DoxyParamCaption}\item[{std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Erases all punctuation sings into readed data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 229 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{229                                                         \{}
+\DoxyCodeLine{230     \mbox{\hyperlink{classPreProcesser_aab4ed2269e8db2a127283af2c3e399d8}{set\_Data}}(str);}
+\DoxyCodeLine{231     \mbox{\hyperlink{classPreProcesser_a0d5cff63b2b0c93c5f25dd8073384e75}{erasePunctuationSigns}}();}
+\DoxyCodeLine{232     str = \mbox{\hyperlink{classPreProcesser_a0000acc751ba0cf8c18b0601cfe90a2a}{get\_Data}}();}
+\DoxyCodeLine{233 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPreProcesser_a13e6908a4ddd54d628d206e5be5fa677}\label{classPreProcesser_a13e6908a4ddd54d628d206e5be5fa677}} 
+\index{PreProcesser@{PreProcesser}!eraseReservedWords@{eraseReservedWords}}
+\index{eraseReservedWords@{eraseReservedWords}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{eraseReservedWords()}{eraseReservedWords()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string Pre\+Processer\+::erase\+Reserved\+Words (\begin{DoxyParamCaption}\item[{std\+::string \&}]{sentence,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{reserved\+Words }\end{DoxyParamCaption})}
+
+
+
+Deletes all the words from the vector in the given string and returns it. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em reserved\+Words} & The reserved words vector \\
+\hline
+\mbox{\texttt{ in}}  & {\em sentence} & The sentence\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The string without the reserved words. 
+\end{DoxyReturn}
+
+
+Definition at line 200 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{200                                                                                                     \{}
+\DoxyCodeLine{201     std::string result = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{202     std::string tmp = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{203     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} j = 0; j < sentence.length(); j++) \{}
+\DoxyCodeLine{204         \textcolor{keywordflow}{if} (sentence[j] != \textcolor{charliteral}{' '} \&\& sentence[j] != \textcolor{charliteral}{'\(\backslash\)t'}) \{}
+\DoxyCodeLine{205             tmp += sentence[j];}
+\DoxyCodeLine{206         \}}
+\DoxyCodeLine{207         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{208             \textcolor{keywordtype}{bool} push = \textcolor{keyword}{true};}
+\DoxyCodeLine{209             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i = 0; i < reservedWords.size(); i++) \{}
+\DoxyCodeLine{210                 \textcolor{keywordflow}{if} (tmp == reservedWords[i]) \{}
+\DoxyCodeLine{211                     push = \textcolor{keyword}{false};}
+\DoxyCodeLine{212                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{213                 \}}
+\DoxyCodeLine{214             \}}
+\DoxyCodeLine{215             \textcolor{keywordflow}{if} (push) \{}
+\DoxyCodeLine{216                 result += tmp + \textcolor{stringliteral}{" "};}
+\DoxyCodeLine{217             \}}
+\DoxyCodeLine{218             tmp = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{219         \}}
+\DoxyCodeLine{220     \}}
+\DoxyCodeLine{221     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{222 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPreProcesser_ab6716be9784a6ce18a1991fc81451f25}\label{classPreProcesser_ab6716be9784a6ce18a1991fc81451f25}} 
+\index{PreProcesser@{PreProcesser}!eraseReservedWords@{eraseReservedWords}}
+\index{eraseReservedWords@{eraseReservedWords}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{eraseReservedWords()}{eraseReservedWords()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Pre\+Processer\+::erase\+Reserved\+Words (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$ \&}]{reserved\+Words,  }\item[{std\+::string \&}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+Deletes all the words from the vector in the given file and stores them into the same file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em reserved\+Words} & The reserved words vector \\
+\hline
+\mbox{\texttt{ in}}  & {\em file\+Name} & The file name \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 166 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{166                                                                                                \{}
+\DoxyCodeLine{167     std::ifstream file(fileName, std::ios::in);}
+\DoxyCodeLine{168     data\_ = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{169     \textcolor{keywordflow}{if} (file.fail()) \{}
+\DoxyCodeLine{170         std::cout << std::endl << \textcolor{stringliteral}{"Error 404, file not found in eraseReservedWords function."} << std::endl;}
+\DoxyCodeLine{171         exit(1);}
+\DoxyCodeLine{172     \}}
+\DoxyCodeLine{173     std::string aux = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{174     \textcolor{keywordflow}{while} (!file.eof()) \{}
+\DoxyCodeLine{175         file >> aux;}
+\DoxyCodeLine{176         \textcolor{keywordtype}{bool} push = \textcolor{keyword}{true};}
+\DoxyCodeLine{177         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i = 0; i < reservedWords.size(); i++) \{}
+\DoxyCodeLine{178             \textcolor{keywordflow}{if} (aux == reservedWords[i]) \{}
+\DoxyCodeLine{179                 push = \textcolor{keyword}{false};}
+\DoxyCodeLine{180                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{181             \}}
+\DoxyCodeLine{182         \}}
+\DoxyCodeLine{183         \textcolor{keywordflow}{if} (push) \{}
+\DoxyCodeLine{184             data\_ += \textcolor{charliteral}{' '} + aux;}
+\DoxyCodeLine{185         \}}
+\DoxyCodeLine{186     \}}
+\DoxyCodeLine{187     file.close();}
+\DoxyCodeLine{188     \mbox{\hyperlink{classPreProcesser_a8c02216b43b1e324166ae149a54d94ff}{storeData}}(fileName, 0);}
+\DoxyCodeLine{189 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPreProcesser_af75cde233a31ed63c6da621f8d28b43d}\label{classPreProcesser_af75cde233a31ed63c6da621f8d28b43d}} 
+\index{PreProcesser@{PreProcesser}!eraseURLs@{eraseURLs}}
+\index{eraseURLs@{eraseURLs}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{eraseURLs()}{eraseURLs()}}
+{\footnotesize\ttfamily void Pre\+Processer\+::erase\+U\+R\+Ls (\begin{DoxyParamCaption}\item[{std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Erases all U\+R\+Ls into data var, an U\+RL is defined as a \textquotesingle{}.\textquotesingle{} between letters without spaces. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 252 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{252                                             \{}
+\DoxyCodeLine{253     \mbox{\hyperlink{classPreProcesser_aab4ed2269e8db2a127283af2c3e399d8}{set\_Data}}(str);}
+\DoxyCodeLine{254     \mbox{\hyperlink{classPreProcesser_a443666991adf690a6d010cd39aa8f296}{eraseURLs}}();}
+\DoxyCodeLine{255     str = \mbox{\hyperlink{classPreProcesser_a0000acc751ba0cf8c18b0601cfe90a2a}{get\_Data}}();}
+\DoxyCodeLine{256 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPreProcesser_a0000acc751ba0cf8c18b0601cfe90a2a}\label{classPreProcesser_a0000acc751ba0cf8c18b0601cfe90a2a}} 
+\index{PreProcesser@{PreProcesser}!get\_Data@{get\_Data}}
+\index{get\_Data@{get\_Data}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{get\_Data()}{get\_Data()}}
+{\footnotesize\ttfamily std\+::string Pre\+Processer\+::get\+\_\+\+Data (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the data. 
+
+\begin{DoxyReturn}{Returns}
+The data. 
+\end{DoxyReturn}
+
+
+Definition at line 78 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{78                                             \{}
+\DoxyCodeLine{79     \textcolor{keywordflow}{return} data\_;}
+\DoxyCodeLine{80 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPreProcesser_a152200a85c58a7f4665025bb74037094}\label{classPreProcesser_a152200a85c58a7f4665025bb74037094}} 
+\index{PreProcesser@{PreProcesser}!get\_InputFile@{get\_InputFile}}
+\index{get\_InputFile@{get\_InputFile}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{get\_InputFile()}{get\_InputFile()}}
+{\footnotesize\ttfamily std\+::string Pre\+Processer\+::get\+\_\+\+Input\+File (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the input file. 
+
+\begin{DoxyReturn}{Returns}
+The input file. 
+\end{DoxyReturn}
+
+
+Definition at line 60 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{60                                                  \{}
+\DoxyCodeLine{61     \textcolor{keywordflow}{return} inputFile\_;}
+\DoxyCodeLine{62 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPreProcesser_ab4cfcbb76cf4dcdc869a5890090fcd28}\label{classPreProcesser_ab4cfcbb76cf4dcdc869a5890090fcd28}} 
+\index{PreProcesser@{PreProcesser}!get\_OutputFile@{get\_OutputFile}}
+\index{get\_OutputFile@{get\_OutputFile}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{get\_OutputFile()}{get\_OutputFile()}}
+{\footnotesize\ttfamily std\+::string Pre\+Processer\+::get\+\_\+\+Output\+File (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the output file. 
+
+\begin{DoxyReturn}{Returns}
+The output file. 
+\end{DoxyReturn}
+
+
+Definition at line 69 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{69                                                   \{}
+\DoxyCodeLine{70     \textcolor{keywordflow}{return} outputFile\_;}
+\DoxyCodeLine{71 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPreProcesser_a1da0d9c75fbc8d5fb78e22fbba828812}\label{classPreProcesser_a1da0d9c75fbc8d5fb78e22fbba828812}} 
+\index{PreProcesser@{PreProcesser}!loadData@{loadData}}
+\index{loadData@{loadData}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{loadData()}{loadData()}}
+{\footnotesize\ttfamily int Pre\+Processer\+::load\+Data (\begin{DoxyParamCaption}\item[{std\+::string \&}]{input\+File,  }\item[{std\+::string}]{data\+Type }\end{DoxyParamCaption})}
+
+
+
+Loads the data that starts with the data\+Tpe from input file into data var. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em input\+File} & The input file \\
+\hline
+\mbox{\texttt{ in}}  & {\em data\+Type} & The data type that wants to be loaded (must be the first word per line)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Data lines included. 
+\end{DoxyReturn}
+
+
+Definition at line 389 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{389                                                                     \{}
+\DoxyCodeLine{390     data\_ = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{391     \textcolor{keywordtype}{int} dataLines = 0;}
+\DoxyCodeLine{392     std::ifstream file(inputFile, std::ios::in);}
+\DoxyCodeLine{393     \textcolor{keywordflow}{if} (file.fail()) \{}
+\DoxyCodeLine{394         std::cout << std::endl << \textcolor{stringliteral}{"Error 404, file not found in loadData function."} << std::endl;}
+\DoxyCodeLine{395         exit(1);}
+\DoxyCodeLine{396     \}}
+\DoxyCodeLine{397     std::string aux = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{398     \textcolor{keywordflow}{while} (!file.eof()) \{}
+\DoxyCodeLine{399         file >> aux;}
+\DoxyCodeLine{400         \textcolor{keywordflow}{if} (dataType == \textcolor{stringliteral}{""} ) \{}
+\DoxyCodeLine{401             data\_ += aux + \textcolor{stringliteral}{" "};}
+\DoxyCodeLine{402             std::getline(file, aux);}
+\DoxyCodeLine{403             data\_ += aux;}
+\DoxyCodeLine{404             dataLines++;}
+\DoxyCodeLine{405         \}}
+\DoxyCodeLine{406         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{407             \textcolor{keywordflow}{if} (aux.length() < dataType.length()) \{}
+\DoxyCodeLine{408                 std::string spacedName = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{409                 \textcolor{keywordflow}{while} (aux.length() < dataType.length()) \{}
+\DoxyCodeLine{410                     file >> spacedName;}
+\DoxyCodeLine{411                     aux += \textcolor{stringliteral}{" "} + spacedName;}
+\DoxyCodeLine{412                 \}}
+\DoxyCodeLine{413             \}}
+\DoxyCodeLine{414             std::string readedType = aux.substr(0, dataType.length());}
+\DoxyCodeLine{415             aux = aux.substr(dataType.length(), aux.length());}
+\DoxyCodeLine{416             std::getline(file, aux);}
+\DoxyCodeLine{417             \textcolor{keywordflow}{if} (readedType == dataType) \{               }
+\DoxyCodeLine{418                 data\_ += aux;}
+\DoxyCodeLine{419                 dataLines++;}
+\DoxyCodeLine{420             \}}
+\DoxyCodeLine{421         \}}
+\DoxyCodeLine{422         }
+\DoxyCodeLine{423     \}}
+\DoxyCodeLine{424     file.close();}
+\DoxyCodeLine{425     \textcolor{keywordflow}{return} dataLines;}
+\DoxyCodeLine{426 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPreProcesser_a57ded9409c77757f223dced5f9b54af1}\label{classPreProcesser_a57ded9409c77757f223dced5f9b54af1}} 
+\index{PreProcesser@{PreProcesser}!loadTestData@{loadTestData}}
+\index{loadTestData@{loadTestData}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{loadTestData()}{loadTestData()}}
+{\footnotesize\ttfamily void Pre\+Processer\+::load\+Test\+Data (\begin{DoxyParamCaption}\item[{std\+::string \&}]{input\+File }\end{DoxyParamCaption})}
+
+
+
+Loads the test data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+File} & The input file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 433 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{433                                                      \{}
+\DoxyCodeLine{434     data\_ = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{435     \textcolor{keyword}{const} std::string ENDL = \textcolor{stringliteral}{" PREPROCESSERENDL "}; \textcolor{comment}{// Var that is going to be used in classifier to detects the end of a line}}
+\DoxyCodeLine{436     std::ifstream file(inputFile, std::ios::in);}
+\DoxyCodeLine{437     \textcolor{keywordflow}{if} (file.fail()) \{}
+\DoxyCodeLine{438         std::cout << std::endl << \textcolor{stringliteral}{"Error 404, file not found in loadTestData function."} << std::endl;}
+\DoxyCodeLine{439         exit(1);}
+\DoxyCodeLine{440     \}}
+\DoxyCodeLine{441     std::string aux = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{442     \textcolor{keywordflow}{while} (!file.eof()) \{}
+\DoxyCodeLine{443         std::getline(file, aux);}
+\DoxyCodeLine{444         data\_ += aux + ENDL;    }
+\DoxyCodeLine{445     \}}
+\DoxyCodeLine{446     file.close();}
+\DoxyCodeLine{447 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPreProcesser_a43c799c675f48111740fcf137e5482c8}\label{classPreProcesser_a43c799c675f48111740fcf137e5482c8}} 
+\index{PreProcesser@{PreProcesser}!operator=@{operator=}}
+\index{operator=@{operator=}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPreProcesser}{Pre\+Processer}} \& Pre\+Processer\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPreProcesser}{Pre\+Processer}} \&}]{new\+Pre\+Processer }\end{DoxyParamCaption})}
+
+
+
+Assignment operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Pre\+Processer} & The new pre processer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the assignment 
+\end{DoxyReturn}
+
+
+Definition at line 116 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{116                                                                           \{}
+\DoxyCodeLine{117     \textcolor{keyword}{this} -\/> \mbox{\hyperlink{classPreProcesser_aab4ed2269e8db2a127283af2c3e399d8}{set\_Data}}(newPreProcesser.\mbox{\hyperlink{classPreProcesser_a0000acc751ba0cf8c18b0601cfe90a2a}{get\_Data}}());}
+\DoxyCodeLine{118     \textcolor{keyword}{this} -\/> \mbox{\hyperlink{classPreProcesser_adfa0e800eaa681cf7b0a54cefaf09b7d}{set\_OutputFile}}(newPreProcesser.\mbox{\hyperlink{classPreProcesser_ab4cfcbb76cf4dcdc869a5890090fcd28}{get\_OutputFile}}());}
+\DoxyCodeLine{119     \textcolor{keyword}{this} -\/> \mbox{\hyperlink{classPreProcesser_a8fa9d7e83f78062a996986fbf627d73c}{set\_InputFile}}(newPreProcesser.\mbox{\hyperlink{classPreProcesser_a152200a85c58a7f4665025bb74037094}{get\_InputFile}}());}
+\DoxyCodeLine{120     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{121 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPreProcesser_aab4ed2269e8db2a127283af2c3e399d8}\label{classPreProcesser_aab4ed2269e8db2a127283af2c3e399d8}} 
+\index{PreProcesser@{PreProcesser}!set\_Data@{set\_Data}}
+\index{set\_Data@{set\_Data}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{set\_Data()}{set\_Data()}}
+{\footnotesize\ttfamily void Pre\+Processer\+::set\+\_\+\+Data (\begin{DoxyParamCaption}\item[{std\+::string}]{new\+Data }\end{DoxyParamCaption})}
+
+
+
+Sets the data. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Data} & The new data \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 105 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{105                                               \{}
+\DoxyCodeLine{106     data\_ = newData;}
+\DoxyCodeLine{107 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPreProcesser_a8fa9d7e83f78062a996986fbf627d73c}\label{classPreProcesser_a8fa9d7e83f78062a996986fbf627d73c}} 
+\index{PreProcesser@{PreProcesser}!set\_InputFile@{set\_InputFile}}
+\index{set\_InputFile@{set\_InputFile}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{set\_InputFile()}{set\_InputFile()}}
+{\footnotesize\ttfamily void Pre\+Processer\+::set\+\_\+\+Input\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{new\+Input\+File }\end{DoxyParamCaption})}
+
+
+
+Sets the input file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Input\+File} & The new input file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 87 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{87                                                         \{}
+\DoxyCodeLine{88     inputFile\_ = newInputFile;}
+\DoxyCodeLine{89 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPreProcesser_adfa0e800eaa681cf7b0a54cefaf09b7d}\label{classPreProcesser_adfa0e800eaa681cf7b0a54cefaf09b7d}} 
+\index{PreProcesser@{PreProcesser}!set\_OutputFile@{set\_OutputFile}}
+\index{set\_OutputFile@{set\_OutputFile}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{set\_OutputFile()}{set\_OutputFile()}}
+{\footnotesize\ttfamily void Pre\+Processer\+::set\+\_\+\+Output\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{new\+Output\+File }\end{DoxyParamCaption})}
+
+
+
+Sets the output file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Output\+File} & The new output file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 96 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{96                                                           \{}
+\DoxyCodeLine{97     outputFile\_ = newOutputFile;}
+\DoxyCodeLine{98 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPreProcesser_a8c02216b43b1e324166ae149a54d94ff}\label{classPreProcesser_a8c02216b43b1e324166ae149a54d94ff}} 
+\index{PreProcesser@{PreProcesser}!storeData@{storeData}}
+\index{storeData@{storeData}!PreProcesser@{PreProcesser}}
+\doxysubsubsection{\texorpdfstring{storeData()}{storeData()}}
+{\footnotesize\ttfamily void Pre\+Processer\+::store\+Data (\begin{DoxyParamCaption}\item[{std\+::string \&}]{output\+File,  }\item[{int}]{data\+Lines }\end{DoxyParamCaption})}
+
+
+
+Stores the data into the given file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em output\+File} & The output file \\
+\hline
+\mbox{\texttt{ in}}  & {\em data\+Lines} & The data lines \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 462 of file pre\+Processer.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{462                                                                  \{}
+\DoxyCodeLine{463     std::fstream file(outputFile, std::ios::out | std::ios::trunc);}
+\DoxyCodeLine{464     }
+\DoxyCodeLine{465     \textcolor{keywordflow}{if} (file.fail()) \{}
+\DoxyCodeLine{466         std::cout << \textcolor{stringliteral}{"Error while storing data \(\backslash\)""} << outputFile << \textcolor{stringliteral}{"\(\backslash\)" is not valid document"} << std::endl;}
+\DoxyCodeLine{467         exit(1);}
+\DoxyCodeLine{468     \} }
+\DoxyCodeLine{469     \textcolor{keywordflow}{else} \{ }
+\DoxyCodeLine{470         \textcolor{keywordflow}{if} (dataLines != 0) \{}
+\DoxyCodeLine{471             file << dataLines << std::endl;}
+\DoxyCodeLine{472         \}}
+\DoxyCodeLine{473         file << data\_;}
+\DoxyCodeLine{474     \}}
+\DoxyCodeLine{475     file.close();}
+\DoxyCodeLine{476 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/pre\+Processer.\+hpp\item 
+src/pre\+Processer.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,789 @@
+.TH "Vocabulary" 3 "Fri May 14 2021" "Version 2.1.0" "Text-Classifier" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Vocabulary \- This class describes a vocabulary and\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <vocabulary\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVocabulary\fP (void)"
+.br
+.RI "Constructs a new instance\&. "
+.ti -1c
+.RI "\fBVocabulary\fP (std::string inputFile, std::string outpuFile)"
+.br
+.RI "Constructs a new instance\&. "
+.ti -1c
+.RI "\fB~Vocabulary\fP (void)"
+.br
+.RI "Destroys the object\&. "
+.ti -1c
+.RI "std::string \fBget_InputFile\fP (void) const"
+.br
+.RI "Gets the input file\&. "
+.ti -1c
+.RI "std::string \fBget_OutpuFile\fP (void) const"
+.br
+.RI "Gets the outpu file\&. "
+.ti -1c
+.RI "int \fBget_VocabularyCounter\fP (void) const"
+.br
+.RI "Gets the VocabularyCounter\&. "
+.ti -1c
+.RI "int \fBget_NTokens\fP (void) const"
+.br
+.RI "Gets the tokens number\&. "
+.ti -1c
+.RI "int \fBget_NLines\fP (void) const"
+.br
+.RI "Gets the number of lines\&. "
+.ti -1c
+.RI "std::set< \fBToken\fP > \fBget_Vocabulary\fP (void) const"
+.br
+.RI "Gets the vocabulary\&. "
+.ti -1c
+.RI "std::string \fBget_Type\fP (void) const"
+.br
+.RI "Gets the type\&. "
+.ti -1c
+.RI "float \fBget_ClassProbability\fP (void) const"
+.br
+.RI "Gets the class probability\&. "
+.ti -1c
+.RI "void \fBset_InputFile\fP (std::string newInputFile)"
+.br
+.RI "Sets the input file\&. "
+.ti -1c
+.RI "void \fBset_OutpuFile\fP (std::string newOutpuFile)"
+.br
+.RI "Sets the outpu file\&. "
+.ti -1c
+.RI "void \fBset_VocabularyCounter\fP (int newVocabularyCounter)"
+.br
+.RI "Sets the counter\&. "
+.ti -1c
+.RI "void \fBset_NTokens\fP (int newNTokens)"
+.br
+.RI "Sets the tokens number\&. "
+.ti -1c
+.RI "void \fBset_NLines\fP (int newNLines)"
+.br
+.RI "Sets the number of lines\&. "
+.ti -1c
+.RI "void \fBset_Vocabulary\fP (std::set< \fBToken\fP > newVocabulary)"
+.br
+.RI "Sets the vocabulary\&. "
+.ti -1c
+.RI "void \fBset_Type\fP (std::string newType)"
+.br
+.RI "Sets the type\&. "
+.ti -1c
+.RI "void \fBset_ClassProbability\fP (float newClassProbability)"
+.br
+.RI "Sets the class probability\&. "
+.ti -1c
+.RI "\fBVocabulary\fP & \fBoperator=\fP (const \fBVocabulary\fP &newVocabulary)"
+.br
+.RI "Assignment operator\&. "
+.ti -1c
+.RI "void \fBpreProcessData\fP (std::string &stopWordFile)"
+.br
+.RI "Preprocess the data for the program, erases punctuation signs, converts all to lowercase and erases reserved words\&. "
+.ti -1c
+.RI "std::vector< std::string > \fBloadStopWord\fP (std::string &inputFile)"
+.br
+.RI "Loads the stop words (reserved words)\&. "
+.ti -1c
+.RI "void \fBgenerateVocabulary\fP (std::string &inputFile, bool tokenized)"
+.br
+.RI "Generates vocabulary file\&. "
+.ti -1c
+.RI "void \fBcalculateProbabilities\fP (void)"
+.br
+.ti -1c
+.RI "void \fBaddClassProbability\fP (int size)"
+.br
+.RI "Calculates and adds the class probability\&. "
+.ti -1c
+.RI "void \fBreadVocabulary\fP (std::string &inputFile)"
+.br
+.RI "Reads a created vocabulary from file\&. "
+.ti -1c
+.RI "void \fBstoreVocabulary\fP (std::string &outputFile)"
+.br
+.RI "Stores the vocabulary into the given file\&. "
+.ti -1c
+.RI "void \fBreadLearnedData\fP (std::string &inputFile)"
+.br
+.RI "Reads a learned data from a file and store the tokens with their respective probabilities and frecuence in the tokens set\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBinputFile_\fP"
+.br
+.ti -1c
+.RI "std::string \fBoutpuFile_\fP"
+.br
+.ti -1c
+.RI "int \fBvocabularyCounter_\fP"
+.br
+.ti -1c
+.RI "int \fBnTokens_\fP"
+.br
+.ti -1c
+.RI "int \fBnLines_\fP"
+.br
+.ti -1c
+.RI "std::set< \fBToken\fP > \fBvocabulary_\fP"
+.br
+.ti -1c
+.RI "std::string \fBtype_\fP"
+.br
+.ti -1c
+.RI "float \fBclassProbability_\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class describes a vocabulary and\&. 
+.PP
+Definition at line 38 of file vocabulary\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Vocabulary::Vocabulary (std::string inputFile, std::string outpuFile)"
+
+.PP
+Constructs a new instance\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIinputFile\fP The input file 
+.br
+\fIoutpuFile\fP The outpu file 
+.RE
+.PP
+
+.PP
+Definition at line 47 of file vocabulary\&.cpp\&.
+.PP
+.nf
+47                                                                 {
+48     set_InputFile(inputFile);
+49     set_OutpuFile(outpuFile);
+50     set_VocabularyCounter(0);
+51     set_Type("");
+52     set_NTokens(0);
+53     set_NLines(0);
+54     set_ClassProbability(0\&.0);
+55 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "void Vocabulary::addClassProbability (int size)"
+
+.PP
+Calculates and adds the class probability\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsize\fP The size 
+.RE
+.PP
+
+.PP
+Definition at line 314 of file vocabulary\&.cpp\&.
+.PP
+.nf
+314                                               {
+315 
+316     float prob = nLines_;
+317     prob /= size;
+318     prob = std::log(prob);
+319     set_ClassProbability(prob);
+320 }
+.fi
+.SS "void Vocabulary::generateVocabulary (std::string & inputFile, bool tokenize)"
+
+.PP
+Generates vocabulary file\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIinputFile\fP The input file 
+.br
+\fItokenize\fP If want to words to be tokenized or not 
+.RE
+.PP
+
+.PP
+Definition at line 275 of file vocabulary\&.cpp\&.
+.PP
+.nf
+275                                                                         {
+276     std::ifstream file(inputFile, std::ios::in);
+277     if (file\&.fail()) {
+278         std::cout << std::endl << "Error 404, generateVocabulary file not found\&. (" << inputFile << ")" << std::endl;
+279         exit(1);
+280     }
+281     set_NTokens(0);
+282     set_VocabularyCounter(0);
+283     std::string word;
+284     std::set<Token>::iterator it;
+285     while (!file\&.eof()) {
+286         file >> word;
+287         if (isdigit(word[0])) {
+288             nLines_ = stoi(word);
+289         }
+290         else {
+291             if (!vocabulary_\&.count(word)) {
+292                 Token newToken(word);
+293                 vocabulary_\&.insert(newToken);
+294             }
+295             else if (tokenize){
+296                 it = vocabulary_\&.find(word);
+297                 Token newToken = *it;
+298                 newToken\&.incrementate();
+299                 vocabulary_\&.erase(word);
+300                 vocabulary_\&.insert(newToken);
+301             }
+302             nTokens_++;
+303         }
+304     }
+305     file\&.close();
+306     set_VocabularyCounter(vocabulary_\&.size());
+307 }
+.fi
+.SS "float Vocabulary::get_ClassProbability (void) const"
+
+.PP
+Gets the class probability\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The class probability\&. 
+.RE
+.PP
+
+.PP
+Definition at line 113 of file vocabulary\&.cpp\&.
+.PP
+.nf
+113                                                   {
+114     return classProbability_;
+115 }
+.fi
+.SS "std::string Vocabulary::get_InputFile (void) const"
+
+.PP
+Gets the input file\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The input file\&. 
+.RE
+.PP
+
+.PP
+Definition at line 68 of file vocabulary\&.cpp\&.
+.PP
+.nf
+68                                                {
+69     return inputFile_;
+70 }
+.fi
+.SS "int Vocabulary::get_NLines (void) const"
+
+.PP
+Gets the number of lines\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The number of lines\&. 
+.RE
+.PP
+
+.PP
+Definition at line 104 of file vocabulary\&.cpp\&.
+.PP
+.nf
+104                                       {
+105     return nLines_;
+106 }
+.fi
+.SS "int Vocabulary::get_NTokens (void) const"
+
+.PP
+Gets the tokens number\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The tokens number\&. 
+.RE
+.PP
+
+.PP
+Definition at line 95 of file vocabulary\&.cpp\&.
+.PP
+.nf
+95                                        {
+96     return nTokens_;
+97 }
+.fi
+.SS "std::string Vocabulary::get_OutpuFile (void) const"
+
+.PP
+Gets the outpu file\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The outpu file\&. 
+.RE
+.PP
+
+.PP
+Definition at line 77 of file vocabulary\&.cpp\&.
+.PP
+.nf
+77                                                {
+78     return outpuFile_;
+79 }
+.fi
+.SS "std::string Vocabulary::get_Type (void) const"
+
+.PP
+Gets the type\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The type\&. 
+.RE
+.PP
+
+.PP
+Definition at line 131 of file vocabulary\&.cpp\&.
+.PP
+.nf
+131                                           {
+132     return type_;
+133 }
+.fi
+.SS "std::set< \fBToken\fP > Vocabulary::get_Vocabulary (void) const"
+
+.PP
+Gets the vocabulary\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The vocabulary\&. 
+.RE
+.PP
+
+.PP
+Definition at line 122 of file vocabulary\&.cpp\&.
+.PP
+.nf
+122                                                     {
+123     return vocabulary_;
+124 }
+.fi
+.SS "int Vocabulary::get_VocabularyCounter (void) const"
+
+.PP
+Gets the VocabularyCounter\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The VocabularyCounter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 86 of file vocabulary\&.cpp\&.
+.PP
+.nf
+86                                                  {
+87     return vocabularyCounter_;
+88 }
+.fi
+.SS "std::vector< std::string > Vocabulary::loadStopWord (std::string & inputFile)"
+
+.PP
+Loads the stop words (reserved words)\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIinputFile\fP The input file
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+stop words vector 
+.RE
+.PP
+
+.PP
+Definition at line 253 of file vocabulary\&.cpp\&.
+.PP
+.nf
+253                                                                    {
+254     std::vector<std::string> stopWords;
+255     std::ifstream file(inputFile, std::ios::in);
+256     if (file\&.fail()) {
+257         std::cout << std::endl << "Error 404, stopWords file not found\&." << std::endl;
+258         exit(1);
+259     }
+260     std::string word = "";
+261     while (!file\&.eof()) {
+262         file >> word;
+263         stopWords\&.push_back(word);
+264     }
+265     file\&.close();
+266     return stopWords;
+267 }
+.fi
+.SS "\fBVocabulary\fP & Vocabulary::operator= (const \fBVocabulary\fP & newVocabulary)"
+
+.PP
+Assignment operator\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewVocabulary\fP The new vocabulary
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The result of the assignment 
+.RE
+.PP
+
+.PP
+Definition at line 214 of file vocabulary\&.cpp\&.
+.PP
+.nf
+214                                                                   {
+215     this -> set_Vocabulary(newVocabulary\&.get_Vocabulary());
+216     this -> set_VocabularyCounter(newVocabulary\&.get_VocabularyCounter());
+217     this -> set_OutpuFile(newVocabulary\&.get_OutpuFile());
+218     this -> set_InputFile(newVocabulary\&.get_InputFile());
+219     this -> set_NTokens(newVocabulary\&.get_NTokens());
+220     this -> set_NLines(newVocabulary\&.get_NLines());
+221     this -> set_Type(newVocabulary\&.get_Type());
+222     this -> set_ClassProbability(newVocabulary\&.get_ClassProbability());
+223     return *this;
+224 }
+.fi
+.SS "void Vocabulary::preProcessData (std::string & stopWordFile)"
+
+.PP
+Preprocess the data for the program, erases punctuation signs, converts all to lowercase and erases reserved words\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIstopWordFile\fP The stop word file 
+.RE
+.PP
+
+.PP
+Definition at line 232 of file vocabulary\&.cpp\&.
+.PP
+.nf
+232                                                         {
+233     PreProcesser preProcesser;
+234     std::string outputFile = "\&.\&./outputs/preProcesserHelper\&.txt";
+235     std::vector<std::string> stopWords = loadStopWord(stopWordFile);
+236     std::string empty = "";
+237     preProcesser\&.loadData(inputFile_, empty);
+238     preProcesser\&.convertLowerCase();
+239     preProcesser\&.erasePunctuationSigns();
+240     preProcesser\&.eraseAllNumbers();
+241     preProcesser\&.storeData(outputFile, 0);
+242     preProcesser\&.eraseReservedWords(stopWords, outputFile);
+243     return;
+244 }
+.fi
+.SS "void Vocabulary::readLearnedData (std::string & inputFile)"
+
+.PP
+Reads a learned data from a file and store the tokens with their respective probabilities and frecuence in the tokens set\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIinputFile\fP The input file 
+.RE
+.PP
+
+.PP
+Definition at line 376 of file vocabulary\&.cpp\&.
+.PP
+.nf
+376                                                       {
+377     std::ifstream file(inputFile, std::ios::in);
+378     std::string type = "";
+379     type += inputFile[inputFile\&.length() - 5];
+380     set_Type(type);
+381     if (file\&.fail()) {
+382         std::cout << std::endl << "Error 404, readVocabulary file not found\&. (" << inputFile << ")" << std::endl;
+383         exit(1);
+384     }
+385     set_NTokens(0);
+386     set_VocabularyCounter(0);
+387     std::string word;
+388     std::getline(file, word);
+389     std::string tmp = "";
+390     for (unsigned i = 0; i < word\&.length(); i++) {
+391         if (isdigit(word[i])) {
+392             tmp += word[i];
+393         }
+394     }
+395     set_NLines(std::stoi(tmp));
+396     std::getline(file, word);
+397     while (!file\&.eof()) {
+398         file >> word >> word;
+399         Token newToken(word);
+400         newToken\&.set_Type(type);
+401         file >> word >> word;
+402         newToken\&.set_Ammount(std::stoi(word));
+403         file >> word >> word;
+404         newToken\&.set_Probability(std::stof(word));
+405         vocabulary_\&.insert(newToken);
+406         nTokens_++;
+407     }
+408     file\&.close();
+409     set_VocabularyCounter(vocabulary_\&.size());
+410 }
+.fi
+.SS "void Vocabulary::readVocabulary (std::string & inputFile)"
+
+.PP
+Reads a created vocabulary from file\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIinputFile\fP The input file 
+.RE
+.PP
+
+.PP
+Definition at line 327 of file vocabulary\&.cpp\&.
+.PP
+.nf
+327                                                      {
+328     std::ifstream file(inputFile, std::ios::in);
+329     if (file\&.fail()) {
+330         std::cout << std::endl << "Error 404, readVocabulary file not found\&. (" << inputFile << ")" << std::endl;
+331         exit(1);
+332     }
+333     set_NTokens(0);
+334     set_VocabularyCounter(0);
+335     std::string word;
+336     std::getline(file, word);
+337     while (!file\&.eof()) {
+338         file >> word;
+339         Token newToken(word);
+340         newToken\&.set_Ammount(0);
+341         vocabulary_\&.insert(newToken);
+342         nTokens_++;
+343     }
+344     file\&.close();
+345     set_VocabularyCounter(vocabulary_\&.size());
+346 }
+.fi
+.SS "void Vocabulary::set_ClassProbability (float newClassProbability)"
+
+.PP
+Sets the class probability\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewClassProbability\fP The new class probability 
+.RE
+.PP
+
+.PP
+Definition at line 203 of file vocabulary\&.cpp\&.
+.PP
+.nf
+203                                                                 {
+204     classProbability_ = newClassProbability;
+205 }
+.fi
+.SS "void Vocabulary::set_InputFile (std::string newInputFile)"
+
+.PP
+Sets the input file\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewInputFile\fP The new input file 
+.RE
+.PP
+
+.PP
+Definition at line 140 of file vocabulary\&.cpp\&.
+.PP
+.nf
+140                                                       {
+141     inputFile_ = newInputFile;
+142 }
+.fi
+.SS "void Vocabulary::set_NLines (int newLines)"
+
+.PP
+Sets the number of lines\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewLines\fP The new lines number 
+.RE
+.PP
+
+.PP
+Definition at line 176 of file vocabulary\&.cpp\&.
+.PP
+.nf
+176                                          {
+177     nLines_ = newLines;
+178 }
+.fi
+.SS "void Vocabulary::set_NTokens (int newTokens)"
+
+.PP
+Sets the tokens number\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewTokens\fP The new tokens number 
+.RE
+.PP
+
+.PP
+Definition at line 167 of file vocabulary\&.cpp\&.
+.PP
+.nf
+167                                            {
+168     nTokens_ = newTokens;
+169 }
+.fi
+.SS "void Vocabulary::set_OutpuFile (std::string newOutpuFile)"
+
+.PP
+Sets the outpu file\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewOutpuFile\fP The new outpu file 
+.RE
+.PP
+
+.PP
+Definition at line 149 of file vocabulary\&.cpp\&.
+.PP
+.nf
+149                                                       {
+150     outpuFile_ = newOutpuFile;
+151 }
+.fi
+.SS "void Vocabulary::set_Type (std::string newType)"
+
+.PP
+Sets the type\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewType\fP The new type 
+.RE
+.PP
+
+.PP
+Definition at line 194 of file vocabulary\&.cpp\&.
+.PP
+.nf
+194                                             {
+195     type_ = newType;
+196 }
+.fi
+.SS "void Vocabulary::set_Vocabulary (std::set< \fBToken\fP > newVocabulary)"
+
+.PP
+Sets the vocabulary\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewVocabulary\fP The new vocabulary 
+.RE
+.PP
+
+.PP
+Definition at line 185 of file vocabulary\&.cpp\&.
+.PP
+.nf
+185                                                             {
+186     vocabulary_ = newVocabulary;
+187 }
+.fi
+.SS "void Vocabulary::set_VocabularyCounter (int newVocabularyCounter)"
+
+.PP
+Sets the counter\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewVocabularyCounter\fP The new counter 
+.RE
+.PP
+
+.PP
+Definition at line 158 of file vocabulary\&.cpp\&.
+.PP
+.nf
+158                                                                 {
+159     vocabularyCounter_ = newVocabularyCounter;
+160 }
+.fi
+.SS "void Vocabulary::storeVocabulary (std::string & outputFile)"
+
+.PP
+Stores the vocabulary into the given file\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIoutputFile\fP The output file 
+.RE
+.PP
+
+.PP
+Definition at line 353 of file vocabulary\&.cpp\&.
+.PP
+.nf
+353                                                        {
+354     std::fstream file(outputFile, std::ios::out | std::ios::trunc);
+355     if (file\&.fail()) {
+356         std::cout << "Error while storing data \"" << outputFile << "\" is not valid document" << std::endl;
+357         exit(1);
+358     } 
+359     else { 
+360         file << "Numero de palabras: " << get_VocabularyCounter();
+361         for (auto i : vocabulary_) {
+362             file << std::endl << i\&.get_Name();
+363         }
+364         // This represents unkown words
+365         file << std::endl << "<UNK>";
+366     }
+367     file\&.close();
+368 }
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Text-Classifier from the source code\&.
