@@ -34,15 +34,18 @@
 
 /*------------------------------------------------*/
 
+/**
+ * @brief      This class describes a classifier.
+ */
 class Classifier {
 
 	private:
 		// Attributes
-		std::vector<std::string> inputFiles_;
-		std::vector<Vocabulary> class_;
-		std::string data_;
-		std::set<Token> learnedData_;
-		std::vector<std::string> resume_;
+		std::vector<std::string> inputFiles_;	// Input files vector
+		std::vector<Vocabulary> class_;			// Class/vocabulary vector
+		std::string data_;						// Output data will be stored here
+		std::set<Token> learnedData_;			// Dicctionary with all the tokens and it respectives probabilities and class
+		std::vector<std::string> resume_;		// Vector where the output resume class will be stored
 
 	public:
 		// Builders & Destroyer

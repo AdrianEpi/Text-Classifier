@@ -31,6 +31,9 @@
 
 /*------------------------------------------------*/
 
+/**
+ * @brief      This class describes a learner.
+ */
 class Learner {
 
 	private:
