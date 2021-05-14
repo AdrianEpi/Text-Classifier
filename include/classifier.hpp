@@ -42,6 +42,7 @@ class Classifier {
 		std::vector<Vocabulary> class_;
 		std::string data_;
 		std::set<Token> learnedData_;
+		std::vector<std::string> resume_;
 
 	public:
 		// Builders & Destroyer
@@ -62,9 +63,9 @@ class Classifier {
 		void classifyFile (std::string& inputFile, std::string& stopWords);
 		void classify (std::vector<std::string> sentence);
 		void generateClassProbability (void);
-		std::vector<std::vector<std::string>> preProcess (std::vector<std::string>& stopWords, std::string& sentence);
+		void preProcess (std::vector<std::string>& stopWords, std::string& sentence);
 
 		// Read & Write
 		void readInputFiles (char* argv[], int& argc);
-		void storeFile (std::string& outputFile);
+		void storeFile (std::string& outputFile, std::string& resumeFile);
 };

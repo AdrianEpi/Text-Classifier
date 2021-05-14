@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-05-06 08:37:08
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-05-11 23:43:24
+* @Last Modified time: 2021-05-14 12:41:28
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -45,7 +45,12 @@ Classifier::Classifier (char* argv[], int& argc) {
 	std::string input = argv[2];
 	std::string stopWords = argv[3];
 	classifyFile(input, stopWords);
-	std::cout << std::endl << data_ << std::endl;
+	//std::string outputFile = "../outputs/classification.csv";
+	//std::string resume = "../outputs/resume.csv";
+	// Personal case output names
+	std::string outputFile = "../outputs/clasificacion_alu0101158280.csv";
+	std::string resume = "../outputs/resumen_alu0101158280.csv";
+	storeFile(outputFile, resume);
 }
 
 /**
@@ -108,20 +113,29 @@ void Classifier::set_Data (std::string newData) {
 	data_ = newData;
 }
 
+/**
+ * @brief      Preprocess, calculates the probabilities and classifies the given
+ *             input file.
+ *
+ * @param      inputFile      The input file with the testCorpus
+ * @param      stopWordsFile  The stop words file for preprocessing use
+ */
 void Classifier::classifyFile (std::string& inputFile, std::string& stopWordsFile) {
-
 	Vocabulary voc;
 	std::vector<std::string> stopWord;
 	stopWord = voc.loadStopWord(stopWordsFile);
 	std::string tmp;
-	std::vector<std::vector<std::string>> data = preProcess(stopWord, inputFile);
-
+	preProcess(stopWord, inputFile);
 	std::string helper = "../outputs/preProcesserHelper.txt";
 	std::ifstream file(helper, std::ios::in);
-	if (file.fail()) {
+	std::ifstream originalFile(inputFile, std::ios::in);
+	Chrono myChrono;
+	myChrono.startChrono();
+	if (file.fail() || originalFile.fail()) {
 		std::cout << std::endl << "Error 404, preProcesserHelper.txt file not found in /outputs." << std::endl;
 		exit(1);
 	}
+	std::string originalReader = "";
 	while (!file.eof()) {
 		std::vector<std::string> sentence; 
 		std::string tmp = "";
@@ -132,18 +146,24 @@ void Classifier::classifyFile (std::string& inputFile, std::string& stopWordsFil
 			}
 			sentence.push_back(tmp);
 		}
+		std::getline(originalFile, originalReader);
+		if (originalReader[originalReader.length() -1] == '\r') {
+			originalReader[originalReader.length() -1] = ' ';
+		}
+		data_ += originalReader;
 		classify(sentence);
 	}
 	file.close();
-
-
-	
+	originalFile.close();
+	myChrono.stopChrono();
+	std::cout << std::endl << "Elapsed Classifying time: " << myChrono.get_Seconds(5) << " seconds." << std::endl;
 }
 
 /**
- * @brief      Classifies a given sentence into the correct type and stores into data
+ * @brief      Classifies a given sentence into the correct type and stores the
+ *             information into data var.
  *
- * @param[in]  sentence  The sentence
+ * @param[in]  sentence  The sentence which is going to be classifyed
  */
 void Classifier::classify (std::vector<std::string> sentence) {
 	std::vector<float> prob;
@@ -158,7 +178,6 @@ void Classifier::classify (std::vector<std::string> sentence) {
 			prob[j] += it -> get_MultiClass(j);
 		}
 	}
-
 	data_ += ", ";
 	unsigned selection = 0;
 	for (unsigned i = 0; i < prob.size(); i++) {
@@ -169,8 +188,9 @@ void Classifier::classify (std::vector<std::string> sentence) {
 		data_ += std::to_string(prob[i]);
 		data_ += ", ";
 	}
+	resume_.push_back(class_[selection].get_Type());
 	data_ += class_[selection].get_Type();
-	data_ += ".\n";
+	data_ += ".\r";
 }
 
 /**
@@ -194,10 +214,8 @@ void Classifier::generateClassProbability (void) {
  * @param      preprocesser  The preprocesser
  * @param      stopWords     The stop words
  * @param      sentence      The sentence
- *
- * @return     A vector with each word of the sentence per vector's place
  */
-std::vector<std::vector<std::string>> Classifier::preProcess (std::vector<std::string>& stopWords, std::string& fileName) {
+void Classifier::preProcess (std::vector<std::string>& stopWords, std::string& fileName) {
 	PreProcesser preprocesser;
 	std::string helper = "../outputs/preProcesserHelper.txt";
 	preprocesser.loadTestData(fileName);
@@ -206,24 +224,6 @@ std::vector<std::vector<std::string>> Classifier::preProcess (std::vector<std::s
 	preprocesser.eraseAllNumbers();
 	preprocesser.storeData(helper, 0);
 	preprocesser.eraseReservedWords(stopWords, helper);
-	std::vector<std::vector<std::string>> preProcessedSentence;
-	/*std::ifstream file(helper, std::ios::in);
-	if (file.fail()) {
-		std::cout << std::endl << "Error 404, preProcesserHelper.txt file not found in /outputs." << std::endl;
-		exit(1);
-	}
-	while (!file.eof()) {
-		std::vector<std::string> sentence; 
-		std::string tmp = "";
-
-		while (!file.eof() && tmp != "preprocesserendl") {
-			file >> tmp;
-			sentence.push_back(tmp);
-		}
-		preProcessedSentence.push_back(sentence);
-	}
-	file.close();*/
-	return preProcessedSentence;
 }
 
 /**
@@ -233,7 +233,7 @@ std::vector<std::vector<std::string>> Classifier::preProcess (std::vector<std::s
  * @param      argc  The count of arguments
  */
 void Classifier::readInputFiles (char* argv[], int& argc) {
-	std::vector<Token> v_;
+	std::vector<Token> tmpVector;
 	for (int k = 4; k < argc; k++) {
 		std::string fileName = argv[k];
 		inputFiles_.push_back(fileName);
@@ -258,7 +258,7 @@ void Classifier::readInputFiles (char* argv[], int& argc) {
 				file >> reader >> reader >> reader >> reader;
 				newToken.addClassProb(std::stof(reader), type);
 				newToken.set_Type(type);
-				v_.push_back(newToken);
+				tmpVector.push_back(newToken);
 			}
 		}
 		else {
@@ -272,17 +272,75 @@ void Classifier::readInputFiles (char* argv[], int& argc) {
 			std::getline(file, reader);
 			while (!file.eof()) {
 				file >> reader >> reader >> reader >> reader >> reader >> reader;
-				v_[i].addClassProb(std::stof(reader), type);
+				tmpVector[i].addClassProb(std::stof(reader), type);
 				i++;
 			}
 		}
 		file.close();
 	}
-	for (unsigned i = 0; i < v_.size(); i++) {
-		learnedData_.insert(v_[i]);
+	for (unsigned i = 0; i < tmpVector.size(); i++) {
+		learnedData_.insert(tmpVector[i]);
 	}
 }
 
-void Classifier::storeFile (std::string& outputFile) {
-
+/**
+ * @brief      Stores the output data into the classified file and the resume
+ *             file. The classify file format is:
+ *             <Description>, <ProbSentClassA>, ..., <ProbSentClassN>, <Class>.
+ *             <Description>, <ProbSentClassA>, ..., <ProbSentClassN>, <Class>.
+ *             <Description>, <ProbSentClassA>, ..., <ProbSentClassN>, <Class>.
+ *
+ * @param      outputFile  The output file
+ * @param      resumeFile  The resume file
+ */
+void Classifier::storeFile (std::string& outputFile, std::string& resumeFile) {
+	std::fstream file(outputFile, std::ios::out | std::ios::trunc);
+	if (file.fail()) {
+		std::cout << "Error while storing data \"" << outputFile << "\" is not valid document." << std::endl;
+		exit(1);
+	} 
+	else { 
+		bool isDecimal = false;
+		for (unsigned i = 0; i < data_.length(); i++) {
+			/*----------  Fixing decimales to 2 digits  ----------*/
+			// file << data_; // If dont want to trunc decimals
+			
+			if (isDecimal && std::isdigit(data_[i]) && std::isdigit(data_[i - 2])) {
+				if (data_[i] != ',') {
+					file << data_[i];
+					i++;
+				}
+				if (data_[i] != ',') {
+					file << data_[i];
+					i++;
+				}
+				while (data_[i] != ',' && data_[i] != '.') {
+					i++;
+				}
+				file << data_[i];
+				isDecimal = false;
+			}
+			else {
+				isDecimal = false;
+				file << data_[i];
+				if (data_[i] == '.') {
+					isDecimal = true;
+				}
+			}
+		}
+	}
+	file.close();
+	std::fstream resume(resumeFile, std::ios::out | std::ios::trunc);
+	if (resume.fail()) {
+		std::cout << "Error while storing data \"" << resumeFile << "\" is not valid document." << std::endl;
+		exit(1);
+	} 
+	else {
+		// next line for personal purposes
+		resume << "codigo: " << std::endl;
+		for (unsigned i = 0; i < resume_.size(); i++) {
+			resume << resume_[i] << std::endl;
+		}
+		resume.close();
+	}
 }

@@ -44,9 +44,16 @@ help:
 	../bin/textClassifier --help
 
 fullRun:
+	make clean
+	make
 	make runVocabulary
 	make runCorpus
 	make runLearner
+	make runClassifier
+	make runTestPercentage
+
+runTestPercentage:
+	../bin/textClassifier --error ../outputs/resumen_alu0101158280.csv ../inputs/resumeExpected.csv
 
 runClassifier:
 	../bin/textClassifier --classify ../inputs/corpus_test.csv ../inputs/stopWords.txt ../outputs/aprendizajeE.txt ../outputs/aprendizajeH.txt ../outputs/aprendizajeC.txt ../outputs/aprendizajeB.txt
@@ -60,9 +67,7 @@ runCorpus:
 runVocabulary:
 	../bin/textClassifier --vocabulary ../inputs/ecom-train.csv ../outputs/vocabulary.txt ../inputs/stopWords.txt
 
-runVocLog:
-	make clean
-	make
+runLog:
 	echo "\n\n\nExecuted ${TIME}" >> ../outputs/runDetails.txt
 	make fullRun >> ../outputs/runDetails.txt
 	echo "You can find full output at outputs/runDetails.txt"

@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2021-04-21 13:04:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2021-05-11 20:47:18
+* @Last Modified time: 2021-05-14 12:50:50
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -50,7 +50,6 @@ PreProcesser::PreProcesser (std::string inputFile, std::string outpuFile) {
  * @brief      Destroys the object.
  */
 PreProcesser::~PreProcesser (void) {
-
 }
 
 /**
@@ -158,7 +157,8 @@ void PreProcesser::convertUpperCase (void) {
 }
 
 /**
- * @brief      Deletes all the words from the vector in the given file and stores them into the same file.
+ * @brief      Deletes all the words from the vector in the given file and
+ *             stores them into the same file.
  *
  * @param[in]  reservedWords  The reserved words vector
  * @param[in]  fileName       The file name
@@ -236,7 +236,6 @@ void PreProcesser::erasePunctuationSigns (std::string& str) {
  * @brief      Erases all punctuation sings into readed data.
  */
 void PreProcesser::erasePunctuationSigns (void) {
-	//std::vector<char> punctuantionSigns = {',', '.', '-', '_', '?', '!', ';', ':', '\'', '\"', '(', ')', '{', '}', '[', ']'};
 	for (unsigned i = 0; i < data_.length(); i++) {
 		if (!isalpha(data_[i]) && !isdigit(data_[i]) && data_[i] != '\n' && data_[i] != '\r') {
 			data_[i] = ' ';
@@ -258,7 +257,7 @@ void PreProcesser::eraseURLs (std::string& str) {
 
 /**
  * @brief      Erases all URLs into data var, an URL is defined as a '.' between
- *             letters without spaces.
+ *             letters without spaces. (Careful with float numbers)
  */
 void PreProcesser::eraseURLs (void) {
 	for (unsigned i = 0; i < data_.length(); i++) {
@@ -304,7 +303,8 @@ void PreProcesser::eraseHashtags (void) {
 }
 
 /**
- * @brief      Erases all strings started by number
+ * @brief      Erases all numbers and characters form a readen number till next
+ *             space.
  *
  * @param      str   The string
  */
@@ -315,7 +315,8 @@ void PreProcesser::eraseNumbers (std::string& str) {
 }
 
 /**
- * @brief      Erases all strings with by numbers
+ * @brief      Erases all numbers and characters form a readen number till next
+ *             space.
  */
 void PreProcesser::eraseNumbers (void) {
 	if (isdigit(data_[0])) {
@@ -336,7 +337,7 @@ void PreProcesser::eraseNumbers (void) {
 }
 
 /**
- * @brief      Erases all numbers
+ * @brief      Erases all words that contains numbers and all numbers in data.
  */
 void PreProcesser::eraseAllNumbers (void) {
 	if (isdigit(data_[0])) {
@@ -364,7 +365,8 @@ void PreProcesser::eraseAllNumbers (void) {
 }
 
 /**
- * @brief      Erases all the numbers
+ * @brief      Erases all words that contains numbers and all numbers in given
+ *             string.
  *
  * @param      str   The string
  */
@@ -385,7 +387,6 @@ void PreProcesser::eraseAllNumbers (std::string& str) {
  * @return     Data lines included.
  */
 int PreProcesser::loadData (std::string& inputFile, std::string dataType) {
-	
 	data_ = "";
 	int dataLines = 0;
 	std::ifstream file(inputFile, std::ios::in);
@@ -424,9 +425,14 @@ int PreProcesser::loadData (std::string& inputFile, std::string dataType) {
 	return dataLines;
 }
 
+/**
+ * @brief      Loads the test data.
+ *
+ * @param      inputFile  The input file
+ */
 void PreProcesser::loadTestData (std::string& inputFile) {
 	data_ = "";
-	const std::string ENDL = " PREPROCESSERENDL ";
+	const std::string ENDL = " PREPROCESSERENDL "; // Var that is going to be used in classifier to detects the end of a line
 	std::ifstream file(inputFile, std::ios::in);
 	if (file.fail()) {
 		std::cout << std::endl << "Error 404, file not found in loadTestData function." << std::endl;
