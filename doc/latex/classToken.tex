@@ -1,0 +1,843 @@
+\hypertarget{classToken}{}\doxysection{Token Class Reference}
+\label{classToken}\index{Token@{Token}}
+
+
+This class describes a token.  
+
+
+
+
+{\ttfamily \#include $<$token.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classToken_a1ec734f3dc17d6aff53dd5cc690ffd5d}\label{classToken_a1ec734f3dc17d6aff53dd5cc690ffd5d}} 
+\mbox{\hyperlink{classToken_a1ec734f3dc17d6aff53dd5cc690ffd5d}{Token}} (void)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classToken_a1938b0d0a7d3fd5d4afd6cc8d06e5fed}{Token}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classToken_a6f1107712168d02a23a952eabf9f2aea}\label{classToken_a6f1107712168d02a23a952eabf9f2aea}} 
+\mbox{\hyperlink{classToken_a6f1107712168d02a23a952eabf9f2aea}{$\sim$\+Token}} (void)
+\begin{DoxyCompactList}\small\item\em Destroys the object. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classToken_aef326e0c4c863aa8ba063410fa38234b}{get\+\_\+\+Name}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the name. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{classToken_af9d510cb4d62f753150315d3cda32cfb}{get\+\_\+\+Ammount}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the ammount. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classToken_a6c81bf58a36b029719b2dc7a771612e0}{get\+\_\+\+Probability}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the probability. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classToken_a012ce07320acca409e571348c4bbe0d5}{get\+\_\+\+Multi\+Class}} (unsigned pos) const
+\begin{DoxyCompactList}\small\item\em Gets the multi class. \end{DoxyCompactList}\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{classToken_ac5272f6144c1198b5a663fd6412c0744}{get\+\_\+\+Multi\+Class}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the multi class. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classToken_ab6f3f2230cb7822c8f4a113d666328b9}{get\+\_\+\+Type}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classToken_ac632312b2d1b62f62d706305bc997f72}{set\+\_\+\+Name}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Sets the name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classToken_a4bf11ede68824ac620e5c2a89614af13}{set\+\_\+\+Ammount}} (unsigned ammount)
+\begin{DoxyCompactList}\small\item\em Sets the ammount. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classToken_a604c7b32da7bbcc830a0c0dc22dd8ce7}{set\+\_\+\+Probability}} (float new\+Probability)
+\begin{DoxyCompactList}\small\item\em Sets the probability. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classToken_aacc17f53aae3cf057452ef5f2f3cb077}{set\+\_\+\+Multi\+Class}} (std\+::vector$<$ float $>$ new\+Multi\+Class)
+\begin{DoxyCompactList}\small\item\em Sets the multi class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classToken_a5fbf26f3b0a8d2ab276f663c53165535}{set\+\_\+\+Type}} (std\+::string new\+Type)
+\begin{DoxyCompactList}\small\item\em Sets the type. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classToken_a7785453276d93bc37e8f71a4cab93d87}{operator$<$}} (const \mbox{\hyperlink{classToken}{Token}} \&other\+Token) const
+\begin{DoxyCompactList}\small\item\em Less-\/than comparison operator. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classToken_a28d0a992354e02755e2cde50f1c944fb}{operator$<$=}} (const \mbox{\hyperlink{classToken}{Token}} \&other\+Token) const
+\begin{DoxyCompactList}\small\item\em Less-\/than-\/or-\/equal comparison operator. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classToken_a6de921df323a52e5e95cadb643907b8d}{operator$<$}} (const std\+::string \&str) const
+\begin{DoxyCompactList}\small\item\em Less-\/than comparison operator. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classToken_a1e674501044a8d35e412674338571286}{operator$<$=}} (const std\+::string \&str) const
+\begin{DoxyCompactList}\small\item\em Less-\/than-\/or-\/equal comparison operator. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classToken_a99216b50ae0f9b0eda27ed76087f9eb8}{operator$>$}} (const \mbox{\hyperlink{classToken}{Token}} \&other\+Token) const
+\begin{DoxyCompactList}\small\item\em Greater-\/than comparison operator. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classToken_ac6e5aef057109c0883b43b8780398187}{operator$>$=}} (const \mbox{\hyperlink{classToken}{Token}} \&other\+Token) const
+\begin{DoxyCompactList}\small\item\em Greater-\/than-\/or-\/equal comparison operator. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classToken_a985a1f21e306d576c2d6ab46fb65858f}{operator$>$}} (const std\+::string \&str) const
+\begin{DoxyCompactList}\small\item\em Greater-\/than comparison operator. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classToken_abd635270c5cb23d2a0cccb30e0366d24}{operator$>$=}} (const std\+::string \&str) const
+\begin{DoxyCompactList}\small\item\em Greater-\/than-\/or-\/equal comparison operator. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classToken_a5ada3858bbddb0c70d315329369f2ba0}{operator==}} (const \mbox{\hyperlink{classToken}{Token}} \&other\+Token) const
+\begin{DoxyCompactList}\small\item\em Equality operator. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classToken_afb8b604442c611ee846fb5386241f24e}{operator==}} (const std\+::string \&str) const
+\begin{DoxyCompactList}\small\item\em Equality operator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classToken}{Token}} \& \mbox{\hyperlink{classToken_a079d00be840fd0e41ba42219ea1c1ce7}{operator++}} (void)
+\begin{DoxyCompactList}\small\item\em Increment operator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classToken}{Token}} \& \mbox{\hyperlink{classToken_a8078b9c645e6686a8d49a7d42f1a8d37}{operator=}} (const \mbox{\hyperlink{classToken}{Token}} \&other\+Token)
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classToken_afc00a9299677128489b24e7bb43cd84b}\label{classToken_afc00a9299677128489b24e7bb43cd84b}} 
+void \mbox{\hyperlink{classToken_afc00a9299677128489b24e7bb43cd84b}{incrementate}} (void)
+\begin{DoxyCompactList}\small\item\em Incremetates the ammount in 1. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classToken_ab3d291e43130f74b393c3e78a43e29b6}{add\+Class\+Prob}} (float prob, std\+::string new\+Class)
+\begin{DoxyCompactList}\small\item\em Adds the class probability and new\+Class type if aplicable. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classToken_a9255b706f8be8995c7475eb232fddd9b}{generate\+Log\+Prob}} (const unsigned \&voc\+Size, const unsigned \&token\+Ammount)
+\begin{DoxyCompactList}\small\item\em Generates the ln probability of the token. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classToken_a5d14c3c5f3bbcea81a6541c5fb55a793}\label{classToken_a5d14c3c5f3bbcea81a6541c5fb55a793}} 
+void \mbox{\hyperlink{classToken_a5d14c3c5f3bbcea81a6541c5fb55a793}{print\+Token}} (void) const
+\begin{DoxyCompactList}\small\item\em Prints a token. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classToken_a7a7c36fc53e85eb21661cf9a807c528a}\label{classToken_a7a7c36fc53e85eb21661cf9a807c528a}} 
+std\+::string {\bfseries name\+\_\+}
+\item 
+\mbox{\Hypertarget{classToken_a41ca51f9f81ae3eff38bb2454c086ae4}\label{classToken_a41ca51f9f81ae3eff38bb2454c086ae4}} 
+unsigned {\bfseries ammount\+\_\+}
+\item 
+\mbox{\Hypertarget{classToken_a242412b86e4587994e19e3e19b66a16b}\label{classToken_a242412b86e4587994e19e3e19b66a16b}} 
+float {\bfseries probability\+\_\+}
+\item 
+\mbox{\Hypertarget{classToken_a78d4e15bf2a157dbe8bd5bf1e90c6427}\label{classToken_a78d4e15bf2a157dbe8bd5bf1e90c6427}} 
+std\+::vector$<$ float $>$ {\bfseries multi\+Class\+\_\+}
+\item 
+\mbox{\Hypertarget{classToken_a2e7672829eeb47f270f24da34c7888ce}\label{classToken_a2e7672829eeb47f270f24da34c7888ce}} 
+std\+::string {\bfseries type\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class describes a token. 
+
+Definition at line 34 of file token.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classToken_a1938b0d0a7d3fd5d4afd6cc8d06e5fed}\label{classToken_a1938b0d0a7d3fd5d4afd6cc8d06e5fed}} 
+\index{Token@{Token}!Token@{Token}}
+\index{Token@{Token}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{Token()}{Token()}}
+{\footnotesize\ttfamily Token\+::\+Token (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Constructs a new instance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em name} & The name \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 43 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{43                             \{}
+\DoxyCodeLine{44     \mbox{\hyperlink{classToken_ac632312b2d1b62f62d706305bc997f72}{set\_Name}}(name);}
+\DoxyCodeLine{45     \mbox{\hyperlink{classToken_a4bf11ede68824ac620e5c2a89614af13}{set\_Ammount}}(1);}
+\DoxyCodeLine{46     \mbox{\hyperlink{classToken_a604c7b32da7bbcc830a0c0dc22dd8ce7}{set\_Probability}}(-\/9999999999999.99);}
+\DoxyCodeLine{47     \mbox{\hyperlink{classToken_a5fbf26f3b0a8d2ab276f663c53165535}{set\_Type}}(\textcolor{stringliteral}{""});}
+\DoxyCodeLine{48 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classToken_ab3d291e43130f74b393c3e78a43e29b6}\label{classToken_ab3d291e43130f74b393c3e78a43e29b6}} 
+\index{Token@{Token}!addClassProb@{addClassProb}}
+\index{addClassProb@{addClassProb}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{addClassProb()}{addClassProb()}}
+{\footnotesize\ttfamily void Token\+::add\+Class\+Prob (\begin{DoxyParamCaption}\item[{float}]{prob,  }\item[{std\+::string}]{new\+Class }\end{DoxyParamCaption})}
+
+
+
+Adds the class probability and new\+Class type if aplicable. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em prob} & The prob \\
+\hline
+\mbox{\texttt{ in}}  & {\em new\+Class} & The new class \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 311 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{311                                                         \{}
+\DoxyCodeLine{312     multiClass\_.push\_back(prob);}
+\DoxyCodeLine{313     \textcolor{keywordflow}{if} (prob > probability\_) \{}
+\DoxyCodeLine{314         probability\_ = prob;}
+\DoxyCodeLine{315         type\_ = newClass;}
+\DoxyCodeLine{316     \}}
+\DoxyCodeLine{317 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_a9255b706f8be8995c7475eb232fddd9b}\label{classToken_a9255b706f8be8995c7475eb232fddd9b}} 
+\index{Token@{Token}!generateLogProb@{generateLogProb}}
+\index{generateLogProb@{generateLogProb}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{generateLogProb()}{generateLogProb()}}
+{\footnotesize\ttfamily float Token\+::generate\+Log\+Prob (\begin{DoxyParamCaption}\item[{const unsigned \&}]{voc\+Size,  }\item[{const unsigned \&}]{token\+Ammount }\end{DoxyParamCaption})}
+
+
+
+Generates the ln probability of the token. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em voc\+Size} & The voc size \\
+\hline
+\mbox{\texttt{ in}}  & {\em token\+Ammount} & The token ammount\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The ln probability 
+\end{DoxyReturn}
+
+
+Definition at line 327 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{327                                                                                    \{}
+\DoxyCodeLine{328     probability\_ = (ammount\_ + 1);}
+\DoxyCodeLine{329     \textcolor{keywordtype}{int} divider = (vocSize + tokenAmmount);}
+\DoxyCodeLine{330     probability\_ /= divider;}
+\DoxyCodeLine{331     \textcolor{keywordflow}{return} std::log(probability\_);}
+\DoxyCodeLine{332 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_af9d510cb4d62f753150315d3cda32cfb}\label{classToken_af9d510cb4d62f753150315d3cda32cfb}} 
+\index{Token@{Token}!get\_Ammount@{get\_Ammount}}
+\index{get\_Ammount@{get\_Ammount}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{get\_Ammount()}{get\_Ammount()}}
+{\footnotesize\ttfamily unsigned Token\+::get\+\_\+\+Ammount (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the ammount. 
+
+\begin{DoxyReturn}{Returns}
+The ammount. 
+\end{DoxyReturn}
+
+
+Definition at line 70 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{70                                        \{}
+\DoxyCodeLine{71     \textcolor{keywordflow}{return} ammount\_;}
+\DoxyCodeLine{72 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_a012ce07320acca409e571348c4bbe0d5}\label{classToken_a012ce07320acca409e571348c4bbe0d5}} 
+\index{Token@{Token}!get\_MultiClass@{get\_MultiClass}}
+\index{get\_MultiClass@{get\_MultiClass}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{get\_MultiClass()}{get\_MultiClass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily float Token\+::get\+\_\+\+Multi\+Class (\begin{DoxyParamCaption}\item[{unsigned}]{pos }\end{DoxyParamCaption}) const}
+
+
+
+Gets the multi class. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em pos} & The position\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The multi class. 
+\end{DoxyReturn}
+
+
+Definition at line 90 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{90                                                \{}
+\DoxyCodeLine{91     \textcolor{keywordflow}{if} (pos < multiClass\_.size()) }
+\DoxyCodeLine{92         \textcolor{keywordflow}{return} multiClass\_[pos];}
+\DoxyCodeLine{93     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{94         std::cout << std::endl << \textcolor{stringliteral}{"Error, pos must be lower than multiClass\_ size."} << std::endl;}
+\DoxyCodeLine{95         exit(1);}
+\DoxyCodeLine{96     \}}
+\DoxyCodeLine{97 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_ac5272f6144c1198b5a663fd6412c0744}\label{classToken_ac5272f6144c1198b5a663fd6412c0744}} 
+\index{Token@{Token}!get\_MultiClass@{get\_MultiClass}}
+\index{get\_MultiClass@{get\_MultiClass}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{get\_MultiClass()}{get\_MultiClass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ Token\+::get\+\_\+\+Multi\+Class (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the multi class. 
+
+\begin{DoxyReturn}{Returns}
+The multi class. 
+\end{DoxyReturn}
+
+
+Definition at line 104 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{104                                                   \{}
+\DoxyCodeLine{105     \textcolor{keywordflow}{return} multiClass\_;}
+\DoxyCodeLine{106 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_aef326e0c4c863aa8ba063410fa38234b}\label{classToken_aef326e0c4c863aa8ba063410fa38234b}} 
+\index{Token@{Token}!get\_Name@{get\_Name}}
+\index{get\_Name@{get\_Name}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{get\_Name()}{get\_Name()}}
+{\footnotesize\ttfamily std\+::string Token\+::get\+\_\+\+Name (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the name. 
+
+\begin{DoxyReturn}{Returns}
+The name. 
+\end{DoxyReturn}
+
+
+Definition at line 61 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{61                                     \{}
+\DoxyCodeLine{62     \textcolor{keywordflow}{return} name\_;}
+\DoxyCodeLine{63 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_a6c81bf58a36b029719b2dc7a771612e0}\label{classToken_a6c81bf58a36b029719b2dc7a771612e0}} 
+\index{Token@{Token}!get\_Probability@{get\_Probability}}
+\index{get\_Probability@{get\_Probability}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{get\_Probability()}{get\_Probability()}}
+{\footnotesize\ttfamily float Token\+::get\+\_\+\+Probability (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the probability. 
+
+\begin{DoxyReturn}{Returns}
+The probability. 
+\end{DoxyReturn}
+
+
+Definition at line 79 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{79                                         \{}
+\DoxyCodeLine{80     \textcolor{keywordflow}{return} probability\_;}
+\DoxyCodeLine{81 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_ab6f3f2230cb7822c8f4a113d666328b9}\label{classToken_ab6f3f2230cb7822c8f4a113d666328b9}} 
+\index{Token@{Token}!get\_Type@{get\_Type}}
+\index{get\_Type@{get\_Type}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{get\_Type()}{get\_Type()}}
+{\footnotesize\ttfamily std\+::string Token\+::get\+\_\+\+Type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the type. 
+
+\begin{DoxyReturn}{Returns}
+The type. 
+\end{DoxyReturn}
+
+
+Definition at line 113 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{113                                      \{}
+\DoxyCodeLine{114     \textcolor{keywordflow}{return} type\_;}
+\DoxyCodeLine{115 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_a079d00be840fd0e41ba42219ea1c1ce7}\label{classToken_a079d00be840fd0e41ba42219ea1c1ce7}} 
+\index{Token@{Token}!operator++@{operator++}}
+\index{operator++@{operator++}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classToken}{Token}} \& Token\+::operator++ (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Increment operator. 
+
+\begin{DoxyReturn}{Returns}
+The result of the increment 
+\end{DoxyReturn}
+
+
+Definition at line 277 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{277                               \{}
+\DoxyCodeLine{278     \textcolor{keyword}{this} -\/> \mbox{\hyperlink{classToken_a4bf11ede68824ac620e5c2a89614af13}{set\_Ammount}}(\mbox{\hyperlink{classToken_af9d510cb4d62f753150315d3cda32cfb}{get\_Ammount}}() + 1);}
+\DoxyCodeLine{279     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{280 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_a6de921df323a52e5e95cadb643907b8d}\label{classToken_a6de921df323a52e5e95cadb643907b8d}} 
+\index{Token@{Token}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Token\+::operator$<$ (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption}) const}
+
+
+
+Less-\/than comparison operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em str} & The string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the less-\/than comparison 
+\end{DoxyReturn}
+
+
+Definition at line 191 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{191                                                  \{}
+\DoxyCodeLine{192     \textcolor{keywordflow}{return} (\mbox{\hyperlink{classToken_aef326e0c4c863aa8ba063410fa38234b}{get\_Name}}() < str);}
+\DoxyCodeLine{193 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_a7785453276d93bc37e8f71a4cab93d87}\label{classToken_a7785453276d93bc37e8f71a4cab93d87}} 
+\index{Token@{Token}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Token\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classToken}{Token}} \&}]{other\+Token }\end{DoxyParamCaption}) const}
+
+
+
+Less-\/than comparison operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em other\+Token} & The other token\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the less-\/than comparison 
+\end{DoxyReturn}
+
+
+Definition at line 169 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{169                                                     \{}
+\DoxyCodeLine{170     \textcolor{keywordflow}{return} (\mbox{\hyperlink{classToken_aef326e0c4c863aa8ba063410fa38234b}{get\_Name}}() < otherToken.\mbox{\hyperlink{classToken_aef326e0c4c863aa8ba063410fa38234b}{get\_Name}}());}
+\DoxyCodeLine{171 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_a1e674501044a8d35e412674338571286}\label{classToken_a1e674501044a8d35e412674338571286}} 
+\index{Token@{Token}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{operator$<$=()}{operator<=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Token\+::operator$<$= (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption}) const}
+
+
+
+Less-\/than-\/or-\/equal comparison operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em str} & The string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the less-\/than-\/or-\/equal comparison 
+\end{DoxyReturn}
+
+
+Definition at line 202 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{202                                                   \{}
+\DoxyCodeLine{203     \textcolor{keywordflow}{return} (\mbox{\hyperlink{classToken_aef326e0c4c863aa8ba063410fa38234b}{get\_Name}}() <= str);}
+\DoxyCodeLine{204 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_a28d0a992354e02755e2cde50f1c944fb}\label{classToken_a28d0a992354e02755e2cde50f1c944fb}} 
+\index{Token@{Token}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{operator$<$=()}{operator<=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Token\+::operator$<$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classToken}{Token}} \&}]{other\+Token }\end{DoxyParamCaption}) const}
+
+
+
+Less-\/than-\/or-\/equal comparison operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em other\+Token} & The other token\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the less-\/than-\/or-\/equal comparison 
+\end{DoxyReturn}
+
+
+Definition at line 180 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{180                                                      \{}
+\DoxyCodeLine{181     \textcolor{keywordflow}{return} (\mbox{\hyperlink{classToken_aef326e0c4c863aa8ba063410fa38234b}{get\_Name}}() <= otherToken.\mbox{\hyperlink{classToken_aef326e0c4c863aa8ba063410fa38234b}{get\_Name}}());}
+\DoxyCodeLine{182 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_a8078b9c645e6686a8d49a7d42f1a8d37}\label{classToken_a8078b9c645e6686a8d49a7d42f1a8d37}} 
+\index{Token@{Token}!operator=@{operator=}}
+\index{operator=@{operator=}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classToken}{Token}} \& Token\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classToken}{Token}} \&}]{other\+Token }\end{DoxyParamCaption})}
+
+
+
+Assignment operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em other\+Token} & The other token\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the assignment 
+\end{DoxyReturn}
+
+
+Definition at line 289 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{289                                                 \{}
+\DoxyCodeLine{290     \textcolor{keyword}{this} -\/> \mbox{\hyperlink{classToken_ac632312b2d1b62f62d706305bc997f72}{set\_Name}}(otherToken.\mbox{\hyperlink{classToken_aef326e0c4c863aa8ba063410fa38234b}{get\_Name}}());}
+\DoxyCodeLine{291     \textcolor{keyword}{this} -\/> \mbox{\hyperlink{classToken_a4bf11ede68824ac620e5c2a89614af13}{set\_Ammount}}(otherToken.\mbox{\hyperlink{classToken_af9d510cb4d62f753150315d3cda32cfb}{get\_Ammount}}());}
+\DoxyCodeLine{292     \textcolor{keyword}{this} -\/> \mbox{\hyperlink{classToken_a604c7b32da7bbcc830a0c0dc22dd8ce7}{set\_Probability}}(otherToken.\mbox{\hyperlink{classToken_a6c81bf58a36b029719b2dc7a771612e0}{get\_Probability}}());}
+\DoxyCodeLine{293     \textcolor{keyword}{this} -\/> \mbox{\hyperlink{classToken_a5fbf26f3b0a8d2ab276f663c53165535}{set\_Type}}(otherToken.\mbox{\hyperlink{classToken_ab6f3f2230cb7822c8f4a113d666328b9}{get\_Type}}());}
+\DoxyCodeLine{294     \textcolor{keyword}{this} -\/> \mbox{\hyperlink{classToken_aacc17f53aae3cf057452ef5f2f3cb077}{set\_MultiClass}}(otherToken.\mbox{\hyperlink{classToken_a012ce07320acca409e571348c4bbe0d5}{get\_MultiClass}}());}
+\DoxyCodeLine{295     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{296 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_afb8b604442c611ee846fb5386241f24e}\label{classToken_afb8b604442c611ee846fb5386241f24e}} 
+\index{Token@{Token}!operator==@{operator==}}
+\index{operator==@{operator==}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Token\+::operator== (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption}) const}
+
+
+
+Equality operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em str} & The string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the equality 
+\end{DoxyReturn}
+
+
+Definition at line 268 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{268                                                   \{}
+\DoxyCodeLine{269     \textcolor{keywordflow}{return} (\mbox{\hyperlink{classToken_aef326e0c4c863aa8ba063410fa38234b}{get\_Name}}() == str);}
+\DoxyCodeLine{270 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_a5ada3858bbddb0c70d315329369f2ba0}\label{classToken_a5ada3858bbddb0c70d315329369f2ba0}} 
+\index{Token@{Token}!operator==@{operator==}}
+\index{operator==@{operator==}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Token\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classToken}{Token}} \&}]{other\+Token }\end{DoxyParamCaption}) const}
+
+
+
+Equality operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em other\+Token} & The other token\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the equality 
+\end{DoxyReturn}
+
+
+Definition at line 257 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{257                                                      \{}
+\DoxyCodeLine{258     \textcolor{keywordflow}{return} (\mbox{\hyperlink{classToken_aef326e0c4c863aa8ba063410fa38234b}{get\_Name}}() == otherToken.\mbox{\hyperlink{classToken_aef326e0c4c863aa8ba063410fa38234b}{get\_Name}}());}
+\DoxyCodeLine{259 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_a985a1f21e306d576c2d6ab46fb65858f}\label{classToken_a985a1f21e306d576c2d6ab46fb65858f}} 
+\index{Token@{Token}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{operator$>$()}{operator>()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Token\+::operator$>$ (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption}) const}
+
+
+
+Greater-\/than comparison operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em str} & The string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the greater-\/than comparison 
+\end{DoxyReturn}
+
+
+Definition at line 235 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{235                                                  \{}
+\DoxyCodeLine{236     \textcolor{keywordflow}{return} (\mbox{\hyperlink{classToken_aef326e0c4c863aa8ba063410fa38234b}{get\_Name}}() > str);}
+\DoxyCodeLine{237 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_a99216b50ae0f9b0eda27ed76087f9eb8}\label{classToken_a99216b50ae0f9b0eda27ed76087f9eb8}} 
+\index{Token@{Token}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{operator$>$()}{operator>()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Token\+::operator$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classToken}{Token}} \&}]{other\+Token }\end{DoxyParamCaption}) const}
+
+
+
+Greater-\/than comparison operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em other\+Token} & The other token\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the greater-\/than comparison 
+\end{DoxyReturn}
+
+
+Definition at line 213 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{213                                                     \{}
+\DoxyCodeLine{214     \textcolor{keywordflow}{return} (\mbox{\hyperlink{classToken_aef326e0c4c863aa8ba063410fa38234b}{get\_Name}}() > otherToken.\mbox{\hyperlink{classToken_aef326e0c4c863aa8ba063410fa38234b}{get\_Name}}());}
+\DoxyCodeLine{215 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_abd635270c5cb23d2a0cccb30e0366d24}\label{classToken_abd635270c5cb23d2a0cccb30e0366d24}} 
+\index{Token@{Token}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{operator$>$=()}{operator>=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Token\+::operator$>$= (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption}) const}
+
+
+
+Greater-\/than-\/or-\/equal comparison operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em str} & The string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the greater-\/than-\/or-\/equal comparison 
+\end{DoxyReturn}
+
+
+Definition at line 246 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{246                                                   \{}
+\DoxyCodeLine{247     \textcolor{keywordflow}{return} (\mbox{\hyperlink{classToken_aef326e0c4c863aa8ba063410fa38234b}{get\_Name}}() >= str);}
+\DoxyCodeLine{248 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_ac6e5aef057109c0883b43b8780398187}\label{classToken_ac6e5aef057109c0883b43b8780398187}} 
+\index{Token@{Token}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{operator$>$=()}{operator>=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Token\+::operator$>$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classToken}{Token}} \&}]{other\+Token }\end{DoxyParamCaption}) const}
+
+
+
+Greater-\/than-\/or-\/equal comparison operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em other\+Token} & The other token\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the greater-\/than-\/or-\/equal comparison 
+\end{DoxyReturn}
+
+
+Definition at line 224 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{224                                                      \{}
+\DoxyCodeLine{225     \textcolor{keywordflow}{return} (\mbox{\hyperlink{classToken_aef326e0c4c863aa8ba063410fa38234b}{get\_Name}}() >= otherToken.\mbox{\hyperlink{classToken_aef326e0c4c863aa8ba063410fa38234b}{get\_Name}}());}
+\DoxyCodeLine{226 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_a4bf11ede68824ac620e5c2a89614af13}\label{classToken_a4bf11ede68824ac620e5c2a89614af13}} 
+\index{Token@{Token}!set\_Ammount@{set\_Ammount}}
+\index{set\_Ammount@{set\_Ammount}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{set\_Ammount()}{set\_Ammount()}}
+{\footnotesize\ttfamily void Token\+::set\+\_\+\+Ammount (\begin{DoxyParamCaption}\item[{unsigned}]{ammount }\end{DoxyParamCaption})}
+
+
+
+Sets the ammount. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em ammount} & The ammount \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 131 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{131                                          \{}
+\DoxyCodeLine{132     ammount\_ = ammount;}
+\DoxyCodeLine{133 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_aacc17f53aae3cf057452ef5f2f3cb077}\label{classToken_aacc17f53aae3cf057452ef5f2f3cb077}} 
+\index{Token@{Token}!set\_MultiClass@{set\_MultiClass}}
+\index{set\_MultiClass@{set\_MultiClass}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{set\_MultiClass()}{set\_MultiClass()}}
+{\footnotesize\ttfamily void Token\+::set\+\_\+\+Multi\+Class (\begin{DoxyParamCaption}\item[{std\+::vector$<$ float $>$}]{new\+Multi\+Class }\end{DoxyParamCaption})}
+
+
+
+Sets the multi class. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Multi\+Class} & The new multi class \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 149 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{149                                                           \{}
+\DoxyCodeLine{150     multiClass\_ = newMultiClass;}
+\DoxyCodeLine{151 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_ac632312b2d1b62f62d706305bc997f72}\label{classToken_ac632312b2d1b62f62d706305bc997f72}} 
+\index{Token@{Token}!set\_Name@{set\_Name}}
+\index{set\_Name@{set\_Name}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{set\_Name()}{set\_Name()}}
+{\footnotesize\ttfamily void Token\+::set\+\_\+\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Sets the name. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em name} & The name \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 122 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{122                                     \{}
+\DoxyCodeLine{123     name\_ = name;}
+\DoxyCodeLine{124 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_a604c7b32da7bbcc830a0c0dc22dd8ce7}\label{classToken_a604c7b32da7bbcc830a0c0dc22dd8ce7}} 
+\index{Token@{Token}!set\_Probability@{set\_Probability}}
+\index{set\_Probability@{set\_Probability}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{set\_Probability()}{set\_Probability()}}
+{\footnotesize\ttfamily void Token\+::set\+\_\+\+Probability (\begin{DoxyParamCaption}\item[{float}]{new\+Probability }\end{DoxyParamCaption})}
+
+
+
+Sets the probability. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Probability} & The new probability \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 140 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{140                                                  \{}
+\DoxyCodeLine{141     probability\_ = newProbability;}
+\DoxyCodeLine{142 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classToken_a5fbf26f3b0a8d2ab276f663c53165535}\label{classToken_a5fbf26f3b0a8d2ab276f663c53165535}} 
+\index{Token@{Token}!set\_Type@{set\_Type}}
+\index{set\_Type@{set\_Type}!Token@{Token}}
+\doxysubsubsection{\texorpdfstring{set\_Type()}{set\_Type()}}
+{\footnotesize\ttfamily void Token\+::set\+\_\+\+Type (\begin{DoxyParamCaption}\item[{std\+::string}]{new\+Type }\end{DoxyParamCaption})}
+
+
+
+Sets the type. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Type} & The new type \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 158 of file token.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{158                                        \{}
+\DoxyCodeLine{159     type\_ = newType;}
+\DoxyCodeLine{160 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/token.\+hpp\item 
+src/token.\+cpp\end{DoxyCompactItemize}

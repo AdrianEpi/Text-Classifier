@@ -1,0 +1,895 @@
+\hypertarget{classVocabulary}{}\doxysection{Vocabulary Class Reference}
+\label{classVocabulary}\index{Vocabulary@{Vocabulary}}
+
+
+This class describes a vocabulary and.  
+
+
+
+
+{\ttfamily \#include $<$vocabulary.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classVocabulary_a6c25a20a0b024e3b1dc280a24c381612}\label{classVocabulary_a6c25a20a0b024e3b1dc280a24c381612}} 
+\mbox{\hyperlink{classVocabulary_a6c25a20a0b024e3b1dc280a24c381612}{Vocabulary}} (void)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVocabulary_a58199a8e2066080b3fa84b5c41b9a054}{Vocabulary}} (std\+::string input\+File, std\+::string outpu\+File)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVocabulary_af0b2df68f957379b370bb5b0d5e5e318}\label{classVocabulary_af0b2df68f957379b370bb5b0d5e5e318}} 
+\mbox{\hyperlink{classVocabulary_af0b2df68f957379b370bb5b0d5e5e318}{$\sim$\+Vocabulary}} (void)
+\begin{DoxyCompactList}\small\item\em Destroys the object. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classVocabulary_aca21a88c21f5408baae3e9671bebba02}{get\+\_\+\+Input\+File}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the input file. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classVocabulary_a479e17ea8074bd4ac25e8eed2daedec1}{get\+\_\+\+Outpu\+File}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the outpu file. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classVocabulary_adcd9147292e091cdb02b762c1a5b998f}{get\+\_\+\+Vocabulary\+Counter}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the Vocabulary\+Counter. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classVocabulary_ae53a08b4790d755f2439789c3622c7b9}{get\+\_\+\+N\+Tokens}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the tokens number. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classVocabulary_a4f8e8945ecf6b56bdda3d9ee171c0373}{get\+\_\+\+N\+Lines}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the number of lines. \end{DoxyCompactList}\item 
+std\+::set$<$ \mbox{\hyperlink{classToken}{Token}} $>$ \mbox{\hyperlink{classVocabulary_aff34f90a3f9429ea3f6b6d973488079d}{get\+\_\+\+Vocabulary}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the vocabulary. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classVocabulary_a590b1286671b3de31e3251317f922665}{get\+\_\+\+Type}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the type. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classVocabulary_a00c581af2f2ed2171b76efa0ea526f8e}{get\+\_\+\+Class\+Probability}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the class probability. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVocabulary_aa17219bcc6775d4a5ba65f9e94192ea1}{set\+\_\+\+Input\+File}} (std\+::string new\+Input\+File)
+\begin{DoxyCompactList}\small\item\em Sets the input file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVocabulary_a5f5dcbe2f3c19301ce02ceede1521610}{set\+\_\+\+Outpu\+File}} (std\+::string new\+Outpu\+File)
+\begin{DoxyCompactList}\small\item\em Sets the outpu file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVocabulary_afe931d13c56ce604de1cd526f5a614f9}{set\+\_\+\+Vocabulary\+Counter}} (int new\+Vocabulary\+Counter)
+\begin{DoxyCompactList}\small\item\em Sets the counter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVocabulary_aa11d13b5088520f52dbdb30d613977b8}{set\+\_\+\+N\+Tokens}} (int new\+N\+Tokens)
+\begin{DoxyCompactList}\small\item\em Sets the tokens number. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVocabulary_ae1d4144b87a2a648f07715faf415e214}{set\+\_\+\+N\+Lines}} (int new\+N\+Lines)
+\begin{DoxyCompactList}\small\item\em Sets the number of lines. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVocabulary_ac2ad9da30a70f8458dc55930f5504c83}{set\+\_\+\+Vocabulary}} (std\+::set$<$ \mbox{\hyperlink{classToken}{Token}} $>$ new\+Vocabulary)
+\begin{DoxyCompactList}\small\item\em Sets the vocabulary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVocabulary_ac5a3d1f3ddc87f8a6f2cd43f0f8fba2c}{set\+\_\+\+Type}} (std\+::string new\+Type)
+\begin{DoxyCompactList}\small\item\em Sets the type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVocabulary_aa5f17e8d5d96ff052e12d884f0cd763a}{set\+\_\+\+Class\+Probability}} (float new\+Class\+Probability)
+\begin{DoxyCompactList}\small\item\em Sets the class probability. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVocabulary}{Vocabulary}} \& \mbox{\hyperlink{classVocabulary_a6677a8bab84ede32b88f7b0e343107f6}{operator=}} (const \mbox{\hyperlink{classVocabulary}{Vocabulary}} \&new\+Vocabulary)
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVocabulary_a58408981d0173885c4d319c04eb49f35}{pre\+Process\+Data}} (std\+::string \&stop\+Word\+File)
+\begin{DoxyCompactList}\small\item\em Preprocess the data for the program, erases punctuation signs, converts all to lowercase and erases reserved words. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classVocabulary_a109d8c27d3d3c9c00fbcc42e6eb4bb3c}{load\+Stop\+Word}} (std\+::string \&input\+File)
+\begin{DoxyCompactList}\small\item\em Loads the stop words (reserved words). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVocabulary_a07ad35496d9591d82cd482a2b9d092f9}{generate\+Vocabulary}} (std\+::string \&input\+File, bool tokenized)
+\begin{DoxyCompactList}\small\item\em Generates vocabulary file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVocabulary_a546b3f17e2575fee6dab026303c0a73c}\label{classVocabulary_a546b3f17e2575fee6dab026303c0a73c}} 
+void {\bfseries calculate\+Probabilities} (void)
+\item 
+void \mbox{\hyperlink{classVocabulary_aa4058b0f6d2c09f0847b601eaa361de6}{add\+Class\+Probability}} (int size)
+\begin{DoxyCompactList}\small\item\em Calculates and adds the class probability. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVocabulary_a7f83accc3e7016df42e301734be6700d}{read\+Vocabulary}} (std\+::string \&input\+File)
+\begin{DoxyCompactList}\small\item\em Reads a created vocabulary from file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVocabulary_aa6cce1434b3ff94f3d490b187719548f}{store\+Vocabulary}} (std\+::string \&output\+File)
+\begin{DoxyCompactList}\small\item\em Stores the vocabulary into the given file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVocabulary_a1d52b5b5ee870e47c2e5569a671a6900}{read\+Learned\+Data}} (std\+::string \&input\+File)
+\begin{DoxyCompactList}\small\item\em Reads a learned data from a file and store the tokens with their respective probabilities and frecuence in the tokens set. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classVocabulary_a7fb21c224905ce41235060ba61523cb7}\label{classVocabulary_a7fb21c224905ce41235060ba61523cb7}} 
+std\+::string {\bfseries input\+File\+\_\+}
+\item 
+\mbox{\Hypertarget{classVocabulary_a480bd1720fd9d91c2bbfee9728167043}\label{classVocabulary_a480bd1720fd9d91c2bbfee9728167043}} 
+std\+::string {\bfseries outpu\+File\+\_\+}
+\item 
+\mbox{\Hypertarget{classVocabulary_aa32abc5c8ba5afc9b6773648ab9495ea}\label{classVocabulary_aa32abc5c8ba5afc9b6773648ab9495ea}} 
+int {\bfseries vocabulary\+Counter\+\_\+}
+\item 
+\mbox{\Hypertarget{classVocabulary_a358edfa82614445eee18a83b63e9466c}\label{classVocabulary_a358edfa82614445eee18a83b63e9466c}} 
+int {\bfseries n\+Tokens\+\_\+}
+\item 
+\mbox{\Hypertarget{classVocabulary_a1d2dd37b3b1a845a78c70342c71829c7}\label{classVocabulary_a1d2dd37b3b1a845a78c70342c71829c7}} 
+int {\bfseries n\+Lines\+\_\+}
+\item 
+\mbox{\Hypertarget{classVocabulary_a70d161c15923ea17c50c1f8fbd23d024}\label{classVocabulary_a70d161c15923ea17c50c1f8fbd23d024}} 
+std\+::set$<$ \mbox{\hyperlink{classToken}{Token}} $>$ {\bfseries vocabulary\+\_\+}
+\item 
+\mbox{\Hypertarget{classVocabulary_a64f0ccfc421cc5af2ecf602ababdee57}\label{classVocabulary_a64f0ccfc421cc5af2ecf602ababdee57}} 
+std\+::string {\bfseries type\+\_\+}
+\item 
+\mbox{\Hypertarget{classVocabulary_ae0e5bdbb8bc24040b99e76edc2291e6a}\label{classVocabulary_ae0e5bdbb8bc24040b99e76edc2291e6a}} 
+float {\bfseries class\+Probability\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class describes a vocabulary and. 
+
+Definition at line 38 of file vocabulary.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classVocabulary_a58199a8e2066080b3fa84b5c41b9a054}\label{classVocabulary_a58199a8e2066080b3fa84b5c41b9a054}} 
+\index{Vocabulary@{Vocabulary}!Vocabulary@{Vocabulary}}
+\index{Vocabulary@{Vocabulary}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{Vocabulary()}{Vocabulary()}}
+{\footnotesize\ttfamily Vocabulary\+::\+Vocabulary (\begin{DoxyParamCaption}\item[{std\+::string}]{input\+File,  }\item[{std\+::string}]{outpu\+File }\end{DoxyParamCaption})}
+
+
+
+Constructs a new instance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em input\+File} & The input file \\
+\hline
+\mbox{\texttt{ in}}  & {\em outpu\+File} & The outpu file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 47 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{47                                                                 \{}
+\DoxyCodeLine{48     \mbox{\hyperlink{classVocabulary_aa17219bcc6775d4a5ba65f9e94192ea1}{set\_InputFile}}(inputFile);}
+\DoxyCodeLine{49     \mbox{\hyperlink{classVocabulary_a5f5dcbe2f3c19301ce02ceede1521610}{set\_OutpuFile}}(outpuFile);}
+\DoxyCodeLine{50     \mbox{\hyperlink{classVocabulary_afe931d13c56ce604de1cd526f5a614f9}{set\_VocabularyCounter}}(0);}
+\DoxyCodeLine{51     \mbox{\hyperlink{classVocabulary_ac5a3d1f3ddc87f8a6f2cd43f0f8fba2c}{set\_Type}}(\textcolor{stringliteral}{""});}
+\DoxyCodeLine{52     \mbox{\hyperlink{classVocabulary_aa11d13b5088520f52dbdb30d613977b8}{set\_NTokens}}(0);}
+\DoxyCodeLine{53     \mbox{\hyperlink{classVocabulary_ae1d4144b87a2a648f07715faf415e214}{set\_NLines}}(0);}
+\DoxyCodeLine{54     \mbox{\hyperlink{classVocabulary_aa5f17e8d5d96ff052e12d884f0cd763a}{set\_ClassProbability}}(0.0);}
+\DoxyCodeLine{55 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classVocabulary_aa4058b0f6d2c09f0847b601eaa361de6}\label{classVocabulary_aa4058b0f6d2c09f0847b601eaa361de6}} 
+\index{Vocabulary@{Vocabulary}!addClassProbability@{addClassProbability}}
+\index{addClassProbability@{addClassProbability}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{addClassProbability()}{addClassProbability()}}
+{\footnotesize\ttfamily void Vocabulary\+::add\+Class\+Probability (\begin{DoxyParamCaption}\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Calculates and adds the class probability. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em size} & The size \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 314 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{314                                               \{}
+\DoxyCodeLine{315 }
+\DoxyCodeLine{316     \textcolor{keywordtype}{float} prob = nLines\_;}
+\DoxyCodeLine{317     prob /= size;}
+\DoxyCodeLine{318     prob = std::log(prob);}
+\DoxyCodeLine{319     \mbox{\hyperlink{classVocabulary_aa5f17e8d5d96ff052e12d884f0cd763a}{set\_ClassProbability}}(prob);}
+\DoxyCodeLine{320 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_a07ad35496d9591d82cd482a2b9d092f9}\label{classVocabulary_a07ad35496d9591d82cd482a2b9d092f9}} 
+\index{Vocabulary@{Vocabulary}!generateVocabulary@{generateVocabulary}}
+\index{generateVocabulary@{generateVocabulary}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{generateVocabulary()}{generateVocabulary()}}
+{\footnotesize\ttfamily void Vocabulary\+::generate\+Vocabulary (\begin{DoxyParamCaption}\item[{std\+::string \&}]{input\+File,  }\item[{bool}]{tokenize }\end{DoxyParamCaption})}
+
+
+
+Generates vocabulary file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em input\+File} & The input file \\
+\hline
+\mbox{\texttt{ in}}  & {\em tokenize} & If want to words to be tokenized or not \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 275 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{275                                                                         \{}
+\DoxyCodeLine{276     std::ifstream file(inputFile, std::ios::in);}
+\DoxyCodeLine{277     \textcolor{keywordflow}{if} (file.fail()) \{}
+\DoxyCodeLine{278         std::cout << std::endl << \textcolor{stringliteral}{"Error 404, generateVocabulary file not found. ("} << inputFile << \textcolor{stringliteral}{")"} << std::endl;}
+\DoxyCodeLine{279         exit(1);}
+\DoxyCodeLine{280     \}}
+\DoxyCodeLine{281     \mbox{\hyperlink{classVocabulary_aa11d13b5088520f52dbdb30d613977b8}{set\_NTokens}}(0);}
+\DoxyCodeLine{282     \mbox{\hyperlink{classVocabulary_afe931d13c56ce604de1cd526f5a614f9}{set\_VocabularyCounter}}(0);}
+\DoxyCodeLine{283     std::string word;}
+\DoxyCodeLine{284     std::set<Token>::iterator it;}
+\DoxyCodeLine{285     \textcolor{keywordflow}{while} (!file.eof()) \{}
+\DoxyCodeLine{286         file >> word;}
+\DoxyCodeLine{287         \textcolor{keywordflow}{if} (isdigit(word[0])) \{}
+\DoxyCodeLine{288             nLines\_ = stoi(word);}
+\DoxyCodeLine{289         \}}
+\DoxyCodeLine{290         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{291             \textcolor{keywordflow}{if} (!vocabulary\_.count(word)) \{}
+\DoxyCodeLine{292                 \mbox{\hyperlink{classToken}{Token}} newToken(word);}
+\DoxyCodeLine{293                 vocabulary\_.insert(newToken);}
+\DoxyCodeLine{294             \}}
+\DoxyCodeLine{295             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (tokenize)\{}
+\DoxyCodeLine{296                 it = vocabulary\_.find(word);}
+\DoxyCodeLine{297                 \mbox{\hyperlink{classToken}{Token}} newToken = *it;}
+\DoxyCodeLine{298                 newToken.\mbox{\hyperlink{classToken_afc00a9299677128489b24e7bb43cd84b}{incrementate}}();}
+\DoxyCodeLine{299                 vocabulary\_.erase(word);}
+\DoxyCodeLine{300                 vocabulary\_.insert(newToken);}
+\DoxyCodeLine{301             \}}
+\DoxyCodeLine{302             nTokens\_++;}
+\DoxyCodeLine{303         \}}
+\DoxyCodeLine{304     \}}
+\DoxyCodeLine{305     file.close();}
+\DoxyCodeLine{306     \mbox{\hyperlink{classVocabulary_afe931d13c56ce604de1cd526f5a614f9}{set\_VocabularyCounter}}(vocabulary\_.size());}
+\DoxyCodeLine{307 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_a00c581af2f2ed2171b76efa0ea526f8e}\label{classVocabulary_a00c581af2f2ed2171b76efa0ea526f8e}} 
+\index{Vocabulary@{Vocabulary}!get\_ClassProbability@{get\_ClassProbability}}
+\index{get\_ClassProbability@{get\_ClassProbability}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{get\_ClassProbability()}{get\_ClassProbability()}}
+{\footnotesize\ttfamily float Vocabulary\+::get\+\_\+\+Class\+Probability (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the class probability. 
+
+\begin{DoxyReturn}{Returns}
+The class probability. 
+\end{DoxyReturn}
+
+
+Definition at line 113 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{113                                                   \{}
+\DoxyCodeLine{114     \textcolor{keywordflow}{return} classProbability\_;}
+\DoxyCodeLine{115 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_aca21a88c21f5408baae3e9671bebba02}\label{classVocabulary_aca21a88c21f5408baae3e9671bebba02}} 
+\index{Vocabulary@{Vocabulary}!get\_InputFile@{get\_InputFile}}
+\index{get\_InputFile@{get\_InputFile}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{get\_InputFile()}{get\_InputFile()}}
+{\footnotesize\ttfamily std\+::string Vocabulary\+::get\+\_\+\+Input\+File (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the input file. 
+
+\begin{DoxyReturn}{Returns}
+The input file. 
+\end{DoxyReturn}
+
+
+Definition at line 68 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{68                                                \{}
+\DoxyCodeLine{69     \textcolor{keywordflow}{return} inputFile\_;}
+\DoxyCodeLine{70 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_a4f8e8945ecf6b56bdda3d9ee171c0373}\label{classVocabulary_a4f8e8945ecf6b56bdda3d9ee171c0373}} 
+\index{Vocabulary@{Vocabulary}!get\_NLines@{get\_NLines}}
+\index{get\_NLines@{get\_NLines}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{get\_NLines()}{get\_NLines()}}
+{\footnotesize\ttfamily int Vocabulary\+::get\+\_\+\+N\+Lines (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the number of lines. 
+
+\begin{DoxyReturn}{Returns}
+The number of lines. 
+\end{DoxyReturn}
+
+
+Definition at line 104 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{104                                       \{}
+\DoxyCodeLine{105     \textcolor{keywordflow}{return} nLines\_;}
+\DoxyCodeLine{106 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_ae53a08b4790d755f2439789c3622c7b9}\label{classVocabulary_ae53a08b4790d755f2439789c3622c7b9}} 
+\index{Vocabulary@{Vocabulary}!get\_NTokens@{get\_NTokens}}
+\index{get\_NTokens@{get\_NTokens}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{get\_NTokens()}{get\_NTokens()}}
+{\footnotesize\ttfamily int Vocabulary\+::get\+\_\+\+N\+Tokens (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the tokens number. 
+
+\begin{DoxyReturn}{Returns}
+The tokens number. 
+\end{DoxyReturn}
+
+
+Definition at line 95 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{95                                        \{}
+\DoxyCodeLine{96     \textcolor{keywordflow}{return} nTokens\_;}
+\DoxyCodeLine{97 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_a479e17ea8074bd4ac25e8eed2daedec1}\label{classVocabulary_a479e17ea8074bd4ac25e8eed2daedec1}} 
+\index{Vocabulary@{Vocabulary}!get\_OutpuFile@{get\_OutpuFile}}
+\index{get\_OutpuFile@{get\_OutpuFile}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{get\_OutpuFile()}{get\_OutpuFile()}}
+{\footnotesize\ttfamily std\+::string Vocabulary\+::get\+\_\+\+Outpu\+File (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the outpu file. 
+
+\begin{DoxyReturn}{Returns}
+The outpu file. 
+\end{DoxyReturn}
+
+
+Definition at line 77 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{77                                                \{}
+\DoxyCodeLine{78     \textcolor{keywordflow}{return} outpuFile\_;}
+\DoxyCodeLine{79 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_a590b1286671b3de31e3251317f922665}\label{classVocabulary_a590b1286671b3de31e3251317f922665}} 
+\index{Vocabulary@{Vocabulary}!get\_Type@{get\_Type}}
+\index{get\_Type@{get\_Type}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{get\_Type()}{get\_Type()}}
+{\footnotesize\ttfamily std\+::string Vocabulary\+::get\+\_\+\+Type (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the type. 
+
+\begin{DoxyReturn}{Returns}
+The type. 
+\end{DoxyReturn}
+
+
+Definition at line 131 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{131                                           \{}
+\DoxyCodeLine{132     \textcolor{keywordflow}{return} type\_;}
+\DoxyCodeLine{133 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_aff34f90a3f9429ea3f6b6d973488079d}\label{classVocabulary_aff34f90a3f9429ea3f6b6d973488079d}} 
+\index{Vocabulary@{Vocabulary}!get\_Vocabulary@{get\_Vocabulary}}
+\index{get\_Vocabulary@{get\_Vocabulary}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{get\_Vocabulary()}{get\_Vocabulary()}}
+{\footnotesize\ttfamily std\+::set$<$ \mbox{\hyperlink{classToken}{Token}} $>$ Vocabulary\+::get\+\_\+\+Vocabulary (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the vocabulary. 
+
+\begin{DoxyReturn}{Returns}
+The vocabulary. 
+\end{DoxyReturn}
+
+
+Definition at line 122 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{122                                                     \{}
+\DoxyCodeLine{123     \textcolor{keywordflow}{return} vocabulary\_;}
+\DoxyCodeLine{124 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_adcd9147292e091cdb02b762c1a5b998f}\label{classVocabulary_adcd9147292e091cdb02b762c1a5b998f}} 
+\index{Vocabulary@{Vocabulary}!get\_VocabularyCounter@{get\_VocabularyCounter}}
+\index{get\_VocabularyCounter@{get\_VocabularyCounter}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{get\_VocabularyCounter()}{get\_VocabularyCounter()}}
+{\footnotesize\ttfamily int Vocabulary\+::get\+\_\+\+Vocabulary\+Counter (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the Vocabulary\+Counter. 
+
+\begin{DoxyReturn}{Returns}
+The Vocabulary\+Counter. 
+\end{DoxyReturn}
+
+
+Definition at line 86 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{86                                                  \{}
+\DoxyCodeLine{87     \textcolor{keywordflow}{return} vocabularyCounter\_;}
+\DoxyCodeLine{88 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_a109d8c27d3d3c9c00fbcc42e6eb4bb3c}\label{classVocabulary_a109d8c27d3d3c9c00fbcc42e6eb4bb3c}} 
+\index{Vocabulary@{Vocabulary}!loadStopWord@{loadStopWord}}
+\index{loadStopWord@{loadStopWord}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{loadStopWord()}{loadStopWord()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Vocabulary\+::load\+Stop\+Word (\begin{DoxyParamCaption}\item[{std\+::string \&}]{input\+File }\end{DoxyParamCaption})}
+
+
+
+Loads the stop words (reserved words). 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em input\+File} & The input file\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+stop words vector 
+\end{DoxyReturn}
+
+
+Definition at line 253 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{253                                                                    \{}
+\DoxyCodeLine{254     std::vector<std::string> stopWords;}
+\DoxyCodeLine{255     std::ifstream file(inputFile, std::ios::in);}
+\DoxyCodeLine{256     \textcolor{keywordflow}{if} (file.fail()) \{}
+\DoxyCodeLine{257         std::cout << std::endl << \textcolor{stringliteral}{"Error 404, stopWords file not found."} << std::endl;}
+\DoxyCodeLine{258         exit(1);}
+\DoxyCodeLine{259     \}}
+\DoxyCodeLine{260     std::string word = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{261     \textcolor{keywordflow}{while} (!file.eof()) \{}
+\DoxyCodeLine{262         file >> word;}
+\DoxyCodeLine{263         stopWords.push\_back(word);}
+\DoxyCodeLine{264     \}}
+\DoxyCodeLine{265     file.close();}
+\DoxyCodeLine{266     \textcolor{keywordflow}{return} stopWords;}
+\DoxyCodeLine{267 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_a6677a8bab84ede32b88f7b0e343107f6}\label{classVocabulary_a6677a8bab84ede32b88f7b0e343107f6}} 
+\index{Vocabulary@{Vocabulary}!operator=@{operator=}}
+\index{operator=@{operator=}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVocabulary}{Vocabulary}} \& Vocabulary\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVocabulary}{Vocabulary}} \&}]{new\+Vocabulary }\end{DoxyParamCaption})}
+
+
+
+Assignment operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Vocabulary} & The new vocabulary\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the assignment 
+\end{DoxyReturn}
+
+
+Definition at line 214 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{214                                                                   \{}
+\DoxyCodeLine{215     \textcolor{keyword}{this} -\/> \mbox{\hyperlink{classVocabulary_ac2ad9da30a70f8458dc55930f5504c83}{set\_Vocabulary}}(newVocabulary.\mbox{\hyperlink{classVocabulary_aff34f90a3f9429ea3f6b6d973488079d}{get\_Vocabulary}}());}
+\DoxyCodeLine{216     \textcolor{keyword}{this} -\/> \mbox{\hyperlink{classVocabulary_afe931d13c56ce604de1cd526f5a614f9}{set\_VocabularyCounter}}(newVocabulary.\mbox{\hyperlink{classVocabulary_adcd9147292e091cdb02b762c1a5b998f}{get\_VocabularyCounter}}());}
+\DoxyCodeLine{217     \textcolor{keyword}{this} -\/> \mbox{\hyperlink{classVocabulary_a5f5dcbe2f3c19301ce02ceede1521610}{set\_OutpuFile}}(newVocabulary.\mbox{\hyperlink{classVocabulary_a479e17ea8074bd4ac25e8eed2daedec1}{get\_OutpuFile}}());}
+\DoxyCodeLine{218     \textcolor{keyword}{this} -\/> \mbox{\hyperlink{classVocabulary_aa17219bcc6775d4a5ba65f9e94192ea1}{set\_InputFile}}(newVocabulary.\mbox{\hyperlink{classVocabulary_aca21a88c21f5408baae3e9671bebba02}{get\_InputFile}}());}
+\DoxyCodeLine{219     \textcolor{keyword}{this} -\/> \mbox{\hyperlink{classVocabulary_aa11d13b5088520f52dbdb30d613977b8}{set\_NTokens}}(newVocabulary.\mbox{\hyperlink{classVocabulary_ae53a08b4790d755f2439789c3622c7b9}{get\_NTokens}}());}
+\DoxyCodeLine{220     \textcolor{keyword}{this} -\/> \mbox{\hyperlink{classVocabulary_ae1d4144b87a2a648f07715faf415e214}{set\_NLines}}(newVocabulary.\mbox{\hyperlink{classVocabulary_a4f8e8945ecf6b56bdda3d9ee171c0373}{get\_NLines}}());}
+\DoxyCodeLine{221     \textcolor{keyword}{this} -\/> \mbox{\hyperlink{classVocabulary_ac5a3d1f3ddc87f8a6f2cd43f0f8fba2c}{set\_Type}}(newVocabulary.\mbox{\hyperlink{classVocabulary_a590b1286671b3de31e3251317f922665}{get\_Type}}());}
+\DoxyCodeLine{222     \textcolor{keyword}{this} -\/> \mbox{\hyperlink{classVocabulary_aa5f17e8d5d96ff052e12d884f0cd763a}{set\_ClassProbability}}(newVocabulary.\mbox{\hyperlink{classVocabulary_a00c581af2f2ed2171b76efa0ea526f8e}{get\_ClassProbability}}());}
+\DoxyCodeLine{223     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{224 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_a58408981d0173885c4d319c04eb49f35}\label{classVocabulary_a58408981d0173885c4d319c04eb49f35}} 
+\index{Vocabulary@{Vocabulary}!preProcessData@{preProcessData}}
+\index{preProcessData@{preProcessData}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{preProcessData()}{preProcessData()}}
+{\footnotesize\ttfamily void Vocabulary\+::pre\+Process\+Data (\begin{DoxyParamCaption}\item[{std\+::string \&}]{stop\+Word\+File }\end{DoxyParamCaption})}
+
+
+
+Preprocess the data for the program, erases punctuation signs, converts all to lowercase and erases reserved words. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em stop\+Word\+File} & The stop word file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 232 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{232                                                         \{}
+\DoxyCodeLine{233     \mbox{\hyperlink{classPreProcesser}{PreProcesser}} preProcesser;}
+\DoxyCodeLine{234     std::string outputFile = \textcolor{stringliteral}{"../outputs/preProcesserHelper.txt"};}
+\DoxyCodeLine{235     std::vector<std::string> stopWords = \mbox{\hyperlink{classVocabulary_a109d8c27d3d3c9c00fbcc42e6eb4bb3c}{loadStopWord}}(stopWordFile);}
+\DoxyCodeLine{236     std::string empty = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{237     preProcesser.\mbox{\hyperlink{classPreProcesser_a1da0d9c75fbc8d5fb78e22fbba828812}{loadData}}(inputFile\_, empty);}
+\DoxyCodeLine{238     preProcesser.\mbox{\hyperlink{classPreProcesser_a5193f128cbc7974958297cf1d82140c2}{convertLowerCase}}();}
+\DoxyCodeLine{239     preProcesser.\mbox{\hyperlink{classPreProcesser_a200795e9f431f3d1114dbb717581b261}{erasePunctuationSigns}}();}
+\DoxyCodeLine{240     preProcesser.\mbox{\hyperlink{classPreProcesser_af4137215119c956ce31772a7421383b8}{eraseAllNumbers}}();}
+\DoxyCodeLine{241     preProcesser.\mbox{\hyperlink{classPreProcesser_a8c02216b43b1e324166ae149a54d94ff}{storeData}}(outputFile, 0);}
+\DoxyCodeLine{242     preProcesser.\mbox{\hyperlink{classPreProcesser_ab6716be9784a6ce18a1991fc81451f25}{eraseReservedWords}}(stopWords, outputFile);}
+\DoxyCodeLine{243     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{244 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_a1d52b5b5ee870e47c2e5569a671a6900}\label{classVocabulary_a1d52b5b5ee870e47c2e5569a671a6900}} 
+\index{Vocabulary@{Vocabulary}!readLearnedData@{readLearnedData}}
+\index{readLearnedData@{readLearnedData}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{readLearnedData()}{readLearnedData()}}
+{\footnotesize\ttfamily void Vocabulary\+::read\+Learned\+Data (\begin{DoxyParamCaption}\item[{std\+::string \&}]{input\+File }\end{DoxyParamCaption})}
+
+
+
+Reads a learned data from a file and store the tokens with their respective probabilities and frecuence in the tokens set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+File} & The input file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 376 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{376                                                       \{}
+\DoxyCodeLine{377     std::ifstream file(inputFile, std::ios::in);}
+\DoxyCodeLine{378     std::string type = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{379     type += inputFile[inputFile.length() -\/ 5];}
+\DoxyCodeLine{380     \mbox{\hyperlink{classVocabulary_ac5a3d1f3ddc87f8a6f2cd43f0f8fba2c}{set\_Type}}(type);}
+\DoxyCodeLine{381     \textcolor{keywordflow}{if} (file.fail()) \{}
+\DoxyCodeLine{382         std::cout << std::endl << \textcolor{stringliteral}{"Error 404, readVocabulary file not found. ("} << inputFile << \textcolor{stringliteral}{")"} << std::endl;}
+\DoxyCodeLine{383         exit(1);}
+\DoxyCodeLine{384     \}}
+\DoxyCodeLine{385     \mbox{\hyperlink{classVocabulary_aa11d13b5088520f52dbdb30d613977b8}{set\_NTokens}}(0);}
+\DoxyCodeLine{386     \mbox{\hyperlink{classVocabulary_afe931d13c56ce604de1cd526f5a614f9}{set\_VocabularyCounter}}(0);}
+\DoxyCodeLine{387     std::string word;}
+\DoxyCodeLine{388     std::getline(file, word);}
+\DoxyCodeLine{389     std::string tmp = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{390     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i = 0; i < word.length(); i++) \{}
+\DoxyCodeLine{391         \textcolor{keywordflow}{if} (isdigit(word[i])) \{}
+\DoxyCodeLine{392             tmp += word[i];}
+\DoxyCodeLine{393         \}}
+\DoxyCodeLine{394     \}}
+\DoxyCodeLine{395     \mbox{\hyperlink{classVocabulary_ae1d4144b87a2a648f07715faf415e214}{set\_NLines}}(std::stoi(tmp));}
+\DoxyCodeLine{396     std::getline(file, word);}
+\DoxyCodeLine{397     \textcolor{keywordflow}{while} (!file.eof()) \{}
+\DoxyCodeLine{398         file >> word >> word;}
+\DoxyCodeLine{399         \mbox{\hyperlink{classToken}{Token}} newToken(word);}
+\DoxyCodeLine{400         newToken.set\_Type(type);}
+\DoxyCodeLine{401         file >> word >> word;}
+\DoxyCodeLine{402         newToken.set\_Ammount(std::stoi(word));}
+\DoxyCodeLine{403         file >> word >> word;}
+\DoxyCodeLine{404         newToken.set\_Probability(std::stof(word));}
+\DoxyCodeLine{405         vocabulary\_.insert(newToken);}
+\DoxyCodeLine{406         nTokens\_++;}
+\DoxyCodeLine{407     \}}
+\DoxyCodeLine{408     file.close();}
+\DoxyCodeLine{409     \mbox{\hyperlink{classVocabulary_afe931d13c56ce604de1cd526f5a614f9}{set\_VocabularyCounter}}(vocabulary\_.size());}
+\DoxyCodeLine{410 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_a7f83accc3e7016df42e301734be6700d}\label{classVocabulary_a7f83accc3e7016df42e301734be6700d}} 
+\index{Vocabulary@{Vocabulary}!readVocabulary@{readVocabulary}}
+\index{readVocabulary@{readVocabulary}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{readVocabulary()}{readVocabulary()}}
+{\footnotesize\ttfamily void Vocabulary\+::read\+Vocabulary (\begin{DoxyParamCaption}\item[{std\+::string \&}]{input\+File }\end{DoxyParamCaption})}
+
+
+
+Reads a created vocabulary from file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+File} & The input file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 327 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{327                                                      \{}
+\DoxyCodeLine{328     std::ifstream file(inputFile, std::ios::in);}
+\DoxyCodeLine{329     \textcolor{keywordflow}{if} (file.fail()) \{}
+\DoxyCodeLine{330         std::cout << std::endl << \textcolor{stringliteral}{"Error 404, readVocabulary file not found. ("} << inputFile << \textcolor{stringliteral}{")"} << std::endl;}
+\DoxyCodeLine{331         exit(1);}
+\DoxyCodeLine{332     \}}
+\DoxyCodeLine{333     \mbox{\hyperlink{classVocabulary_aa11d13b5088520f52dbdb30d613977b8}{set\_NTokens}}(0);}
+\DoxyCodeLine{334     \mbox{\hyperlink{classVocabulary_afe931d13c56ce604de1cd526f5a614f9}{set\_VocabularyCounter}}(0);}
+\DoxyCodeLine{335     std::string word;}
+\DoxyCodeLine{336     std::getline(file, word);}
+\DoxyCodeLine{337     \textcolor{keywordflow}{while} (!file.eof()) \{}
+\DoxyCodeLine{338         file >> word;}
+\DoxyCodeLine{339         \mbox{\hyperlink{classToken}{Token}} newToken(word);}
+\DoxyCodeLine{340         newToken.set\_Ammount(0);}
+\DoxyCodeLine{341         vocabulary\_.insert(newToken);}
+\DoxyCodeLine{342         nTokens\_++;}
+\DoxyCodeLine{343     \}}
+\DoxyCodeLine{344     file.close();}
+\DoxyCodeLine{345     \mbox{\hyperlink{classVocabulary_afe931d13c56ce604de1cd526f5a614f9}{set\_VocabularyCounter}}(vocabulary\_.size());}
+\DoxyCodeLine{346 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_aa5f17e8d5d96ff052e12d884f0cd763a}\label{classVocabulary_aa5f17e8d5d96ff052e12d884f0cd763a}} 
+\index{Vocabulary@{Vocabulary}!set\_ClassProbability@{set\_ClassProbability}}
+\index{set\_ClassProbability@{set\_ClassProbability}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{set\_ClassProbability()}{set\_ClassProbability()}}
+{\footnotesize\ttfamily void Vocabulary\+::set\+\_\+\+Class\+Probability (\begin{DoxyParamCaption}\item[{float}]{new\+Class\+Probability }\end{DoxyParamCaption})}
+
+
+
+Sets the class probability. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Class\+Probability} & The new class probability \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 203 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{203                                                                 \{}
+\DoxyCodeLine{204     classProbability\_ = newClassProbability;}
+\DoxyCodeLine{205 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_aa17219bcc6775d4a5ba65f9e94192ea1}\label{classVocabulary_aa17219bcc6775d4a5ba65f9e94192ea1}} 
+\index{Vocabulary@{Vocabulary}!set\_InputFile@{set\_InputFile}}
+\index{set\_InputFile@{set\_InputFile}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{set\_InputFile()}{set\_InputFile()}}
+{\footnotesize\ttfamily void Vocabulary\+::set\+\_\+\+Input\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{new\+Input\+File }\end{DoxyParamCaption})}
+
+
+
+Sets the input file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Input\+File} & The new input file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 140 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{140                                                       \{}
+\DoxyCodeLine{141     inputFile\_ = newInputFile;}
+\DoxyCodeLine{142 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_ae1d4144b87a2a648f07715faf415e214}\label{classVocabulary_ae1d4144b87a2a648f07715faf415e214}} 
+\index{Vocabulary@{Vocabulary}!set\_NLines@{set\_NLines}}
+\index{set\_NLines@{set\_NLines}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{set\_NLines()}{set\_NLines()}}
+{\footnotesize\ttfamily void Vocabulary\+::set\+\_\+\+N\+Lines (\begin{DoxyParamCaption}\item[{int}]{new\+Lines }\end{DoxyParamCaption})}
+
+
+
+Sets the number of lines. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Lines} & The new lines number \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 176 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{176                                          \{}
+\DoxyCodeLine{177     nLines\_ = newLines;}
+\DoxyCodeLine{178 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_aa11d13b5088520f52dbdb30d613977b8}\label{classVocabulary_aa11d13b5088520f52dbdb30d613977b8}} 
+\index{Vocabulary@{Vocabulary}!set\_NTokens@{set\_NTokens}}
+\index{set\_NTokens@{set\_NTokens}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{set\_NTokens()}{set\_NTokens()}}
+{\footnotesize\ttfamily void Vocabulary\+::set\+\_\+\+N\+Tokens (\begin{DoxyParamCaption}\item[{int}]{new\+Tokens }\end{DoxyParamCaption})}
+
+
+
+Sets the tokens number. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Tokens} & The new tokens number \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 167 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{167                                            \{}
+\DoxyCodeLine{168     nTokens\_ = newTokens;}
+\DoxyCodeLine{169 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_a5f5dcbe2f3c19301ce02ceede1521610}\label{classVocabulary_a5f5dcbe2f3c19301ce02ceede1521610}} 
+\index{Vocabulary@{Vocabulary}!set\_OutpuFile@{set\_OutpuFile}}
+\index{set\_OutpuFile@{set\_OutpuFile}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{set\_OutpuFile()}{set\_OutpuFile()}}
+{\footnotesize\ttfamily void Vocabulary\+::set\+\_\+\+Outpu\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{new\+Outpu\+File }\end{DoxyParamCaption})}
+
+
+
+Sets the outpu file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Outpu\+File} & The new outpu file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 149 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{149                                                       \{}
+\DoxyCodeLine{150     outpuFile\_ = newOutpuFile;}
+\DoxyCodeLine{151 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_ac5a3d1f3ddc87f8a6f2cd43f0f8fba2c}\label{classVocabulary_ac5a3d1f3ddc87f8a6f2cd43f0f8fba2c}} 
+\index{Vocabulary@{Vocabulary}!set\_Type@{set\_Type}}
+\index{set\_Type@{set\_Type}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{set\_Type()}{set\_Type()}}
+{\footnotesize\ttfamily void Vocabulary\+::set\+\_\+\+Type (\begin{DoxyParamCaption}\item[{std\+::string}]{new\+Type }\end{DoxyParamCaption})}
+
+
+
+Sets the type. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Type} & The new type \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 194 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{194                                             \{}
+\DoxyCodeLine{195     type\_ = newType;}
+\DoxyCodeLine{196 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_ac2ad9da30a70f8458dc55930f5504c83}\label{classVocabulary_ac2ad9da30a70f8458dc55930f5504c83}} 
+\index{Vocabulary@{Vocabulary}!set\_Vocabulary@{set\_Vocabulary}}
+\index{set\_Vocabulary@{set\_Vocabulary}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{set\_Vocabulary()}{set\_Vocabulary()}}
+{\footnotesize\ttfamily void Vocabulary\+::set\+\_\+\+Vocabulary (\begin{DoxyParamCaption}\item[{std\+::set$<$ \mbox{\hyperlink{classToken}{Token}} $>$}]{new\+Vocabulary }\end{DoxyParamCaption})}
+
+
+
+Sets the vocabulary. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Vocabulary} & The new vocabulary \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 185 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{185                                                             \{}
+\DoxyCodeLine{186     vocabulary\_ = newVocabulary;}
+\DoxyCodeLine{187 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_afe931d13c56ce604de1cd526f5a614f9}\label{classVocabulary_afe931d13c56ce604de1cd526f5a614f9}} 
+\index{Vocabulary@{Vocabulary}!set\_VocabularyCounter@{set\_VocabularyCounter}}
+\index{set\_VocabularyCounter@{set\_VocabularyCounter}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{set\_VocabularyCounter()}{set\_VocabularyCounter()}}
+{\footnotesize\ttfamily void Vocabulary\+::set\+\_\+\+Vocabulary\+Counter (\begin{DoxyParamCaption}\item[{int}]{new\+Vocabulary\+Counter }\end{DoxyParamCaption})}
+
+
+
+Sets the counter. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Vocabulary\+Counter} & The new counter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 158 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{158                                                                 \{}
+\DoxyCodeLine{159     vocabularyCounter\_ = newVocabularyCounter;}
+\DoxyCodeLine{160 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVocabulary_aa6cce1434b3ff94f3d490b187719548f}\label{classVocabulary_aa6cce1434b3ff94f3d490b187719548f}} 
+\index{Vocabulary@{Vocabulary}!storeVocabulary@{storeVocabulary}}
+\index{storeVocabulary@{storeVocabulary}!Vocabulary@{Vocabulary}}
+\doxysubsubsection{\texorpdfstring{storeVocabulary()}{storeVocabulary()}}
+{\footnotesize\ttfamily void Vocabulary\+::store\+Vocabulary (\begin{DoxyParamCaption}\item[{std\+::string \&}]{output\+File }\end{DoxyParamCaption})}
+
+
+
+Stores the vocabulary into the given file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output\+File} & The output file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 353 of file vocabulary.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{353                                                        \{}
+\DoxyCodeLine{354     std::fstream file(outputFile, std::ios::out | std::ios::trunc);}
+\DoxyCodeLine{355     \textcolor{keywordflow}{if} (file.fail()) \{}
+\DoxyCodeLine{356         std::cout << \textcolor{stringliteral}{"Error while storing data \(\backslash\)""} << outputFile << \textcolor{stringliteral}{"\(\backslash\)" is not valid document"} << std::endl;}
+\DoxyCodeLine{357         exit(1);}
+\DoxyCodeLine{358     \} }
+\DoxyCodeLine{359     \textcolor{keywordflow}{else} \{ }
+\DoxyCodeLine{360         file << \textcolor{stringliteral}{"Numero de palabras: "} << \mbox{\hyperlink{classVocabulary_adcd9147292e091cdb02b762c1a5b998f}{get\_VocabularyCounter}}();}
+\DoxyCodeLine{361         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i : vocabulary\_) \{}
+\DoxyCodeLine{362             file << std::endl << i.get\_Name();}
+\DoxyCodeLine{363         \}}
+\DoxyCodeLine{364         \textcolor{comment}{// This represents unkown words}}
+\DoxyCodeLine{365         file << std::endl << \textcolor{stringliteral}{"<UNK>"};}
+\DoxyCodeLine{366     \}}
+\DoxyCodeLine{367     file.close();}
+\DoxyCodeLine{368 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/vocabulary.\+hpp\item 
+src/vocabulary.\+cpp\end{DoxyCompactItemize}

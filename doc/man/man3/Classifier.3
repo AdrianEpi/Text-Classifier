@@ -1,0 +1,520 @@
+.TH "Classifier" 3 "Fri May 14 2021" "Version 2.1.0" "Text-Classifier" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Classifier \- This class describes a classifier\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <classifier\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBClassifier\fP (void)"
+.br
+.RI "Constructs a new instance\&. "
+.ti -1c
+.RI "\fBClassifier\fP (char *argv[], int &argc)"
+.br
+.RI "Constructs a new instance\&. "
+.ti -1c
+.RI "\fB~Classifier\fP (void)"
+.br
+.RI "Destroys the object\&. "
+.ti -1c
+.RI "std::vector< std::string > \fBget_InputFiles\fP (void) const"
+.br
+.RI "Gets the input files\&. "
+.ti -1c
+.RI "std::vector< \fBVocabulary\fP > \fBget_Class\fP (void) const"
+.br
+.RI "Gets the learned data\&. "
+.ti -1c
+.RI "std::string \fBget_Data\fP (void) const"
+.br
+.RI "Gets the data\&. "
+.ti -1c
+.RI "void \fBset_InputFiles\fP (std::vector< std::string > newInputFiles)"
+.br
+.RI "Sets the input files\&. "
+.ti -1c
+.RI "void \fBset_Class\fP (std::vector< \fBVocabulary\fP > newClass)"
+.br
+.RI "Sets the learned data\&. "
+.ti -1c
+.RI "void \fBset_Data\fP (std::string newData)"
+.br
+.RI "Sets the data\&. "
+.ti -1c
+.RI "void \fBclassifyFile\fP (std::string &inputFile, std::string &stopWords)"
+.br
+.RI "Preprocess, calculates the probabilities and classifies the given input file\&. "
+.ti -1c
+.RI "void \fBclassify\fP (std::vector< std::string > sentence)"
+.br
+.RI "Classifies a given sentence into the correct type and stores the information into data var\&. "
+.ti -1c
+.RI "void \fBgenerateClassProbability\fP (void)"
+.br
+.RI "Generates and adds the class probabilities to each class with the following formula: ln(classLinesAmmount / totalLinesAmmout) "
+.ti -1c
+.RI "void \fBpreProcess\fP (std::vector< std::string > &stopWords, std::string &sentence)"
+.br
+.RI "Preprocess the given sentence using the same pre-processing method as the vocabulary\&. "
+.ti -1c
+.RI "void \fBreadInputFiles\fP (char *argv[], int &argc)"
+.br
+.RI "Reads input learned files and store the tokens into the Class vector\&. "
+.ti -1c
+.RI "void \fBstoreFile\fP (std::string &outputFile, std::string &resumeFile)"
+.br
+.RI "Stores the output data into the classified file and the resume file\&. The classify file format is: , <ProbSentClassA>, \&.\&.\&., <ProbSentClassN>, <Class>\&. , <ProbSentClassA>, \&.\&.\&., <ProbSentClassN>, <Class>\&. , <ProbSentClassA>, \&.\&.\&., <ProbSentClassN>, <Class>\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::vector< std::string > \fBinputFiles_\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBVocabulary\fP > \fBclass_\fP"
+.br
+.ti -1c
+.RI "std::string \fBdata_\fP"
+.br
+.ti -1c
+.RI "std::set< \fBToken\fP > \fBlearnedData_\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBresume_\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class describes a classifier\&. 
+.PP
+Definition at line 40 of file classifier\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Classifier::Classifier (char * argv[], int & argc)"
+
+.PP
+Constructs a new instance\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIargv\fP The arguments array 
+.br
+\fIargc\fP The count of arguments 
+.RE
+.PP
+
+.PP
+Definition at line 41 of file classifier\&.cpp\&.
+.PP
+.nf
+41                                                {
+42     set_Data("");
+43     readInputFiles(argv, argc);
+44     generateClassProbability();
+45     std::string input = argv[2];
+46     std::string stopWords = argv[3];
+47     classifyFile(input, stopWords);
+48     //std::string outputFile = "\&.\&./outputs/classification\&.csv";
+49     //std::string resume = "\&.\&./outputs/resume\&.csv";
+50     // Personal case output names
+51     std::string outputFile = "\&.\&./outputs/clasificacion_alu0101158280\&.csv";
+52     std::string resume = "\&.\&./outputs/resumen_alu0101158280\&.csv";
+53     storeFile(outputFile, resume);
+54 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "void Classifier::classify (std::vector< std::string > sentence)"
+
+.PP
+Classifies a given sentence into the correct type and stores the information into data var\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsentence\fP The sentence which is going to be classifyed 
+.RE
+.PP
+
+.PP
+Definition at line 168 of file classifier\&.cpp\&.
+.PP
+.nf
+168                                                         {
+169     std::vector<float> prob;
+170     prob\&.resize(inputFiles_\&.size());
+171     for (unsigned i = 0; i < prob\&.size(); i++) {
+172         prob[i] = 0\&.0;
+173     }
+174     std::set<Token>::iterator it;
+175     for (unsigned i = 0; i < sentence\&.size(); i++) {
+176         it = learnedData_\&.find(sentence[i]);
+177         for (unsigned j = 0; j < prob\&.size(); j++) {
+178             prob[j] += it -> get_MultiClass(j);
+179         }
+180     }
+181     data_ += ", ";
+182     unsigned selection = 0;
+183     for (unsigned i = 0; i < prob\&.size(); i++) {
+184         prob[i] += class_[i]\&.get_ClassProbability();
+185         if (prob[selection] < prob[i]) {
+186             selection = i;
+187         }
+188         data_ += std::to_string(prob[i]);
+189         data_ += ", ";
+190     }
+191     resume_\&.push_back(class_[selection]\&.get_Type());
+192     data_ += class_[selection]\&.get_Type();
+193     data_ += "\&.\r";
+194 }
+.fi
+.SS "void Classifier::classifyFile (std::string & inputFile, std::string & stopWordsFile)"
+
+.PP
+Preprocess, calculates the probabilities and classifies the given input file\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIinputFile\fP The input file with the testCorpus 
+.br
+\fIstopWordsFile\fP The stop words file for preprocessing use 
+.RE
+.PP
+
+.PP
+Definition at line 123 of file classifier\&.cpp\&.
+.PP
+.nf
+123                                                                              {
+124     Vocabulary voc;
+125     std::vector<std::string> stopWord;
+126     stopWord = voc\&.loadStopWord(stopWordsFile);
+127     std::string tmp;
+128     preProcess(stopWord, inputFile);
+129     std::string helper = "\&.\&./outputs/preProcesserHelper\&.txt";
+130     std::ifstream file(helper, std::ios::in);
+131     std::ifstream originalFile(inputFile, std::ios::in);
+132     Chrono myChrono;
+133     myChrono\&.startChrono();
+134     if (file\&.fail() || originalFile\&.fail()) {
+135         std::cout << std::endl << "Error 404, preProcesserHelper\&.txt file not found in /outputs\&." << std::endl;
+136         exit(1);
+137     }
+138     std::string originalReader = "";
+139     while (!file\&.eof()) {
+140         std::vector<std::string> sentence; 
+141         std::string tmp = "";
+142         while (!file\&.eof()) {
+143             file >> tmp;
+144             if (tmp == "preprocesserendl") {
+145                 break;
+146             }
+147             sentence\&.push_back(tmp);
+148         }
+149         std::getline(originalFile, originalReader);
+150         if (originalReader[originalReader\&.length() -1] == '\r') {
+151             originalReader[originalReader\&.length() -1] = ' ';
+152         }
+153         data_ += originalReader;
+154         classify(sentence);
+155     }
+156     file\&.close();
+157     originalFile\&.close();
+158     myChrono\&.stopChrono();
+159     std::cout << std::endl << "Elapsed Classifying time: " << myChrono\&.get_Seconds(5) << " seconds\&." << std::endl;
+160 }
+.fi
+.SS "std::vector< \fBVocabulary\fP > Classifier::get_Class (void) const"
+
+.PP
+Gets the learned data\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The learned data\&. 
+.RE
+.PP
+
+.PP
+Definition at line 76 of file classifier\&.cpp\&.
+.PP
+.nf
+76                                                        {
+77     return class_;
+78 }
+.fi
+.SS "std::string Classifier::get_Data (void) const"
+
+.PP
+Gets the data\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The data\&. 
+.RE
+.PP
+
+.PP
+Definition at line 85 of file classifier\&.cpp\&.
+.PP
+.nf
+85                                           {
+86     return data_;
+87 }
+.fi
+.SS "std::vector< std::string > Classifier::get_InputFiles (void) const"
+
+.PP
+Gets the input files\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The input files\&. 
+.RE
+.PP
+
+.PP
+Definition at line 67 of file classifier\&.cpp\&.
+.PP
+.nf
+67                                                            {
+68     return inputFiles_;
+69 }
+.fi
+.SS "void Classifier::preProcess (std::vector< std::string > & stopWords, std::string & fileName)"
+
+.PP
+Preprocess the given sentence using the same pre-processing method as the vocabulary\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpreprocesser\fP The preprocesser 
+.br
+\fIstopWords\fP The stop words 
+.br
+\fIsentence\fP The sentence 
+.RE
+.PP
+
+.PP
+Definition at line 218 of file classifier\&.cpp\&.
+.PP
+.nf
+218                                                                                  {
+219     PreProcesser preprocesser;
+220     std::string helper = "\&.\&./outputs/preProcesserHelper\&.txt";
+221     preprocesser\&.loadTestData(fileName);
+222     preprocesser\&.convertLowerCase();
+223     preprocesser\&.erasePunctuationSigns();
+224     preprocesser\&.eraseAllNumbers();
+225     preprocesser\&.storeData(helper, 0);
+226     preprocesser\&.eraseReservedWords(stopWords, helper);
+227 }
+.fi
+.SS "void Classifier::readInputFiles (char * argv[], int & argc)"
+
+.PP
+Reads input learned files and store the tokens into the Class vector\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIargv\fP The arguments array 
+.br
+\fIargc\fP The count of arguments 
+.RE
+.PP
+
+.PP
+Definition at line 235 of file classifier\&.cpp\&.
+.PP
+.nf
+235                                                         {
+236     std::vector<Token> tmpVector;
+237     for (int k = 4; k < argc; k++) {
+238         std::string fileName = argv[k];
+239         inputFiles_\&.push_back(fileName);
+240         std::string type = "";
+241         type += fileName[fileName\&.length() - 5];
+242         std::ifstream file(fileName, std::ios::in);
+243         if (file\&.fail()) {
+244             std::cout << std::endl << "Error 404," << fileName << " file not found\&." << std::endl;
+245             exit(1);
+246         }
+247         else if (k == 4) {
+248             std::string reader = "";
+249             file >> reader >> reader >> reader >> reader >> reader >> reader;
+250             Vocabulary newVoc;
+251             newVoc\&.set_NLines(std::stoi(reader));
+252             newVoc\&.set_Type(type);
+253             class_\&.push_back(newVoc);
+254             std::getline(file, reader);
+255             while (!file\&.eof()) {
+256                 file >> reader >> reader;
+257                 Token newToken(reader);
+258                 file >> reader >> reader >> reader >> reader;
+259                 newToken\&.addClassProb(std::stof(reader), type);
+260                 newToken\&.set_Type(type);
+261                 tmpVector\&.push_back(newToken);
+262             }
+263         }
+264         else {
+265             int i = 0;
+266             std::string reader = "";
+267             file >> reader >> reader >> reader >> reader >> reader >> reader;
+268             Vocabulary newVoc;
+269             newVoc\&.set_NLines(std::stoi(reader));
+270             newVoc\&.set_Type(type);
+271             class_\&.push_back(newVoc);
+272             std::getline(file, reader);
+273             while (!file\&.eof()) {
+274                 file >> reader >> reader >> reader >> reader >> reader >> reader;
+275                 tmpVector[i]\&.addClassProb(std::stof(reader), type);
+276                 i++;
+277             }
+278         }
+279         file\&.close();
+280     }
+281     for (unsigned i = 0; i < tmpVector\&.size(); i++) {
+282         learnedData_\&.insert(tmpVector[i]);
+283     }
+284 }
+.fi
+.SS "void Classifier::set_Class (std::vector< \fBVocabulary\fP > newClass)"
+
+.PP
+Sets the learned data\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewClass\fP The new learned data 
+.RE
+.PP
+
+.PP
+Definition at line 103 of file classifier\&.cpp\&.
+.PP
+.nf
+103                                                           {
+104     class_ = newClass;
+105 }
+.fi
+.SS "void Classifier::set_Data (std::string newData)"
+
+.PP
+Sets the data\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewData\fP The new data 
+.RE
+.PP
+
+.PP
+Definition at line 112 of file classifier\&.cpp\&.
+.PP
+.nf
+112                                             {
+113     data_ = newData;
+114 }
+.fi
+.SS "void Classifier::set_InputFiles (std::vector< std::string > newInputFiles)"
+
+.PP
+Sets the input files\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewInputFiles\fP The new input files 
+.RE
+.PP
+
+.PP
+Definition at line 94 of file classifier\&.cpp\&.
+.PP
+.nf
+94                                                                    {
+95     inputFiles_ = newInputFiles;
+96 }
+.fi
+.SS "void Classifier::storeFile (std::string & outputFile, std::string & resumeFile)"
+
+.PP
+Stores the output data into the classified file and the resume file\&. The classify file format is: , <ProbSentClassA>, \&.\&.\&., <ProbSentClassN>, <Class>\&. , <ProbSentClassA>, \&.\&.\&., <ProbSentClassN>, <Class>\&. , <ProbSentClassA>, \&.\&.\&., <ProbSentClassN>, <Class>\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIoutputFile\fP The output file 
+.br
+\fIresumeFile\fP The resume file 
+.RE
+.PP
+
+.PP
+Definition at line 296 of file classifier\&.cpp\&.
+.PP
+.nf
+296                                                                         {
+297     std::fstream file(outputFile, std::ios::out | std::ios::trunc);
+298     if (file\&.fail()) {
+299         std::cout << "Error while storing data \"" << outputFile << "\" is not valid document\&." << std::endl;
+300         exit(1);
+301     } 
+302     else { 
+303         bool isDecimal = false;
+304         for (unsigned i = 0; i < data_\&.length(); i++) {
+305             /*----------  Fixing decimales to 2 digits  ----------*/
+306             // file << data_; // If dont want to trunc decimals
+307             
+308             if (isDecimal && std::isdigit(data_[i]) && std::isdigit(data_[i - 2])) {
+309                 if (data_[i] != ',') {
+310                     file << data_[i];
+311                     i++;
+312                 }
+313                 if (data_[i] != ',') {
+314                     file << data_[i];
+315                     i++;
+316                 }
+317                 while (data_[i] != ',' && data_[i] != '\&.') {
+318                     i++;
+319                 }
+320                 file << data_[i];
+321                 isDecimal = false;
+322             }
+323             else {
+324                 isDecimal = false;
+325                 file << data_[i];
+326                 if (data_[i] == '\&.') {
+327                     isDecimal = true;
+328                 }
+329             }
+330         }
+331     }
+332     file\&.close();
+333     std::fstream resume(resumeFile, std::ios::out | std::ios::trunc);
+334     if (resume\&.fail()) {
+335         std::cout << "Error while storing data \"" << resumeFile << "\" is not valid document\&." << std::endl;
+336         exit(1);
+337     } 
+338     else {
+339         // next line for personal purposes
+340         resume << "codigo: " << std::endl;
+341         for (unsigned i = 0; i < resume_\&.size(); i++) {
+342             resume << resume_[i] << std::endl;
+343         }
+344         resume\&.close();
+345     }
+346 }
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Text-Classifier from the source code\&.

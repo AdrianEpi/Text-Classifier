@@ -1,0 +1,574 @@
+\hypertarget{classClassifier}{}\doxysection{Classifier Class Reference}
+\label{classClassifier}\index{Classifier@{Classifier}}
+
+
+This class describes a classifier.  
+
+
+
+
+{\ttfamily \#include $<$classifier.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classClassifier_aa5b7cf4745c883bc83b46fc4a6714274}\label{classClassifier_aa5b7cf4745c883bc83b46fc4a6714274}} 
+\mbox{\hyperlink{classClassifier_aa5b7cf4745c883bc83b46fc4a6714274}{Classifier}} (void)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classClassifier_a7e5e85474c43253a79f1834608384652}{Classifier}} (char $\ast$argv\mbox{[}$\,$\mbox{]}, int \&argc)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classClassifier_a9f5173e79559e37b9f08492da5d14d0b}\label{classClassifier_a9f5173e79559e37b9f08492da5d14d0b}} 
+\mbox{\hyperlink{classClassifier_a9f5173e79559e37b9f08492da5d14d0b}{$\sim$\+Classifier}} (void)
+\begin{DoxyCompactList}\small\item\em Destroys the object. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classClassifier_aff9711fdae33fceac09f9d151764161a}{get\+\_\+\+Input\+Files}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the input files. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classVocabulary}{Vocabulary}} $>$ \mbox{\hyperlink{classClassifier_a26d59f152efd8b0524795a890f79f4d6}{get\+\_\+\+Class}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the learned data. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classClassifier_a651b65075daa4b114e2acda795527b74}{get\+\_\+\+Data}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classClassifier_a2de5f473db4051e82e12b9d062ff22b4}{set\+\_\+\+Input\+Files}} (std\+::vector$<$ std\+::string $>$ new\+Input\+Files)
+\begin{DoxyCompactList}\small\item\em Sets the input files. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classClassifier_af09c100d57a0ba46e5fe1a57c08f34e2}{set\+\_\+\+Class}} (std\+::vector$<$ \mbox{\hyperlink{classVocabulary}{Vocabulary}} $>$ new\+Class)
+\begin{DoxyCompactList}\small\item\em Sets the learned data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classClassifier_ab0d7e93375e323cf07e5bf21532d6163}{set\+\_\+\+Data}} (std\+::string new\+Data)
+\begin{DoxyCompactList}\small\item\em Sets the data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classClassifier_a3cb3bb4d5c17153b3cc38aaea52ca2eb}{classify\+File}} (std\+::string \&input\+File, std\+::string \&stop\+Words)
+\begin{DoxyCompactList}\small\item\em Preprocess, calculates the probabilities and classifies the given input file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classClassifier_a9952835a9e4555ef3ef808dbcdcb7375}{classify}} (std\+::vector$<$ std\+::string $>$ sentence)
+\begin{DoxyCompactList}\small\item\em Classifies a given sentence into the correct type and stores the information into data var. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classClassifier_a9d6131f5727d218e4ba70ef0c4bd3ee6}\label{classClassifier_a9d6131f5727d218e4ba70ef0c4bd3ee6}} 
+void \mbox{\hyperlink{classClassifier_a9d6131f5727d218e4ba70ef0c4bd3ee6}{generate\+Class\+Probability}} (void)
+\begin{DoxyCompactList}\small\item\em Generates and adds the class probabilities to each class with the following formula\+: ln(class\+Lines\+Ammount / total\+Lines\+Ammout) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classClassifier_a774305730289722257a360302349fdb3}{pre\+Process}} (std\+::vector$<$ std\+::string $>$ \&stop\+Words, std\+::string \&sentence)
+\begin{DoxyCompactList}\small\item\em Preprocess the given sentence using the same pre-\/processing method as the vocabulary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classClassifier_a2010468310ff2bc66c756b15e8481ea8}{read\+Input\+Files}} (char $\ast$argv\mbox{[}$\,$\mbox{]}, int \&argc)
+\begin{DoxyCompactList}\small\item\em Reads input learned files and store the tokens into the Class vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classClassifier_ae59153d52e14554c49eb5b0f81c00755}{store\+File}} (std\+::string \&output\+File, std\+::string \&resume\+File)
+\begin{DoxyCompactList}\small\item\em Stores the output data into the classified file and the resume file. The classify file format is\+: , $<$\+Prob\+Sent\+Class\+A$>$, ..., $<$\+Prob\+Sent\+Class\+N$>$, $<$\+Class$>$. , $<$\+Prob\+Sent\+Class\+A$>$, ..., $<$\+Prob\+Sent\+Class\+N$>$, $<$\+Class$>$. , $<$\+Prob\+Sent\+Class\+A$>$, ..., $<$\+Prob\+Sent\+Class\+N$>$, $<$\+Class$>$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classClassifier_aec3e6b78421e002a0615a7d892c31e91}\label{classClassifier_aec3e6b78421e002a0615a7d892c31e91}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries input\+Files\+\_\+}
+\item 
+\mbox{\Hypertarget{classClassifier_afaa30064ae36adb8df60c247a58daa99}\label{classClassifier_afaa30064ae36adb8df60c247a58daa99}} 
+std\+::vector$<$ \mbox{\hyperlink{classVocabulary}{Vocabulary}} $>$ {\bfseries class\+\_\+}
+\item 
+\mbox{\Hypertarget{classClassifier_a050607cac65f5d3befa22f5e37001657}\label{classClassifier_a050607cac65f5d3befa22f5e37001657}} 
+std\+::string {\bfseries data\+\_\+}
+\item 
+\mbox{\Hypertarget{classClassifier_abff0743c39e18da2a388b8a6c4a51e4a}\label{classClassifier_abff0743c39e18da2a388b8a6c4a51e4a}} 
+std\+::set$<$ \mbox{\hyperlink{classToken}{Token}} $>$ {\bfseries learned\+Data\+\_\+}
+\item 
+\mbox{\Hypertarget{classClassifier_abaf86e3cb3d5a5b6d2bca0df18ffbec2}\label{classClassifier_abaf86e3cb3d5a5b6d2bca0df18ffbec2}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries resume\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class describes a classifier. 
+
+Definition at line 40 of file classifier.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classClassifier_a7e5e85474c43253a79f1834608384652}\label{classClassifier_a7e5e85474c43253a79f1834608384652}} 
+\index{Classifier@{Classifier}!Classifier@{Classifier}}
+\index{Classifier@{Classifier}!Classifier@{Classifier}}
+\doxysubsubsection{\texorpdfstring{Classifier()}{Classifier()}}
+{\footnotesize\ttfamily Classifier\+::\+Classifier (\begin{DoxyParamCaption}\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]},  }\item[{int \&}]{argc }\end{DoxyParamCaption})}
+
+
+
+Constructs a new instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argv} & The arguments array \\
+\hline
+{\em argc} & The count of arguments \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 41 of file classifier.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{41                                                \{}
+\DoxyCodeLine{42     \mbox{\hyperlink{classClassifier_ab0d7e93375e323cf07e5bf21532d6163}{set\_Data}}(\textcolor{stringliteral}{""});}
+\DoxyCodeLine{43     \mbox{\hyperlink{classClassifier_a2010468310ff2bc66c756b15e8481ea8}{readInputFiles}}(argv, argc);}
+\DoxyCodeLine{44     \mbox{\hyperlink{classClassifier_a9d6131f5727d218e4ba70ef0c4bd3ee6}{generateClassProbability}}();}
+\DoxyCodeLine{45     std::string input = argv[2];}
+\DoxyCodeLine{46     std::string stopWords = argv[3];}
+\DoxyCodeLine{47     \mbox{\hyperlink{classClassifier_a3cb3bb4d5c17153b3cc38aaea52ca2eb}{classifyFile}}(input, stopWords);}
+\DoxyCodeLine{48     \textcolor{comment}{//std::string outputFile = "../outputs/classification.csv";}}
+\DoxyCodeLine{49     \textcolor{comment}{//std::string resume = "../outputs/resume.csv";}}
+\DoxyCodeLine{50     \textcolor{comment}{// Personal case output names}}
+\DoxyCodeLine{51     std::string outputFile = \textcolor{stringliteral}{"../outputs/clasificacion\_alu0101158280.csv"};}
+\DoxyCodeLine{52     std::string resume = \textcolor{stringliteral}{"../outputs/resumen\_alu0101158280.csv"};}
+\DoxyCodeLine{53     \mbox{\hyperlink{classClassifier_ae59153d52e14554c49eb5b0f81c00755}{storeFile}}(outputFile, resume);}
+\DoxyCodeLine{54 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classClassifier_a9952835a9e4555ef3ef808dbcdcb7375}\label{classClassifier_a9952835a9e4555ef3ef808dbcdcb7375}} 
+\index{Classifier@{Classifier}!classify@{classify}}
+\index{classify@{classify}!Classifier@{Classifier}}
+\doxysubsubsection{\texorpdfstring{classify()}{classify()}}
+{\footnotesize\ttfamily void Classifier\+::classify (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{sentence }\end{DoxyParamCaption})}
+
+
+
+Classifies a given sentence into the correct type and stores the information into data var. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em sentence} & The sentence which is going to be classifyed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 168 of file classifier.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{168                                                         \{}
+\DoxyCodeLine{169     std::vector<float> prob;}
+\DoxyCodeLine{170     prob.resize(inputFiles\_.size());}
+\DoxyCodeLine{171     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i = 0; i < prob.size(); i++) \{}
+\DoxyCodeLine{172         prob[i] = 0.0;}
+\DoxyCodeLine{173     \}}
+\DoxyCodeLine{174     std::set<Token>::iterator it;}
+\DoxyCodeLine{175     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i = 0; i < sentence.size(); i++) \{}
+\DoxyCodeLine{176         it = learnedData\_.find(sentence[i]);}
+\DoxyCodeLine{177         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} j = 0; j < prob.size(); j++) \{}
+\DoxyCodeLine{178             prob[j] += it -\/> get\_MultiClass(j);}
+\DoxyCodeLine{179         \}}
+\DoxyCodeLine{180     \}}
+\DoxyCodeLine{181     data\_ += \textcolor{stringliteral}{", "};}
+\DoxyCodeLine{182     \textcolor{keywordtype}{unsigned} selection = 0;}
+\DoxyCodeLine{183     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i = 0; i < prob.size(); i++) \{}
+\DoxyCodeLine{184         prob[i] += class\_[i].get\_ClassProbability();}
+\DoxyCodeLine{185         \textcolor{keywordflow}{if} (prob[selection] < prob[i]) \{}
+\DoxyCodeLine{186             selection = i;}
+\DoxyCodeLine{187         \}}
+\DoxyCodeLine{188         data\_ += std::to\_string(prob[i]);}
+\DoxyCodeLine{189         data\_ += \textcolor{stringliteral}{", "};}
+\DoxyCodeLine{190     \}}
+\DoxyCodeLine{191     resume\_.push\_back(class\_[selection].get\_Type());}
+\DoxyCodeLine{192     data\_ += class\_[selection].get\_Type();}
+\DoxyCodeLine{193     data\_ += \textcolor{stringliteral}{".\(\backslash\)r"};}
+\DoxyCodeLine{194 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classClassifier_a3cb3bb4d5c17153b3cc38aaea52ca2eb}\label{classClassifier_a3cb3bb4d5c17153b3cc38aaea52ca2eb}} 
+\index{Classifier@{Classifier}!classifyFile@{classifyFile}}
+\index{classifyFile@{classifyFile}!Classifier@{Classifier}}
+\doxysubsubsection{\texorpdfstring{classifyFile()}{classifyFile()}}
+{\footnotesize\ttfamily void Classifier\+::classify\+File (\begin{DoxyParamCaption}\item[{std\+::string \&}]{input\+File,  }\item[{std\+::string \&}]{stop\+Words\+File }\end{DoxyParamCaption})}
+
+
+
+Preprocess, calculates the probabilities and classifies the given input file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+File} & The input file with the test\+Corpus \\
+\hline
+{\em stop\+Words\+File} & The stop words file for preprocessing use \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 123 of file classifier.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{123                                                                              \{}
+\DoxyCodeLine{124     \mbox{\hyperlink{classVocabulary}{Vocabulary}} voc;}
+\DoxyCodeLine{125     std::vector<std::string> stopWord;}
+\DoxyCodeLine{126     stopWord = voc.\mbox{\hyperlink{classVocabulary_a109d8c27d3d3c9c00fbcc42e6eb4bb3c}{loadStopWord}}(stopWordsFile);}
+\DoxyCodeLine{127     std::string tmp;}
+\DoxyCodeLine{128     \mbox{\hyperlink{classClassifier_a774305730289722257a360302349fdb3}{preProcess}}(stopWord, inputFile);}
+\DoxyCodeLine{129     std::string helper = \textcolor{stringliteral}{"../outputs/preProcesserHelper.txt"};}
+\DoxyCodeLine{130     std::ifstream file(helper, std::ios::in);}
+\DoxyCodeLine{131     std::ifstream originalFile(inputFile, std::ios::in);}
+\DoxyCodeLine{132     \mbox{\hyperlink{classChrono}{Chrono}} myChrono;}
+\DoxyCodeLine{133     myChrono.\mbox{\hyperlink{classChrono_acf9ab5d376fe0f29b86ec3bcc75a0420}{startChrono}}();}
+\DoxyCodeLine{134     \textcolor{keywordflow}{if} (file.fail() || originalFile.fail()) \{}
+\DoxyCodeLine{135         std::cout << std::endl << \textcolor{stringliteral}{"Error 404, preProcesserHelper.txt file not found in /outputs."} << std::endl;}
+\DoxyCodeLine{136         exit(1);}
+\DoxyCodeLine{137     \}}
+\DoxyCodeLine{138     std::string originalReader = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{139     \textcolor{keywordflow}{while} (!file.eof()) \{}
+\DoxyCodeLine{140         std::vector<std::string> sentence; }
+\DoxyCodeLine{141         std::string tmp = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{142         \textcolor{keywordflow}{while} (!file.eof()) \{}
+\DoxyCodeLine{143             file >> tmp;}
+\DoxyCodeLine{144             \textcolor{keywordflow}{if} (tmp == \textcolor{stringliteral}{"preprocesserendl"}) \{}
+\DoxyCodeLine{145                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{146             \}}
+\DoxyCodeLine{147             sentence.push\_back(tmp);}
+\DoxyCodeLine{148         \}}
+\DoxyCodeLine{149         std::getline(originalFile, originalReader);}
+\DoxyCodeLine{150         \textcolor{keywordflow}{if} (originalReader[originalReader.length() -\/1] == \textcolor{charliteral}{'\(\backslash\)r'}) \{}
+\DoxyCodeLine{151             originalReader[originalReader.length() -\/1] = \textcolor{charliteral}{' '};}
+\DoxyCodeLine{152         \}}
+\DoxyCodeLine{153         data\_ += originalReader;}
+\DoxyCodeLine{154         \mbox{\hyperlink{classClassifier_a9952835a9e4555ef3ef808dbcdcb7375}{classify}}(sentence);}
+\DoxyCodeLine{155     \}}
+\DoxyCodeLine{156     file.close();}
+\DoxyCodeLine{157     originalFile.close();}
+\DoxyCodeLine{158     myChrono.\mbox{\hyperlink{classChrono_a8220ee5d73f0be9696f4167ada8754d1}{stopChrono}}();}
+\DoxyCodeLine{159     std::cout << std::endl << \textcolor{stringliteral}{"Elapsed Classifying time: "} << myChrono.\mbox{\hyperlink{classChrono_abb9339c666a75b8e6093de4c13e1d9db}{get\_Seconds}}(5) << \textcolor{stringliteral}{" seconds."} << std::endl;}
+\DoxyCodeLine{160 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classClassifier_a26d59f152efd8b0524795a890f79f4d6}\label{classClassifier_a26d59f152efd8b0524795a890f79f4d6}} 
+\index{Classifier@{Classifier}!get\_Class@{get\_Class}}
+\index{get\_Class@{get\_Class}!Classifier@{Classifier}}
+\doxysubsubsection{\texorpdfstring{get\_Class()}{get\_Class()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classVocabulary}{Vocabulary}} $>$ Classifier\+::get\+\_\+\+Class (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the learned data. 
+
+\begin{DoxyReturn}{Returns}
+The learned data. 
+\end{DoxyReturn}
+
+
+Definition at line 76 of file classifier.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{76                                                        \{}
+\DoxyCodeLine{77     \textcolor{keywordflow}{return} class\_;}
+\DoxyCodeLine{78 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classClassifier_a651b65075daa4b114e2acda795527b74}\label{classClassifier_a651b65075daa4b114e2acda795527b74}} 
+\index{Classifier@{Classifier}!get\_Data@{get\_Data}}
+\index{get\_Data@{get\_Data}!Classifier@{Classifier}}
+\doxysubsubsection{\texorpdfstring{get\_Data()}{get\_Data()}}
+{\footnotesize\ttfamily std\+::string Classifier\+::get\+\_\+\+Data (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the data. 
+
+\begin{DoxyReturn}{Returns}
+The data. 
+\end{DoxyReturn}
+
+
+Definition at line 85 of file classifier.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{85                                           \{}
+\DoxyCodeLine{86     \textcolor{keywordflow}{return} data\_;}
+\DoxyCodeLine{87 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classClassifier_aff9711fdae33fceac09f9d151764161a}\label{classClassifier_aff9711fdae33fceac09f9d151764161a}} 
+\index{Classifier@{Classifier}!get\_InputFiles@{get\_InputFiles}}
+\index{get\_InputFiles@{get\_InputFiles}!Classifier@{Classifier}}
+\doxysubsubsection{\texorpdfstring{get\_InputFiles()}{get\_InputFiles()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Classifier\+::get\+\_\+\+Input\+Files (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the input files. 
+
+\begin{DoxyReturn}{Returns}
+The input files. 
+\end{DoxyReturn}
+
+
+Definition at line 67 of file classifier.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{67                                                            \{}
+\DoxyCodeLine{68     \textcolor{keywordflow}{return} inputFiles\_;}
+\DoxyCodeLine{69 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classClassifier_a774305730289722257a360302349fdb3}\label{classClassifier_a774305730289722257a360302349fdb3}} 
+\index{Classifier@{Classifier}!preProcess@{preProcess}}
+\index{preProcess@{preProcess}!Classifier@{Classifier}}
+\doxysubsubsection{\texorpdfstring{preProcess()}{preProcess()}}
+{\footnotesize\ttfamily void Classifier\+::pre\+Process (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$ \&}]{stop\+Words,  }\item[{std\+::string \&}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+Preprocess the given sentence using the same pre-\/processing method as the vocabulary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em preprocesser} & The preprocesser \\
+\hline
+{\em stop\+Words} & The stop words \\
+\hline
+{\em sentence} & The sentence \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 218 of file classifier.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{218                                                                                  \{}
+\DoxyCodeLine{219     \mbox{\hyperlink{classPreProcesser}{PreProcesser}} preprocesser;}
+\DoxyCodeLine{220     std::string helper = \textcolor{stringliteral}{"../outputs/preProcesserHelper.txt"};}
+\DoxyCodeLine{221     preprocesser.\mbox{\hyperlink{classPreProcesser_a57ded9409c77757f223dced5f9b54af1}{loadTestData}}(fileName);}
+\DoxyCodeLine{222     preprocesser.\mbox{\hyperlink{classPreProcesser_a5193f128cbc7974958297cf1d82140c2}{convertLowerCase}}();}
+\DoxyCodeLine{223     preprocesser.\mbox{\hyperlink{classPreProcesser_a200795e9f431f3d1114dbb717581b261}{erasePunctuationSigns}}();}
+\DoxyCodeLine{224     preprocesser.\mbox{\hyperlink{classPreProcesser_af4137215119c956ce31772a7421383b8}{eraseAllNumbers}}();}
+\DoxyCodeLine{225     preprocesser.\mbox{\hyperlink{classPreProcesser_a8c02216b43b1e324166ae149a54d94ff}{storeData}}(helper, 0);}
+\DoxyCodeLine{226     preprocesser.\mbox{\hyperlink{classPreProcesser_ab6716be9784a6ce18a1991fc81451f25}{eraseReservedWords}}(stopWords, helper);}
+\DoxyCodeLine{227 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classClassifier_a2010468310ff2bc66c756b15e8481ea8}\label{classClassifier_a2010468310ff2bc66c756b15e8481ea8}} 
+\index{Classifier@{Classifier}!readInputFiles@{readInputFiles}}
+\index{readInputFiles@{readInputFiles}!Classifier@{Classifier}}
+\doxysubsubsection{\texorpdfstring{readInputFiles()}{readInputFiles()}}
+{\footnotesize\ttfamily void Classifier\+::read\+Input\+Files (\begin{DoxyParamCaption}\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]},  }\item[{int \&}]{argc }\end{DoxyParamCaption})}
+
+
+
+Reads input learned files and store the tokens into the Class vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argv} & The arguments array \\
+\hline
+{\em argc} & The count of arguments \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 235 of file classifier.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{235                                                         \{}
+\DoxyCodeLine{236     std::vector<Token> tmpVector;}
+\DoxyCodeLine{237     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = 4; k < argc; k++) \{}
+\DoxyCodeLine{238         std::string fileName = argv[k];}
+\DoxyCodeLine{239         inputFiles\_.push\_back(fileName);}
+\DoxyCodeLine{240         std::string type = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{241         type += fileName[fileName.length() -\/ 5];}
+\DoxyCodeLine{242         std::ifstream file(fileName, std::ios::in);}
+\DoxyCodeLine{243         \textcolor{keywordflow}{if} (file.fail()) \{}
+\DoxyCodeLine{244             std::cout << std::endl << \textcolor{stringliteral}{"Error 404,"} << fileName << \textcolor{stringliteral}{" file not found."} << std::endl;}
+\DoxyCodeLine{245             exit(1);}
+\DoxyCodeLine{246         \}}
+\DoxyCodeLine{247         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (k == 4) \{}
+\DoxyCodeLine{248             std::string reader = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{249             file >> reader >> reader >> reader >> reader >> reader >> reader;}
+\DoxyCodeLine{250             \mbox{\hyperlink{classVocabulary}{Vocabulary}} newVoc;}
+\DoxyCodeLine{251             newVoc.\mbox{\hyperlink{classVocabulary_ae1d4144b87a2a648f07715faf415e214}{set\_NLines}}(std::stoi(reader));}
+\DoxyCodeLine{252             newVoc.\mbox{\hyperlink{classVocabulary_ac5a3d1f3ddc87f8a6f2cd43f0f8fba2c}{set\_Type}}(type);}
+\DoxyCodeLine{253             class\_.push\_back(newVoc);}
+\DoxyCodeLine{254             std::getline(file, reader);}
+\DoxyCodeLine{255             \textcolor{keywordflow}{while} (!file.eof()) \{}
+\DoxyCodeLine{256                 file >> reader >> reader;}
+\DoxyCodeLine{257                 \mbox{\hyperlink{classToken}{Token}} newToken(reader);}
+\DoxyCodeLine{258                 file >> reader >> reader >> reader >> reader;}
+\DoxyCodeLine{259                 newToken.addClassProb(std::stof(reader), type);}
+\DoxyCodeLine{260                 newToken.set\_Type(type);}
+\DoxyCodeLine{261                 tmpVector.push\_back(newToken);}
+\DoxyCodeLine{262             \}}
+\DoxyCodeLine{263         \}}
+\DoxyCodeLine{264         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{265             \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{266             std::string reader = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{267             file >> reader >> reader >> reader >> reader >> reader >> reader;}
+\DoxyCodeLine{268             \mbox{\hyperlink{classVocabulary}{Vocabulary}} newVoc;}
+\DoxyCodeLine{269             newVoc.\mbox{\hyperlink{classVocabulary_ae1d4144b87a2a648f07715faf415e214}{set\_NLines}}(std::stoi(reader));}
+\DoxyCodeLine{270             newVoc.\mbox{\hyperlink{classVocabulary_ac5a3d1f3ddc87f8a6f2cd43f0f8fba2c}{set\_Type}}(type);}
+\DoxyCodeLine{271             class\_.push\_back(newVoc);}
+\DoxyCodeLine{272             std::getline(file, reader);}
+\DoxyCodeLine{273             \textcolor{keywordflow}{while} (!file.eof()) \{}
+\DoxyCodeLine{274                 file >> reader >> reader >> reader >> reader >> reader >> reader;}
+\DoxyCodeLine{275                 tmpVector[i].addClassProb(std::stof(reader), type);}
+\DoxyCodeLine{276                 i++;}
+\DoxyCodeLine{277             \}}
+\DoxyCodeLine{278         \}}
+\DoxyCodeLine{279         file.close();}
+\DoxyCodeLine{280     \}}
+\DoxyCodeLine{281     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i = 0; i < tmpVector.size(); i++) \{}
+\DoxyCodeLine{282         learnedData\_.insert(tmpVector[i]);}
+\DoxyCodeLine{283     \}}
+\DoxyCodeLine{284 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classClassifier_af09c100d57a0ba46e5fe1a57c08f34e2}\label{classClassifier_af09c100d57a0ba46e5fe1a57c08f34e2}} 
+\index{Classifier@{Classifier}!set\_Class@{set\_Class}}
+\index{set\_Class@{set\_Class}!Classifier@{Classifier}}
+\doxysubsubsection{\texorpdfstring{set\_Class()}{set\_Class()}}
+{\footnotesize\ttfamily void Classifier\+::set\+\_\+\+Class (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classVocabulary}{Vocabulary}} $>$}]{new\+Class }\end{DoxyParamCaption})}
+
+
+
+Sets the learned data. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Class} & The new learned data \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 103 of file classifier.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{103                                                           \{}
+\DoxyCodeLine{104     class\_ = newClass;}
+\DoxyCodeLine{105 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classClassifier_ab0d7e93375e323cf07e5bf21532d6163}\label{classClassifier_ab0d7e93375e323cf07e5bf21532d6163}} 
+\index{Classifier@{Classifier}!set\_Data@{set\_Data}}
+\index{set\_Data@{set\_Data}!Classifier@{Classifier}}
+\doxysubsubsection{\texorpdfstring{set\_Data()}{set\_Data()}}
+{\footnotesize\ttfamily void Classifier\+::set\+\_\+\+Data (\begin{DoxyParamCaption}\item[{std\+::string}]{new\+Data }\end{DoxyParamCaption})}
+
+
+
+Sets the data. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Data} & The new data \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 112 of file classifier.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{112                                             \{}
+\DoxyCodeLine{113     data\_ = newData;}
+\DoxyCodeLine{114 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classClassifier_a2de5f473db4051e82e12b9d062ff22b4}\label{classClassifier_a2de5f473db4051e82e12b9d062ff22b4}} 
+\index{Classifier@{Classifier}!set\_InputFiles@{set\_InputFiles}}
+\index{set\_InputFiles@{set\_InputFiles}!Classifier@{Classifier}}
+\doxysubsubsection{\texorpdfstring{set\_InputFiles()}{set\_InputFiles()}}
+{\footnotesize\ttfamily void Classifier\+::set\+\_\+\+Input\+Files (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{new\+Input\+Files }\end{DoxyParamCaption})}
+
+
+
+Sets the input files. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Input\+Files} & The new input files \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 94 of file classifier.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{94                                                                    \{}
+\DoxyCodeLine{95     inputFiles\_ = newInputFiles;}
+\DoxyCodeLine{96 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classClassifier_ae59153d52e14554c49eb5b0f81c00755}\label{classClassifier_ae59153d52e14554c49eb5b0f81c00755}} 
+\index{Classifier@{Classifier}!storeFile@{storeFile}}
+\index{storeFile@{storeFile}!Classifier@{Classifier}}
+\doxysubsubsection{\texorpdfstring{storeFile()}{storeFile()}}
+{\footnotesize\ttfamily void Classifier\+::store\+File (\begin{DoxyParamCaption}\item[{std\+::string \&}]{output\+File,  }\item[{std\+::string \&}]{resume\+File }\end{DoxyParamCaption})}
+
+
+
+Stores the output data into the classified file and the resume file. The classify file format is\+: , $<$\+Prob\+Sent\+Class\+A$>$, ..., $<$\+Prob\+Sent\+Class\+N$>$, $<$\+Class$>$. , $<$\+Prob\+Sent\+Class\+A$>$, ..., $<$\+Prob\+Sent\+Class\+N$>$, $<$\+Class$>$. , $<$\+Prob\+Sent\+Class\+A$>$, ..., $<$\+Prob\+Sent\+Class\+N$>$, $<$\+Class$>$. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output\+File} & The output file \\
+\hline
+{\em resume\+File} & The resume file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 296 of file classifier.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{296                                                                         \{}
+\DoxyCodeLine{297     std::fstream file(outputFile, std::ios::out | std::ios::trunc);}
+\DoxyCodeLine{298     \textcolor{keywordflow}{if} (file.fail()) \{}
+\DoxyCodeLine{299         std::cout << \textcolor{stringliteral}{"Error while storing data \(\backslash\)""} << outputFile << \textcolor{stringliteral}{"\(\backslash\)" is not valid document."} << std::endl;}
+\DoxyCodeLine{300         exit(1);}
+\DoxyCodeLine{301     \} }
+\DoxyCodeLine{302     \textcolor{keywordflow}{else} \{ }
+\DoxyCodeLine{303         \textcolor{keywordtype}{bool} isDecimal = \textcolor{keyword}{false};}
+\DoxyCodeLine{304         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i = 0; i < data\_.length(); i++) \{}
+\DoxyCodeLine{305             \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/  Fixing decimales to 2 digits  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{306             \textcolor{comment}{// file << data\_; // If dont want to trunc decimals}}
+\DoxyCodeLine{307             }
+\DoxyCodeLine{308             \textcolor{keywordflow}{if} (isDecimal \&\& std::isdigit(data\_[i]) \&\& std::isdigit(data\_[i -\/ 2])) \{}
+\DoxyCodeLine{309                 \textcolor{keywordflow}{if} (data\_[i] != \textcolor{charliteral}{','}) \{}
+\DoxyCodeLine{310                     file << data\_[i];}
+\DoxyCodeLine{311                     i++;}
+\DoxyCodeLine{312                 \}}
+\DoxyCodeLine{313                 \textcolor{keywordflow}{if} (data\_[i] != \textcolor{charliteral}{','}) \{}
+\DoxyCodeLine{314                     file << data\_[i];}
+\DoxyCodeLine{315                     i++;}
+\DoxyCodeLine{316                 \}}
+\DoxyCodeLine{317                 \textcolor{keywordflow}{while} (data\_[i] != \textcolor{charliteral}{','} \&\& data\_[i] != \textcolor{charliteral}{'.'}) \{}
+\DoxyCodeLine{318                     i++;}
+\DoxyCodeLine{319                 \}}
+\DoxyCodeLine{320                 file << data\_[i];}
+\DoxyCodeLine{321                 isDecimal = \textcolor{keyword}{false};}
+\DoxyCodeLine{322             \}}
+\DoxyCodeLine{323             \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{324                 isDecimal = \textcolor{keyword}{false};}
+\DoxyCodeLine{325                 file << data\_[i];}
+\DoxyCodeLine{326                 \textcolor{keywordflow}{if} (data\_[i] == \textcolor{charliteral}{'.'}) \{}
+\DoxyCodeLine{327                     isDecimal = \textcolor{keyword}{true};}
+\DoxyCodeLine{328                 \}}
+\DoxyCodeLine{329             \}}
+\DoxyCodeLine{330         \}}
+\DoxyCodeLine{331     \}}
+\DoxyCodeLine{332     file.close();}
+\DoxyCodeLine{333     std::fstream resume(resumeFile, std::ios::out | std::ios::trunc);}
+\DoxyCodeLine{334     \textcolor{keywordflow}{if} (resume.fail()) \{}
+\DoxyCodeLine{335         std::cout << \textcolor{stringliteral}{"Error while storing data \(\backslash\)""} << resumeFile << \textcolor{stringliteral}{"\(\backslash\)" is not valid document."} << std::endl;}
+\DoxyCodeLine{336         exit(1);}
+\DoxyCodeLine{337     \} }
+\DoxyCodeLine{338     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{339         \textcolor{comment}{// next line for personal purposes}}
+\DoxyCodeLine{340         resume << \textcolor{stringliteral}{"codigo: "} << std::endl;}
+\DoxyCodeLine{341         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i = 0; i < resume\_.size(); i++) \{}
+\DoxyCodeLine{342             resume << resume\_[i] << std::endl;}
+\DoxyCodeLine{343         \}}
+\DoxyCodeLine{344         resume.close();}
+\DoxyCodeLine{345     \}}
+\DoxyCodeLine{346 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/classifier.\+hpp\item 
+src/classifier.\+cpp\end{DoxyCompactItemize}
